@@ -1,16 +1,15 @@
 ## JavaScript-Sketches
 <br>
-<br>
 
 ### Contents
 
-#### Grammer&API
+#### Grammer
 1. Basic Grammer
 2. Native API
 3. RegExp
 4. ES6
 
-#### Client
+#### Client-side
 1. [DOM]()
 2. BOM
 3. Transmission
