@@ -1,5 +1,6 @@
 ## JavaScript-Sketches
-<br>
+
+<img src="https://raw.githubusercontent.com/bison1994/kidney/gh-pages/js-sketch.png" style="display: block; width: 200px; height: 150px; margin: 0 auto">
 
 ### Contents
 
