@@ -5,6 +5,6 @@
 
 #### ECMAScript
 - basic grammer
-- Native API
-  + Error
-- Advanced Topic
++ Native API
+  - Error
++ Advanced Topic
