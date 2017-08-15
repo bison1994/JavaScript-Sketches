@@ -4,13 +4,13 @@
 
 ```js
 try {
-	throw new Error('something wrong')
+  throw new Error('something wrong')
 } catch (e) { 
   throw e.name + ': ' + e.message // Uncaught Error: something wrong
 }
 
 try {
-	throw new Error('something wrong')
+  throw new Error('something wrong')
 } catch (e) { 
   console.error(e.name + ': ' + e.message) // Error: something wrong
 }
