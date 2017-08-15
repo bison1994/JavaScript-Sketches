@@ -26,14 +26,14 @@
 
 ### 类型检测
 - typeof 操作符
-@return undefined | boolean | number | string | object | function
+  + @return undefined | boolean | number | string | object | function
 
 - Object.prototype.toString().call()
-@return [[class]]<br>
-@example [object Function]
+  + @return [[class]]
+  + @example [object Function]
 
 - is*
-@example Array.isArray()
+  + @example Array.isArray()
 
 - instanceof 操作符
 
@@ -59,32 +59,76 @@ ES5 中有两种声明变量的命令：var 和 function。<br>
 
 参考：[我用了两个月的时间才理解 let](https://zhuanlan.zhihu.com/p/28140450) by 方应杭
 
-### 数组
-JavaScript 数组是键名（索引）为有序整数列的特殊的对象。<br>
-如果数组中某个索引没有赋值，会自动以 undefined填充。<br>
-数组的索引不一定是连续的，索引非连续的数组被称为稀疏数组。<br>
-数组的 length 属性值总是等于索引最大值 + 1，length 并不一定等于数组元素的个数。<br>
-将 length 设置为比当前最大索引更小的一个数，尾部的元素会被截掉（删除）。
-
 ### 函数
 #### 参数
 - 形参 parameter：定义函数时设置的参数；
 - 实参 arguments：调用函数时传入的参数。
+
 参数是函数的局部变量，在函数执行完成后自动销毁。<br>
 
 传参是一种隐式赋值（按值传递）。如果传入一个变量，那么实际上传入的是该变量的一个副本。如果变量是基本类型，那么传入的是值的副本；如果变量是引用类型，那么传入的是内存地址的副本。<br>
 
 JavaScript 中函数的形参是非必须的，因为解析器真正解析的是可通过函数内部属性 arguments 访问的实参数组。arguments 是一个类数组对象，在函数内部可以用 arguments[i] 代表参数，arguments[i] 与形参本质上是同一个实参的两个变量。向函数传递实参的个数是不受限的，因为 arguments 对象的长度由传入实参的个数决定，与形参无关。
 
-#### 函数声明 Declaration
+#### 函数声明
 声明函数通常有两种方式：
 - 函数声明（语句）
-	function name ( ) { } // 声明一个变量，定义一个函数，然后将变量关联到此函数
+  + function name ( ) { } // 声明一个变量，定义一个函数，然后将变量关联到此函数
 - 函数（定义）表达式
-	function ( ) { } // 常使用赋值语句的形式var name = function ( ) { }
+  + function ( ) { } // 常使用赋值语句的形式 var name = function ( ) { }
 
 区别：
-1. 函数声明类似于变量声明，在作用域中会最先执行（hoist），所以可在函数定义之前调用函数，函数表达式则不可，因为变量的声明执行在先，赋值的执行在后。
+1. 函数声明类似于变量声明，在作用域中会最先执行（hoist），所以可在函数定义之前调用函数。函数表达式则不可，因为变量的声明执行在先，赋值的执行在后。
 2. 函数表达式是一种受限的语句，它只能出现在全局作用域或者其它函数中，而不能出现在其它语句中（比如条件和循环）。函数声明则可以出现在任何位置。
 
+#### 函数调用
+仅当调用函数时，函数内部的语句才会执行。<br>
+调用函数的方式有四种：作为函数调用、作为方法调用、作为构造函数、call 和 apply 调用。<br>
 
+函数调用后总会返回一个值，具体返回什么值，与调用的方式有关。作为函数或方法调用，返回值要么是 return指定的值，要么是 undefined。作为构造函数调用，返回值一定是一个对象。
+
+#### 函数内部属性 this
+this 指向一个对象或执行环境，具体指向谁，取决于函数定义和调用的方式。
+1. 作为函数调用<br>
+this 指向 global。而在严格模式中，this 为 undefined。
+```js
+'use strict';
+(function () {
+  console.log(typeof this); // undefined
+})()
+```
+
+2. 作为对象方法调用<br>
+  this 指向调用对象（调用对象会作为一个隐式的实参传给函数）。
+```js
+var obj = {
+  a: 'abc',
+  f: function () {
+    // f 作为方法调用，所以 this 指向 obj
+    console.log(this.a) // 'abc'
+    foo(); // foo 作为普通函数调用，this 指向 global 或 undefined，而不是 obj
+    function foo () {
+      console.log(this.a) // undefined
+    }
+  }
+};
+obj.f();
+```
+
+3. 作为构造函数调用<br>
+在函数调用表达式前加上 new 关键字，就是构造函数调用。<br>
+new 运算符的执行逻辑：
+  1. 创建一个空对象；
+  2. 该对象继承构造函数的 prototype 属性；
+  3. 该空对象被赋值给构造函数内部的 this 对象；
+  4. 执行构造函数。
+如果构造函数中显式的 return 了一个对象，那么就返回这个对象（此对象是没有继承原型的，除非返回的是 this）。否则，一律返回新创建的空对象。（无论构造函数内部有没有 this 关键字）。
+
+4. 间接调用<br>
+this 由 call()、apply() 的第一个参数指定。
+
+5. 显式绑定<br>
+this 由 bind() 的参数指定
+
+6. 箭头函数<br>
+ES6 定义了箭头函数，采用词法作用域作为 this 的指向。
