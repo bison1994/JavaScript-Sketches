@@ -5,8 +5,10 @@
 
 参考：[Unicode与JavaScript详解](http://www.ruanyifeng.com/blog/2014/12/unicode.html) by 阮一峰
 
+<br>
 ### 严格模式
 
+<br>
 ### 值的类型
 - Number
 - String
@@ -24,6 +26,7 @@
   + ...
 - Symbol (ES6)
 
+<br>
 ### 类型检测
 - typeof 操作符
   + @return undefined | boolean | number | string | object | function
@@ -37,6 +40,7 @@
 
 - instanceof 操作符
 
+<br>
 ### 类型转换
 分为隐式和显式<br>
 - Number => String
@@ -49,7 +53,7 @@
   + +str | str * 1
   + parseInt(str) | parseFloat(str)
 
-
+<br>
 ### 变量声明
 ES5 中有两种声明变量的命令：var 和 function。<br>
 
@@ -59,6 +63,7 @@ ES5 中有两种声明变量的命令：var 和 function。<br>
 
 参考：[我用了两个月的时间才理解 let](https://zhuanlan.zhihu.com/p/28140450) by 方应杭
 
+<br>
 ### 函数
 #### 参数
 - 形参 parameter：定义函数时设置的参数；
@@ -83,12 +88,13 @@ JavaScript 中函数的形参是非必须的，因为解析器真正解析的是
 
 #### 函数调用
 仅当调用函数时，函数内部的语句才会执行。<br>
+
 调用函数的方式有四种：作为函数调用、作为方法调用、作为构造函数、call 和 apply 调用。<br>
 
 函数调用后总会返回一个值，具体返回什么值，与调用的方式有关。作为函数或方法调用，返回值要么是 return指定的值，要么是 undefined。作为构造函数调用，返回值一定是一个对象。
 
 #### 函数内部属性 this
-this 指向一个对象或执行环境，具体指向谁，取决于函数定义和调用的方式。
+this 指向一个对象（或称执行环境），具体指向谁，取决于函数定义和调用的方式。
 1. 作为函数调用<br>
 this 指向 global。而在严格模式中，this 为 undefined。
 ```js
@@ -118,10 +124,10 @@ obj.f();
 3. 作为构造函数调用<br>
 在函数调用表达式前加上 new 关键字，就是构造函数调用。<br>
 new 运算符的执行逻辑：
-  1. 创建一个空对象；
-  2. 该对象继承构造函数的 prototype 属性；
-  3. 该空对象被赋值给构造函数内部的 this 对象；
-  4. 执行构造函数。
+  - 创建一个空对象；
+  - 该对象继承构造函数的 prototype 属性；
+  - 该空对象被赋值给构造函数内部的 this 对象；
+  - 执行构造函数。
 如果构造函数中显式的 return 了一个对象，那么就返回这个对象（此对象是没有继承原型的，除非返回的是 this）。否则，一律返回新创建的空对象。（无论构造函数内部有没有 this 关键字）。
 
 4. 间接调用<br>
