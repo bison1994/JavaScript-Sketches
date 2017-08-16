@@ -5,7 +5,7 @@
 ### Contents
 
 #### ECMAScript
-- [basic grammer](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Basic.md)
+- [Basic Grammer](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Basic.md)
 - Native API
   - [Error](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Native%20API/Error.md)
 - Advanced Topic
