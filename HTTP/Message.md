@@ -2,14 +2,14 @@
 HTTP报文由三部分组成：起始行、首部和主体
 
 #### 请求报文
-<METHOD> <URL> <VERSION> <br/>
-<HEADERS> <br/>
-<ENTITY-BODY>
+&lt;Method> &lt;URL> &lt;Version> <br/>
+&lt;Headers> <br/>
+&lt;Entity-body>
 
 #### 响应报文
-<VERSION> <STATUS> <REASON-PHRASE> <br/>
-<HEADERS> <br/>
-<ENTITY-BODY>
+&lt;Version> &lt;status> &lt;Reason-phrase> <br/>
+&lt;Headers> <br/>
+&lt;Entity-body>
 
 <br/>
 
