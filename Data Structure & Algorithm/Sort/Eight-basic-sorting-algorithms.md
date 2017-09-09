@@ -1,3 +1,4 @@
+
 ### 选择排序 Selection Sort
 基本思路：不断从剩余数组中选出最小的数，然后移到前面
 - 平方级。需要约 N^2 / 2 次比较，与 N - 1 次交换
@@ -71,7 +72,7 @@ function f (arr) {
 基本思路：将输入分为两半分别排序，然后合并，该方法可以递归的进行，将需要排序的数组长度不断二分至最小，从而降低排序的消耗
 
 ```js
-// mid 分隔的两个数组是排好序的
+// mid 分隔的两个数组必须是排好序的
 function merge (arr, lo, mid, hi) {
   var copy = [];
   var k = mid + 1;
@@ -99,6 +100,7 @@ function merge (arr, lo, mid, hi) {
   }
   return arr
 }
+
 /**
  * 自顶向下
  * 递归的最深处，是对二元数组进行归并
@@ -110,6 +112,27 @@ function sort (arr, lo, hi) {
   sort(arr, mid + 1, hi);
   return merge(arr, lo, mid, hi)
 }
+
+/**
+ * 自底向上
+ */
+function sort (arr) {
+  var len = arr.length;
+  var max, mid;
+  for (var i = 2; i / 2 < len; i *= 2) {
+    for (var j = 0; j < len; j += i) {
+      if (j + i - 1 >= len) {
+        max = len - 1;
+      } else {
+      	max = j + i - 1;
+      }
+      mid = j + i / 2 - 1;
+      merge(arr, j, mid, max);
+    }
+  }
+  return arr
+}
+
 ```
 
 ### 快速排序 Quick Sort

@@ -3,15 +3,25 @@
 - 仅支持 16 位 UTF-16 编码，不支持 32 位
 - ES6 增加了对 32 位的支持
 
-参考：[《Unicode与JavaScript详解》](http://www.ruanyifeng.com/blog/2014/12/unicode.html) by 阮一峰
+参考：[Unicode与JavaScript详解](http://www.ruanyifeng.com/blog/2014/12/unicode.html) by 阮一峰
 
 <br/>
 
 ### 严格模式
-
+ES5 引入严格模式，目的是保持向前兼容的前提下，规范某些不确定、不合理、不安全的行为，降低代码解析与执行的容错性，为下一代标准做铺垫
 <br/>
+可以在脚本顶部或函数内顶部使用 `"use strict";` 编译指示，在全局或局部开启严格模式。考虑到文件合并，一般都在自执行函数顶部使用该指令
+<br/>
+常见规范项
+- 未使用 `var` 声明的变量不再默认设置为全局变量，而是报错
+- 全局上下文函数中的 `this` 不再指向 `Global`，而是 `undefined`，避免扰乱 `window` 对象的属性
+- 出于安全考虑，禁用 `arguments.callee`、`arguments.caller`、`f.caller`、`f.arguments`
+- 禁用 `with`，目的是性能优化
+- 更多参考之 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Strict_mode)
+- 更多参考之 [阮一峰](http://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html)
 
 ### 值的类型
+值的类型本质上是一门语言提供的抽象数据类型，任何值归根结底都是二进制的数
 - Number
 - String
 - Boolean
@@ -28,14 +38,31 @@
   + ...
 - Symbol (ES6)
 
+
+### 值的分类
+- 基本类型 primitive => 分配于栈内存 => static allocation
+- 引用类型 reference => 分配于堆内存 => dynamic allocation
+  + 构造函数
+  + 基本包装类型
+    - Number
+    - String
+    - Boolean
+  + 单体内置对象
+    - Global
+    - Math
+    - JSON
+
+[栈内存与堆内存的解释一](http://net-informations.com/faq/net/stack-heap.htm)
 <br/>
+[栈内存与堆内存的解释二](https://stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap)
+
 
 ### 类型检测
 - typeof 操作符
   + @return undefined | boolean | number | string | object | function
 
 - Object.prototype.toString().call()
-  + @return [[class]]
+  + @return [[class class]]
   + @example [object Function]
 
 - is*

@@ -2,7 +2,7 @@
 
 <img src="https://raw.githubusercontent.com/bison1994/kidney/gh-pages/sketch.png">
 
-### Contents
+### Table of Contents
 
 #### ECMAScript
 - [Basic Grammer](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Basic.md)
