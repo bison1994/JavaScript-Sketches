@@ -1,4 +1,4 @@
-优先队列
+# 优先队列
 
 ### API
 - insert(element)
@@ -16,7 +16,7 @@ class MaxPQ {
 	}
 
 	insert (value) {
-		this.n +=1;
+		this.n += 1;
 		this.heap[this.n] = value;
 		this._swim[this.n];
 	}
