@@ -17,3 +17,76 @@
 - keys() 返回已排序的键
 - keys(lo, hi)
 - size(lo, hi)
+
+### 二叉树实现
+```js
+class BinaryTree {
+  constructor (key, value) {
+    this.root = new this.node({
+      key: key,
+      value: value
+    })
+  }
+
+  node (options) {
+    this.key = options.key;
+    this.value = options.value;
+    this.parent = options.parent;
+  }
+
+  set (key, value) {
+    var node = this.root;
+    while (node) {
+      if (key === node.key) {
+        node.value = value;
+        return;
+      }
+      if (key > node.key) {
+        if (node.right) {
+          node = node.right;
+        } else {
+          node.right = new this.node({
+            key: key,
+            value: value,
+            parent: node
+          })
+          return;
+        }
+      } else {
+        if (node.left) {
+          node = node.left;
+        } else {
+          node.left = new this.node({
+            key: key,
+            value: value,
+            parent: node
+          })
+        }
+      }
+    }
+  }
+
+  get (key) {
+    var node = this.root;
+    while (node) {
+      if (node.key === key) {
+        return node.value;
+      }
+      node = key > node.key ? node.right : node.left
+    }
+    return null
+  }
+
+  del (key) {
+    var node = this.root;
+    while (node) {
+      if (node.key === key) {
+        
+      }
+      node = key > node.key ? node.right : node.left
+    }
+    console.log('nothing found')
+  }
+}
+
+```

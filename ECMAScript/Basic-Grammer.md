@@ -20,6 +20,7 @@
   + 禁用 `with`，目的是性能优化
 
 > 更多参考之 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Strict_mode)
+
 > 更多参考之 [阮一峰](http://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html)
 
 
@@ -59,6 +60,7 @@
     - JSON
 
 > [栈内存与堆内存的解释一](http://net-informations.com/faq/net/stack-heap.htm)
+
 > [栈内存与堆内存的解释二](https://stackoverflow.com/questions/79923/what-and-where-are-the-stack-and-heap)
 
 
@@ -191,8 +193,7 @@ obj.f();
   - 该对象继承构造函数的 `prototype` 属性
   - 该空对象被赋值给构造函数内部的 `this` 对象
   - 执行构造函数
-
-如果构造函数中显式的 return 了一个对象，那么就返回这个对象（此对象是没有继承原型的，除非返回的是 this）。否则，一律返回新创建的空对象。
+  - 如果构造函数中显式的 return 了一个对象，那么就返回这个对象（此对象是没有继承原型的，除非返回的是 this）。否则，一律返回新创建的空对象。
 
 4. 间接调用，`this` 由 `call()、apply()` 的第一个参数指定
 
@@ -213,13 +214,13 @@ obj.f();
   + 对象的属性分为自有属性和继承属性。属性值可以是任何 JavaScript 值，以及 getter&setter，因此属性又可分为数值属性和存取器属性
 	+ 每个数值属性有四个特性：值（value）、可写（writable）、可枚举（enumarable）和可配置（configurable），每个存取器属性也有四个特性：读取（get）、写入（set）、可枚举（enumarable）和可配置（configurable）
     - `Object.getOwnPropertyDescriptor(object, prop)` 获取对象属性的 descriptor
-	  - `Object.defineProperty(object, prop, descriptor)` 设置对象属性的 descriptor，返回修改后的对象
+    - `Object.defineProperty(object, prop, descriptor)` 设置对象属性的 descriptor，返回修改后的对象
   + JavaScript 内置的对象属性是不可枚举的
 	+ 将 configurable 设置为 false 的操作是不可逆的，禁止配置的属性将无法再次修改其属性描述符，同时也不可删除
   + 遍历属性
     - `for-in` 语句会遍历对象所有可枚举的属性（包括原型链上可枚举的属性）
     - `Object.keys(obj)` 返回 obj 所有可枚举的自有属性的键名数组
-	  - `Object.getOwnPropertyNames(obj)` 返回 obj 所有自有属性的键名数组
+    - `Object.getOwnPropertyNames(obj)` 返回 obj 所有自有属性的键名数组
 	+ 检测属性
     - `in` 查询所有属性，包括原型链，包括不可枚举属性
     - `hasOwnProperty()` 检测属性是否为自有属性
@@ -229,7 +230,7 @@ obj.f();
   + 考虑特殊类型
   + 递归复制考虑环
   + JSON 克隆的局限性
-  + 考虑是否克隆 __proto__
+  + 考虑是否克隆 \_\_proto\_\_
 
 - 扩展性
   + 禁止扩展 `Object.preventExtensions(object)`
