@@ -1,4 +1,10 @@
 ### 事件类型
+
+- UIEvent
+- CustomEvent
+- MutationEvent
+
+
 - 鼠标
 - 键盘
 - 表单
