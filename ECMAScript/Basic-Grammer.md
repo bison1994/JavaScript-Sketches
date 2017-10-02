@@ -7,6 +7,25 @@
 > [Unicode 与 JavaScript详解](http://www.ruanyifeng.com/blog/2014/12/unicode.html)
 
 
+### 标识符 Identifier
+
+- 名称：变量名、函数名、对象名或属性名...
+- 语法标记：声明变量（var function let const），控制流程（for while if else）...
+  + 关键字
+  + 保留字
+
+
+### 操作符/运算符 Operator
+
+- 符号: + - || &&...
+- 词语：typeof delete...
+- 优先级
+
+### 值 Literal/Value
+
+> 从形式上看，写程序就是用标识符符与操作符来操控值。
+
+
 ### 严格模式
 
 - ES5 引入严格模式，目的是保持向后兼容的前提下，规范某些不确定、不合理、不安全的行为，降低代码解析与执行的容错性，为下一代标准做铺垫
@@ -44,11 +63,37 @@
   + ...
 - Symbol (ES6)
 
+##### Number
+- JavaScript 中所有数都用64位浮点数表示，整数也是如此。因此1 === 1.0 // true
+- 如同任何使用二进制浮点数的编程语言，JavaScript 中的小数运算也会失去一定的精确性，例如:console.log(0.1 + 0.2) // 0.30000000000000004
+- 科学计数法，如：3.14e12。
+- 四个特殊的数：Infinity、NaN、Number.MAX_VALUE 和 Number.MIN_VALUE
+- NaN表示非数字。之所以设计 NaN 这样一个值，是为了避免程序在本应计算出数值却未得到数值时抛出错误而停止运行。
+- 任何有 NaN 参与的运算都会返回NaN；NaN 和任何数都不相等，包括其自身。
+
+
+##### Boolean
+- 当一个表达式需要被解析为布尔值却无法计算出布尔值时，会由系统按如下规则自动转换为真值或假值，使得逻辑运算能够正常进行：
+	+ 除了 false、null、" "、0、NaN、undefined 为假值，其它的值均为真值
+- 真/假值并不是一种值，它仅仅表示某个值可被解析为 true 或 false
+
+
+##### Undefined
+- undefined 是一个全局变量，表示"值的空缺"或"未定义"（missing value），例如：变量已声明却未初始化（赋值）、未指定返回值时函数的返回值、未指定实参时形参的值、对象属性不存在等。
+- 可使用`void 0`来获得 undefined 值。
+
+
+##### Null
+- null 是一个特殊的值："空值"（empty value）。
+-	typeof null == object // true，null 并不是对象，但它的数据类型是对象
+-	undefined == null // true
+-	undefined === null // false
+
 
 ### 值的分类
 
-- 基本类型 primitive => 分配于栈内存 => static allocation
-- 引用类型 reference => 分配于堆内存 => dynamic allocation
+- 基本类型/原始类型 primitive => 分配于栈内存 => static allocation => immutable
+- 引用类型 reference => 分配于堆内存 => dynamic allocation => mutable
   + 构造函数
   + 基本包装类型
     - Number
@@ -104,15 +149,40 @@
 
 
 ### 表达式与运算符
-略
+
+- 表达式 Expression 是可以计算出一个值的短语。任何表达式一定会返回一个值
+  + 原始表达式
+  + 初始化表达式
+  + 函数声明表达式
+  + 函数调用表达式
+  + 对象创建表达式
+  + 属性访问表达式
+  + 算数表达式
+  + 关系表达式
+  + 逻辑表达式
+  + 赋值表达式
 
 
-### 流程控制语句
-略
+### 语句
+
+语句，是JavaScript的执行单位。从形式上看，语句就是以分号结尾的一段代码。无论这段代码是表达式，还是别的什么东西，甚至什么都没有，只要以分号结尾，就会被解释器当做语句。
+
+- 条件
+- 循环
+- 跳转
 
 
 ### 数组
-略
+
+- JavaScript 数组是键名（索引）为有序整数列的特殊的对象
+- 创建方式
+  + 数组字面量：var arr = [a, b, c] // 自动创建索引属性
+  + 构造函数：var arr = new Array(n); // 索引属性尚未创建，需手动创建
+  + 构造函数：var arr = new Array('abc', 1, 2, true) // 返回以参数为值的数组
+- 数组的索引不一定是连续的，索引非连续的数组被称为稀疏数组
+- 数组的 length 属性值总是等于索引最大值+1，length并不一定等于数组元素的个数
+- 如果将 length 设置为比当前最大索引小的一个数，那么尾部的元素会被截掉
+
 
 
 ### 函数
@@ -204,6 +274,16 @@ obj.f();
 
 ### 对象
 
+- 分类
+  + 本地对象（内置对象）
+    - 单体内置对象：Global、Math、JSON
+    - 构造函数（ES5 中有 9 个）
+      + 基本包装类型：String、Number、Boolean // 字面量和实例对象不一样
+      + Array、Function、RegExp、Object // 字面量和实例都是对象
+      + Date、Error // 没有字面量
+  + 宿主对象
+  + 自定义对象
+
 - 创建
   + 直接量
   + 构造函数
@@ -211,8 +291,10 @@ obj.f();
   + `Object.create(null)`
 
 - 属性
-  + 对象的属性分为自有属性和继承属性。属性值可以是任何 JavaScript 值，以及 getter&setter，因此属性又可分为数值属性和存取器属性
-	+ 每个数值属性有四个特性：值（value）、可写（writable）、可枚举（enumarable）和可配置（configurable），每个存取器属性也有四个特性：读取（get）、写入（set）、可枚举（enumarable）和可配置（configurable）
+  + 对象的属性分为自有属性和继承属性
+  + 属性值可以是任何 JavaScript 值，以及 getter&setter，因此属性又可分为数值属性和存取器属性
+	+ 每个数值属性有四个特性：值（value）、可写（writable）、可枚举（enumarable）和可配置（configurable）
+  + 每个存取器属性也有四个特性：读取（get）、写入（set）、可枚举（enumarable）和可配置（configurable）
     - `Object.getOwnPropertyDescriptor(object, prop)` 获取对象属性的 descriptor
     - `Object.defineProperty(object, prop, descriptor)` 设置对象属性的 descriptor，返回修改后的对象
   + JavaScript 内置的对象属性是不可枚举的

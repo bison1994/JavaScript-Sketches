@@ -1,0 +1,1 @@
+var copies = someArray.slice(0);

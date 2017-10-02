@@ -111,6 +111,8 @@ JavaScript 支持三个 flag
   + 参数：分隔符。可以是字符串，也可以是正则。
 	+ 返回：切分后的数组。
 
+> [replace 第二个参数为函数的用法](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace#指定一个函数作为参数)
+
 ### RegExp API
 
 - exec(str)
@@ -131,6 +133,3 @@ while ((result = reg.exec(text)) != null) {
 }
 console.log(reg.lastIndex); // 0
 ```
-
-
-

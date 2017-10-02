@@ -32,6 +32,8 @@ class BinaryTree {
     this.key = options.key;
     this.value = options.value;
     this.parent = options.parent;
+    this.left = null;
+    this.right = null;
   }
 
   set (key, value) {
@@ -77,15 +79,27 @@ class BinaryTree {
     return null
   }
 
-  del (key) {
+  dele (key) {
     var node = this.root;
     while (node) {
       if (node.key === key) {
-        
+        if (!node.right) {
+          var min = node.left;
+        } else {
+          var min = this.min(node.right);
+          min.left = node.left;
+          min.right = node.right;
+        }
+        if (node.key > node.parent.key) {
+          node.parent.right = min;
+        } else {
+          node.parent.left = min;
+        }
+        return null
       }
       node = key > node.key ? node.right : node.left
     }
-    console.log('nothing found')
+    return null
   }
 }
 
