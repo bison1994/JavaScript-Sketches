@@ -20,23 +20,28 @@
 
 ### 二叉树实现
 ```js
-class BinaryTree {
-  constructor (key, value) {
-    this.root = new this.node({
-      key: key,
-      value: value
-    })
-  }
+function BinaryTree () {
+  this.root = null;
+}
 
-  node (options) {
-    this.key = options.key;
-    this.value = options.value;
-    this.parent = options.parent;
-    this.left = null;
-    this.right = null;
-  }
+function Node (options) {
+  this.key = options.key;
+  this.value = options.value;
+  this.parent = options.parent;
+  this.left = null;
+  this.right = null;
+}
 
+BinaryTree.prototype = {
   set (key, value) {
+    if (!this.root) {
+      this.root = new Node({
+        key: key,
+        value: value,
+        parent: null
+      })
+      return;
+    }
     var node = this.root;
     while (node) {
       if (key === node.key) {
@@ -47,7 +52,7 @@ class BinaryTree {
         if (node.right) {
           node = node.right;
         } else {
-          node.right = new this.node({
+          node.right = new Node({
             key: key,
             value: value,
             parent: node
@@ -58,7 +63,7 @@ class BinaryTree {
         if (node.left) {
           node = node.left;
         } else {
-          node.left = new this.node({
+          node.left = new Node({
             key: key,
             value: value,
             parent: node
@@ -66,7 +71,7 @@ class BinaryTree {
         }
       }
     }
-  }
+  },
 
   get (key) {
     var node = this.root;
@@ -77,7 +82,24 @@ class BinaryTree {
       node = key > node.key ? node.right : node.left
     }
     return null
-  }
+  },
+
+  min (node) {
+    while (node) {
+      node = node.left;
+    }
+    return node.key
+  },
+
+  deleMin (node) {
+    while (node.left) {
+      node = node.left;
+    }
+    if (node.parent) {
+      node.parent.left = null;
+    }
+    return node
+  },
 
   dele (key) {
     var node = this.root;
@@ -86,21 +108,24 @@ class BinaryTree {
         if (!node.right) {
           var min = node.left;
         } else {
-          var min = this.min(node.right);
-          min.left = node.left;
-          min.right = node.right;
+          var min = this.deleMin(node.right);
+          if (min) {
+            min.left = node.left;
+            min.right = node.right;
+          }
         }
-        if (node.key > node.parent.key) {
-          node.parent.right = min;
+        if (node.parent) {
+          if (node.key > node.parent.key) {
+            node.parent.right = min;
+          } else {
+            node.parent.left = min;
+          }
         } else {
-          node.parent.left = min;
+        	 this.root = null
         }
-        return null
       }
       node = key > node.key ? node.right : node.left
     }
-    return null
   }
 }
-
 ```

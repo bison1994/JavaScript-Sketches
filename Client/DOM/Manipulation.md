@@ -80,18 +80,30 @@
 
 
 - 尺寸与坐标
+  + 元素尺寸
+    - .offsetWidth /.offsetHeight
+    - .clientWidth /.clientHeight
+    - .scrollWidth/.scrollHeight
+  + 窗口尺寸
+    - window.innerWidth/innerHeight
+  + 元素坐标
+    - .offsetLeft /.offsetTop
+    - .getBoundingClientRect()
+  + 滚动
+    - .scrollLeft/.scrollTop
+    - .scrollIntoView()
+    - window.scrollTo()
 
 
 - 动画
   + requestAnimationFrame
 
 
-- 注册事件
-  + `<div id= "hello" onclick= "alert(id)"></div>`
-  + `el.onclick`
-  + `addEventListener() | removeEventListener()`
-
-- 触发事件
-  + `dispatchEvent()`
+- 富文本
+  + contenteditable 属性
+  + document.designmode = 'on'
+  + execCommand()
 
 
+- 获取选中文本
+  + window.getSelection()

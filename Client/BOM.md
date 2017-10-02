@@ -67,7 +67,6 @@ function update (data) {
 }
 ```
 
-
 ### 对话框
 alert()、prompt()、confirm()
 
