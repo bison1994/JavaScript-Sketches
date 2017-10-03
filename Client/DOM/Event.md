@@ -107,6 +107,7 @@
 - `el.onclick`
 - `addEventListener() | removeEventListener()`
 - `event = new Event(name, option)` [参考](https://developer.mozilla.org/zh-CN/docs/Web/API/Event/Event)
+- `document.createEvent()`
 
 
 ### 触发事件
