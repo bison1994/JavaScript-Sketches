@@ -226,6 +226,8 @@ function () {} // 常使用赋值语句的形式 var name = function () {}
 
 - 函数调用后总会返回一个值，具体返回什么值，与调用的方式有关。作为函数或方法调用，返回值要么是 return 指定的值，要么是 undefined。作为构造函数调用，返回值一定是一个对象
 
+- 函数有两个内部（internal-only）方法：[[call]] 与 [[Construct]]。当函数未被 new 调用时，执行 [[call]] 方法；当函数被 new 调用时，执行 [[Construct]] 方法。带有 [[Construct]] 方法的函数被称为构造函数（constructor）。箭头函数没有 [[Construct]] 方法
+
 
 #### this
 
