@@ -294,7 +294,7 @@ obj.f();
 
 - 属性
   + 对象的属性分为自有属性和继承属性
-  + 属性值可以是任何 JavaScript 值，以及 getter&setter，因此属性又可分为数值属性和存取器属性
+  + 属性值可以是任何 JavaScript 值，以及 getter&setter，因此属性又可分为数值属性和存取器属性（Accessor Property）
 	+ 每个数值属性有四个特性：值（value）、可写（writable）、可枚举（enumarable）和可配置（configurable）
   + 每个存取器属性也有四个特性：读取（get）、写入（set）、可枚举（enumarable）和可配置（configurable）
     - `Object.getOwnPropertyDescriptor(object, prop)` 获取对象属性的 descriptor
