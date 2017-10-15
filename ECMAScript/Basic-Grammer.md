@@ -231,7 +231,7 @@ function () {} // 常使用赋值语句的形式 var name = function () {}
 
 #### this
 
-this 指向一个对象，具体指向谁，取决于函数定义和调用的方式
+this 指向一个对象，具体指向谁，取决于函数定义和调用的方式，与定义在哪儿无关
 
 1. 作为函数调用，`this` 指向 `global`。但在严格模式中，`this` 为 `undefined`
 

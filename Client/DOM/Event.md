@@ -1,3 +1,12 @@
+### 事件分类
+
+- 依赖于设备输入的事件
+- 用户界面事件
+- 状态变化类事件
+- 特定 API 事件
+- 计时器与错误处理
+- 模拟事件 | 自定义事件
+
 ### 事件类型
 
 [搜索“event”有82个结果](https://developer.mozilla.org/zh-CN/docs/Web/API)
@@ -59,6 +68,7 @@
   + scroll
   + hashchange
   + popstate
+  + ...
 
 - XMLHttpRequest
 - 设备
@@ -69,6 +79,7 @@
 - DOM mutation
 - Media/Video/Audio/WebRTC
 - Service Worker
+- ...
 
 ### 事件对象
 
@@ -89,13 +100,12 @@
 2. 目标（target phase）：在目标节点上触发
 3. 冒泡（bubbling phase）：从目标节点父元素传导至 Window 对象
 
+> “捕获阶段提供了在事件查询传播到目标之前将其拦截（捕获）的机会” ———— 《JavaScript 权威指南》
 
 ### 事件代理 Delegation
 - 作用
   + 减少事件绑定数量
   + 使用根元素代理事件，避免捕获、冒泡等繁琐流程，减少节点查询路径，可提高事件触发的灵敏度
-
-> “捕获阶段提供了在事件查询传播到目标之前将其拦截（捕获）的机会” ———— 《JavaScript 权威指南》
 
 - 存在的问题
   + 可能增加事件系统复杂度，捕获阶段还是冒泡阶段？子元素事件是否屏蔽父元素代理？
@@ -103,12 +113,23 @@
 
 
 ### 注册事件
-- `<div id= "hello" onclick= "alert(id)"></div>`
+- `<div id="hello" onclick="alert(id)"></div>`
 - `el.onclick`
 - `addEventListener() | removeEventListener()`
-- `event = new Event(name, option)` [参考](https://developer.mozilla.org/zh-CN/docs/Web/API/Event/Event)
-- `document.createEvent()`
+- 模拟事件
+  + `event = new Event(name, option)` [参考](https://developer.mozilla.org/zh-CN/docs/Web/API/Event/Event)
+  + `document.createEvent()`
 
+> 通过属性注册的事件会比 addEventListener 注册的事件优先调用
 
 ### 触发事件
 - `dispatchEvent()`
+
+### 执行环境
+- this 值指向事件目标。通过 attachEvent 注册的事件处理程序 this 指向 window
+
+### 作用域
+- 通过事件属性绑定的事件处理程序，其作用域会进行某种扩展，使其可以直接通过变量形式访问 DOM 对象的属性，这种特性可能带来一些不易发觉的问题
+
+### 返回值
+- 通过事件属性绑定的事件处理程序，将其返回值设为 false，表示阻止浏览器默认操作。通过 `addEventListener` 注册的事件则需显式的调用事件对象的 `preventDefault()` 方法
