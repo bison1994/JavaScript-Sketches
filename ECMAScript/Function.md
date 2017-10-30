@@ -1,0 +1,137 @@
+> [参考](https://juejin.im/post/59eff1fb6fb9a044ff30a942)
+
+函数的使用技巧和各类设计模式，主要是基于闭包、高阶函数（以函数为参数或以函数为返回值的函数），并结合apply等函数方法实现的。
+
+### call、apply&bind
+- call 和 apply 本质上是函数调用的一种方式，可以指定函数调用的上下文，改变函数内部 this 的指向
+- bind 用于绑定 this 指向
+- call 和 bind 都是基于 apply 的
+
+> [如何实现 bind 方法](https://zhuanlan.zhihu.com/p/25379434?utm_medium=social&utm_source=qq)
+
+```js
+// example
+function hasOwn (obj, key) {
+  return Object.prototype.hasOwnProperty.call(obj, key)
+}
+// 将类数组转化为数组
+var newArray = Array.prototype.slice.call (arrayLikeObj)
+
+// 类数组对象借用数组方法
+Array.prototype.push.call(arguments, 'value');
+Array.prototype.shift.call(arguments); // 获取第一个参数
+
+(function () {
+	Array.prototype.forEach.call(arguments, function (val) {
+	  console.log(val + 1);
+	});
+})(1, 2, 3); // 输出2, 3, 4
+
+// 数组借用 Math 方法
+Math.max.apply (null, arr)
+
+// 借用构造函数
+function f (a) {
+	this.a = a;
+}
+function foo () {
+	f.apply(this, arguments);
+	console.log(this.a)
+}
+new foo('a') // 输出a
+```
+
+### 递归Recursion
+```js
+// 倒计时
+var second = 60;
+function countdown (btn) {
+  if (second == 0) { 
+    btn.removeAttribute("disabled");    
+    btn.value = "获取验证码"; 
+    second = 60; 
+  } else { 
+    btn.setAttribute("disabled", true); 
+    btn.value = second + "秒后重新获取"; 
+    second --; 
+  } 
+  setTimeout(function() { 
+    countdown(btn);
+  }, 1000);
+}
+
+// 菲波那切数列
+function Fibonacci (n , a1 = 1 , a2 = 1) {
+  if ( n <= 1 ) { return a2 };
+  return Fibonacci (n - 1, a2, a1 + a2);
+}
+
+// 遍历节点树
+function walk (node, func) {
+  func(node);
+  node = node.firstChild;
+  while (node) {
+    walk(node, func);
+    node = node.nextSibling;
+  }
+}
+```
+
+### 柯里化 Currying
+
+柯里化又称部分求值。是指向函数传参后，函数不会立即求值，而是将参数保存在闭包中，等到真正需要求值的时候再求值。
+f(1); // 仅仅将参数保存起来，除此以外什么都不做
+f(2); // 同上
+f(); // 真正执行了
+柯里化的作用就在于节省计算量，等真正需要计算时才计算。
+
+### uncurrying
+uncurrying 的作用是将通过 apply/call 实现对象间互调方法的方式泛化为一种通用形式
+Function.prototype.uncurrying = function () {
+  var self = this;
+  return function () {
+  var obj = Array.prototype.shift.call(arguments);
+    return self.apply(obj, arguments)
+  }
+}
+
+
+### 记忆 Memorize
+
+```js
+// Create a cached version of a pure function
+function cached (fn) {
+  var cache = Object.create(null);
+  return (function cachedFn (str) {
+    var hit = cache[str];
+    return hit || (cache[str] = fn(str))
+  })
+}
+```
+
+### 惰性载入
+	惰性载入的基本思想是只在调用的时候创建，而不是在程序初始化的时候创建。
+	通过替换变量，仅在第一次调用时执行有关逻辑，以后再次调用无须重复执行有关逻辑。
+
+
+### 函数节流（throttle）
+	避免过于频繁的执行函数（例如onscroll、mousemove的回调函数）。
+	function f (fn) {
+	  var first = false, self = fn, timer;
+	  return function ( ) {
+	  	if (first) {
+		  self(arguments);
+		  return first = false;
+		}
+	    if (timer) {return false} 
+		timer = setTimeout(function ( ) {
+		  self(arguments);
+		  clearTimeout(timer); timer = null;
+		})
+  	  }
+	}
+	
+	与函数节流类似的是函数防抖（debounce），表示直到某一段时间t以后，再执行下一次函数。当t设定为常数时，就是函数节流。
+
+
+
