@@ -15,3 +15,8 @@ JavaScript 单线程的运行模式意味着代码的执行是同步的，即只
 
 
 ### macrotask | microtask
+
+
+### setTimeout、setImmediate、process.nextTick
+- setTimeout: 推延到下一轮，检测时间是否抵达，如是则执行，如否则继续推延到下一轮
+- setImmediate: 追加到本轮事件队列尾部，类似于 promise
