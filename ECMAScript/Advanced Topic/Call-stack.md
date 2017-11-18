@@ -9,7 +9,7 @@
 - 尾调用是一种函数调用的优化方式。在函数中 return 一个函数的调用，就称为尾调用。如果尾调用自身，就称为尾递归
 - 使用尾调用的好处在于减少调用帧以节省内存
 - 使用尾调用，当外部函数运行完毕，引擎就会删除其调用帧，如果不是尾调用而是直接调用，那么外部函数的调用帧仍然会存在，因而造成内存的浪费，在递归函数中，如果保存的调用帧过多，就会导致栈溢出（stack overflow：Maximum call stack size exceeded）
-- 尾调用优化的前提是尾调用函数不可引用外层函数的内部变量
+- 尾调用优化（TCO，Tail cursive optimization）的前提是尾调用函数不可引用外层函数的内部变量
 - ES6 的尾调用优化只在严格模式下开启
 - 纯粹的函数式编程语言没有循环操作命令，所有的循环都用递归实现，这就是为什么尾递归对这些语言极其重要
 - 不同 js 环境的最大栈帧数不同，Chrome 大概为一万多，Firefox 为五万多
@@ -22,20 +22,11 @@ function factorial (n) {
 }
 factorial(12000); // 栈溢出
 
-// 非尾调用（此例引自阮一峰http://www.ruanyifeng.com/blog/2015/04/tail-call.html）
+// 尾调用（此例引自阮一峰http://www.ruanyifeng.com/blog/2015/04/tail-call.html）
 // 原文说这是尾调用优化，但在 Chrome 中运行仍然报溢出错误，即使加上 use strict
 function factorial (n, total) {
   if (n === 1) return total;
   return factorial(n - 1, n * total);
-}
-factorial(12000, 1); // 栈溢出
-
-// 非尾调用
-function factorial (n, total) {
-  if (n === 1) return total;
-  var a = n - 1;
-  var b = n * total;
-  return factorial(a, b);
 }
 factorial(12000, 1); // 栈溢出
 
@@ -47,4 +38,25 @@ function factorial (n, total) {
   return factorial(n, total);
 }
 factorial(12000, 1); // Infinity
+
+function factorial (n, total) {
+  if (n === 1) return total;
+  n -= 1;
+  total *= n;
+  return factorial(n, total);
+}
+factorial(12560, 1); // 栈溢出
+```
+
+之所以出现这种情况，[原来是 V8 目前移除了 TCO](https://stackoverflow.com/questions/42788139/es6-tail-recursion-optimisation-stack-overflow)
+
+### Syntactic Tail Calls (STC)
+
+Google 提出的尾调用的方式，但目前状态为 inactive
+
+```js
+function factorial(n, acc = 1) {
+  if (n === 1) return acc;
+  return continue factorial(n - 1, acc * n)
+}
 ```

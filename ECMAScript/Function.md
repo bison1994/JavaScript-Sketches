@@ -79,6 +79,7 @@ function walk (node, func) {
 
 ### 柯里化 Currying
 
+柯里化就是将多参数函数转化为单参数函数：f(arg1, arg2) => f(arg1)(arg2)
 柯里化又称部分求值。是指向函数传参后，函数不会立即求值，而是将参数保存在闭包中，等到真正需要求值的时候再求值。
 f(1); // 仅仅将参数保存起来，除此以外什么都不做
 f(2); // 同上
@@ -113,25 +114,73 @@ function cached (fn) {
 	惰性载入的基本思想是只在调用的时候创建，而不是在程序初始化的时候创建。
 	通过替换变量，仅在第一次调用时执行有关逻辑，以后再次调用无须重复执行有关逻辑。
 
-
 ### 函数节流（throttle）
-	避免过于频繁的执行函数（例如onscroll、mousemove的回调函数）。
-	function f (fn) {
-	  var first = false, self = fn, timer;
-	  return function ( ) {
-	  	if (first) {
-		  self(arguments);
-		  return first = false;
-		}
-	    if (timer) {return false} 
-		timer = setTimeout(function ( ) {
-		  self(arguments);
-		  clearTimeout(timer); timer = null;
-		})
-  	  }
-	}
+
+避免过于频繁的执行函数（例如 onscroll、onmousemove、onresize 的回调函数）
+
+```js
+_.throttle = function (func, wait) {
+  var context, args, result;
+  var timeout = null;
+  var previous = 0;
+  var later = function() {
+    previous = _.now();
+    timeout = null;
+    result = func.apply(context, args);
+    if (!timeout) context = args = null;
+  }
+  return function () {
+    var now = _.now();
+    var remaining = wait - (now - previous);
+    context = this;
+    args = arguments;
+    if (remaining <= 0 || remaining > wait) {
+      clearTimeout(timeout);
+      timeout = null;
+      previous = now;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    } else if (!timeout) {
+      timeout = setTimeout(later, remaining);
+    }
+    return result;
+  }
+}
+```
 	
-	与函数节流类似的是函数防抖（debounce），表示直到某一段时间t以后，再执行下一次函数。当t设定为常数时，就是函数节流。
+与函数节流类似的是函数防抖（debounce），表示直到某一段时间 t 以后，再执行下一次函数。当 t 设定为常数时，就是函数节流。
 
+```js
+_.debounce = function (func, wait, immediate) {
+  var timeout, args, context, timestamp, result;
 
+  var later = function() {
+    var last = _.now() - timestamp;
+
+    if (last < wait && last > 0) {
+      timeout = setTimeout(later, wait - last);
+    } else {
+      timeout = null;
+      if (!immediate) {
+        result = func.apply(context, args);
+        if (!timeout) context = args = null;
+      }
+    }
+  }
+
+  return function() {
+    context = this;
+    args = arguments;
+    timestamp = _.now();
+    var callNow = immediate && !timeout;
+    if (!timeout) timeout = setTimeout(later, wait);
+    if (callNow) {
+      result = func.apply(context, args);
+      context = args = null;
+    }
+
+    return result;
+  }
+}
+```
 

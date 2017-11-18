@@ -100,3 +100,5 @@ async function fetch () {
   /* function will not be invoked until the result is returned */
 })();
 ```
+
+> [javascript-es-2017-learn-async-await-by-example](https://codeburst.io/javascript-es-2017-learn-async-await-by-example-48acc58bad65)
