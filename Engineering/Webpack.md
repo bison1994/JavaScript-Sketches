@@ -1,0 +1,1 @@
+[webpack-front-end-size-caching](https://iamakulov.com/notes/webpack-front-end-size-caching/)
