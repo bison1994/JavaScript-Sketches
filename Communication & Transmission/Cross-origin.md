@@ -6,7 +6,7 @@
 
 
 ### CORS 跨域资源共享
-ajax 早期版本严格遵守同源政策，既不能从另一个域读取数据，也不能向另一个域发送数据。CORS 是 W3C 推出的新标准，用于解除严格的跨域限制，提供一种实现跨域的机制
+ajax 早期版本严格遵守同源政策，既不能从另一个域读取数据，也不能向另一个域发送数据。CORS 是 W3C 推出的新标准，用于解除严格的跨域限制，提供一种实现跨域的机制，基本过程如下：
 
 1. 浏览器使用绝对路径向不同源的目标域发送请求，请求头带 Origin: www.self.com
 2. 目标域判断 Origin，如果符合预设，则在响应中返回 Access-Control-Allow-Origin: www.self.com，否则不发送该字段
@@ -39,6 +39,12 @@ ajax 早期版本严格遵守同源政策，既不能从另一个域读取数据
 $callback = !empty($_GET['callback']) ? $_GET['callback'] : 'callback';
 echo $callback.'(.json_encode($data).)';
 ```
+JSONP 的缺点
+- 没有 error 事件，结果不可控
 
+### 其它跨域技术
+- 图片
+- iframe
+- 反向代理
 
 ### 跨域请求与 Session
