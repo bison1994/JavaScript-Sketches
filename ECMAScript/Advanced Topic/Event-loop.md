@@ -68,6 +68,6 @@ for (macroTask of macroTaskQueue) {
 - process.nextTick：microTask
 - setImmediate: macroTask
 
-> setImmediate 和 setTimeout 可能存在竟态关系（race condition）
+> setImmediate 和 setTimeout 可能存在竞态关系（race condition）
 
 > [参考](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/)

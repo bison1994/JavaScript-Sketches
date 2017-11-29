@@ -50,55 +50,17 @@ $.when(fetch())
 })
 ```
 
+
 ### Promise
 
-Promise 构建了一个可信任的异步事件处理系统，解决了回调中存在的“竞态”、“不可信任”、“吞噬异常”、“回调地狱”的问题。
-由 Promise 指定的异步任务会在本轮 Event Loop 结束末尾执行，而不像其它"正常"的异步任务是在下一轮 Event Loop 中执行
+[参考](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/ES6/Promise.md)
 
-```js
-new Promise (function (resolve, reject) {  
-  resolve(value); 
-  // reject(value); 
-}).then((value) => {
-  // then 方法的第一个函数参数为成功回调函数
-}, (value) => {
-  // then 方法的第二个函数参数为失败回调函数
-}).then((data) => {
-  // data 为上一步操作的返回值
-}).catch((data) => {
-  // 捕获 reject
-})
-```
-
-resolve()既可能是完成（fulfill），也可能是拒绝（reject），取决于传入的参数。如果参数为Promise或thenable，则状态由参数的决议值决定，如果是其它直接量，则表示完成。
-then 和 catch 方法会创建并返回一个新的Promise，以便于链式调用。
-如果发生异常或错误，Promise 状态自动进入 reject，并将错误信息传入相应回调。
-创建一个状态为拒绝的 Promise：
-Promise.resolve(f()).then((data) => {
-  console.log(data);
-})
 
 ### Generator
-	定义一系列状态，使用 yield 分段，返回一个包含各个状态的遍历器对象。
+
+[参考](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/ES6/Iterators%26Generators.md)
+
 
 ### async/await
 
-async 声明一个异步函数，此函数需要返回一个 Promise 对象。await 等待一个 Promise 对象 resolve 或 reject，并拿到结果，因此无需再写 then 方法。
-
-```js
-async function fetch () {
-  return new Promise ((resolve, reject) => {
-    if (/* success */) {
-    resolve(/* data */)
-  } else {
-    reject(/* data */)
-  }
-  })
-} 
-(async function () {
-  var result = await fetch();
-  /* function will not be invoked until the result is returned */
-})();
-```
-
-> [javascript-es-2017-learn-async-await-by-example](https://codeburst.io/javascript-es-2017-learn-async-await-by-example-48acc58bad65)
+[参考](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/ES6/Async.md)
