@@ -4,7 +4,6 @@
 
 ### Table of Contents
 
-#### ECMAScript
 - ECMAScript
   + Advanced Topics
     - [Asynchronous](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Advanced%20Topic/Asynchronous.md)

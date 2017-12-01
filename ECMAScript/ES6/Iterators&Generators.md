@@ -1,4 +1,4 @@
-# Iterator
+### Iterator
 - 为各种数据结构创建遍历接口
 - 主要供 `for of` 语法使用，只要部署了 `Symbol.iterator`，就可以用 `for of` 遍历
 - 默认的 Iterator 接口部署在数据结构的 `Symbol.iterator` 属性，一个数据结构只要具有 `Symbol.iterator` 属性，就可以认为是“可遍历的”（iterable）
@@ -73,3 +73,45 @@ while (value = it.next(1).value) {
   console.log(value)
 }
 ```
+
+### async
+
+async 函数是 ES8 中用于简化异步操作的语法，它基本上可以看作是 Generator 的一种改进版
+
+```js
+// 基本用法
+function fetch (value) {
+  return new Promise ((resolve, reject) => {
+    setTimeout(() => {
+      resolve(value)
+    }, 1000)
+  })
+} 
+(async function () {
+  var a = await fetch(1);
+  console.log(a);
+  var b = await fetch(2);
+  console.log(b);
+  var c = await fetch(3);
+  console.log(c);
+})();
+
+// 对比：generator 版
+function* gen () {
+  yield fetch(1);
+  yield fetch(2);
+  yield fetch(3);
+}
+var it = gen();
+(function step () {
+  var result = it.next();
+  if (!result.done) {
+    Promise.resolve(result.value).then(value => {
+      console.log(value);
+      step();
+    })
+  }
+})()
+```
+
+> [javascript-es-2017-learn-async-await-by-example](https://codeburst.io/javascript-es-2017-learn-async-await-by-example-48acc58bad65)
