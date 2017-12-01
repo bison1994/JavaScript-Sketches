@@ -321,6 +321,5 @@ obj.f();
   + 封闭 `Object.seal(object)`
   + 冻结 `Object.freeze(object)`
 
-- [原型链]()
-- [面向对象]()
-  
+- [原型链](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Advanced%20Topic/Prototype.md)
+- [面向对象](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Advanced%20Topic/OOP.md)

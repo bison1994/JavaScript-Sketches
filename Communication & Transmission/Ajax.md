@@ -46,20 +46,20 @@ xhr.setRequestHeader();
 xhr.send(null); 
 // 取得响应
 xhr.onreadystatechange = function () {
-	if (xhr.readyState == 4) {
-		if (xhr.status >= 200 && xhr.status <= 300 || xhr.status == 304) {
-			var type = xhr.getResponseHeader("Content-Type");
-			// 返回文本格式数据，也可能是文档格式数据 responseXML
-			if (type.match(/^text/)) {
-				var data = xhr.responseText; 
-			}	
+  if (xhr.readyState == 4) {
+    if (xhr.status >= 200 && xhr.status <= 300 || xhr.status == 304) {
+      var type = xhr.getResponseHeader("Content-Type");
+      // 返回文本格式数据，也可能是文档格式数据 responseXML
+      if (type.match(/^text/)) {
+        var data = xhr.responseText; 
+      }	
 			// 获得JSON格式的数据
-			if (type === "application/json")	{
-				var data = xhr.responseText; 
-				data = JSON.parse(data);
-			}	
-		}
-	}
+      if (type === "application/json")	{
+        var data = xhr.responseText; 
+        data = JSON.parse(data);
+      }	
+    }
+  }
 }
 ```
 > 一次ajax请求, 并非所有的部分都是异步的, 至少"readyState==1"的 onreadystatechange 回调以及 onloadstart 回调就是同步执行的
