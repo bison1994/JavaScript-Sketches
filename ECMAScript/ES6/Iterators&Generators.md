@@ -1,4 +1,5 @@
 ### Iterator
+
 - 为各种数据结构创建遍历接口
 - 主要供 `for of` 语法使用，只要部署了 `Symbol.iterator`，就可以用 `for of` 遍历
 - 默认的 Iterator 接口部署在数据结构的 `Symbol.iterator` 属性，一个数据结构只要具有 `Symbol.iterator` 属性，就可以认为是“可遍历的”（iterable）
@@ -11,6 +12,7 @@
   + TypedArray
   + 函数的 arguments 对象
   + NodeList 对象
+- 扩展运算符（...）内部使用的就是 for...of 循环
 
 ```js
 // 基本形式
