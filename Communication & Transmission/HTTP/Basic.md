@@ -1,22 +1,23 @@
 ### 报文的结构
-HTTP报文由三部分组成：起始行、首部和主体
+- HTTP 报文由三部分组成：起始行、首部和主体
+- 请求报文
+```
+<Method> <URL> <Version>
+<Headers>
+<Entity-body>
+```
 
-#### 请求报文
-&lt;Method> &lt;URL> &lt;Version> <br/>
-&lt;Headers> <br/>
-&lt;Entity-body>
+- 响应报文
+```
+<Version> <status> <Reason-phrase>
+<Headers>
+<Entity-body>
+```
 
-#### 响应报文
-&lt;Version> &lt;status> &lt;Reason-phrase> <br/>
-&lt;Headers> <br/>
-&lt;Entity-body>
-
-<br/>
 
 ### 首部
-HTTP定义了几种类型的首部：通用、请求、响应、实体、扩展 <br/>
-应用程序可以自定义首部
-
+- HTTP定义了几种类型的首部：通用、请求、响应、实体、扩展
+- 应用程序可以自定义首部
 - General
   + Connection
   + Date
@@ -38,7 +39,7 @@ HTTP定义了几种类型的首部：通用、请求、响应、实体、扩展 
   + Host
     - 接收端主机名 + 端口
   + Referer
-    - 发送端的 URL
+    - 发送端的 URL，可用于防图片盗链
   + Accept
     - Accept | Accept-Encoding | Accept-Encoding | Accept-Language
   + Range
@@ -77,3 +78,10 @@ HTTP定义了几种类型的首部：通用、请求、响应、实体、扩展 
   + ETag
   + Expires
   + Last-Modified
+
+
+### Method
+
+> [post 相比get 有很多优点，为什么现在的HTTP通信中大多数请求还是使用get？ - 回答作者: 罗志宇](https://www.zhihu.com/question/31640769)
+
+### Status
