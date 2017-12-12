@@ -64,3 +64,6 @@ $.when(fetch())
 ### async/await
 
 [参考](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/ES6/Async.md)
+
+
+### ReactiveX
