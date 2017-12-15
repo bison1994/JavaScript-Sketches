@@ -124,3 +124,58 @@ console.log(reg.lastIndex); // 0
 ```
 
 > [最全正则表达式总结](http://www.lovebxm.com/2017/05/31/RegExp/)
+
+
+### Example
+
+```js
+// 1、去除字符串两边的空格
+function trim (str) {
+  return str.replace(/(^\s*)|(\s*$)/g, "")
+}
+
+// 2、保留手机号码前三位与后四位，其余数字用四个 * 替代
+function hidePhoneNumber (num) {
+  var str = String(num);
+  return str.replace(/(\d{3})\d*(\d{4})/, '$1****$2');
+}
+// 涉及知识点：反向引用
+
+// 3、解析URL
+var urlRE = /(\w+):\/\/([\w.]+)\/(\S*)/;
+var url= "http://www.example.com/article/1";
+var result = url.match(urlRE);
+if (result != null) {
+  var url = result[0]; // 与正则匹配的文本 "http://www.example.com/article/1"
+  var protocol = result[1]; // 与第一个子模式匹配的文本 "http"
+  var host = result[2]; // 与第二个子模式匹配的文本 "www.example.com"
+  var path = result[3]; // 与第三个子模式匹配的文本 "article/1"
+}
+// 此例来自《JavaScript权威指南》
+
+// 4、将短横线型的名称转换为驼峰型
+var camelize = function (str) {
+  return str.replace(/-(\w)/g, function (_, c) { return c ? c.toUpperCase() : ''; })
+}
+
+// 5、将驼峰型的名称转换为短横线型
+var hyphenate = function (str) {
+  return str.replace(/\B([A-Z])/g, '-$1').toLowerCase()
+}
+// 上述两个正则来自 vue.js 源码
+
+// 6、数字千分位加逗号
+var addComma = function (str) {
+  str.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}
+
+// 7、解析字符串中的对象或数组
+function getData (data) {
+  var brace = /^(?:\{[\w\W]*\}|\[[\w\W]*\])$/
+  if ( brace.test( data ) ) {
+    return JSON.parse( data );
+  }
+}
+// 这是 jQuery 中的一个方法，如果给 DOM 节点属性传入对象或数组，就需要从字符串中解析出对象或数组。
+// [\w\W] 表示一切字符
+```
