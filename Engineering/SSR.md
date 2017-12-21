@@ -1,0 +1,1 @@
+[React 同构与极致的性能优化](https://github.com/alibaba/beidou/blob/master/packages/beidou-docs/articles/high-performance-isomorphic-app.md)

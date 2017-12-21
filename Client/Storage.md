@@ -9,15 +9,16 @@
 - session cookie：会话结束即清除；
 - persistent cookie：超过设定时间（expire）即清除；
 - Cookie 的局限
-  + cookie只能储存单一格式的数据；
-  + 每个域名下可设置的cookie总数是有限的，一般不超过50个；
-  + 每个cookie的大小有限，一般不超过4kb；
-  + 设置和操作cookie比较麻烦，需要自行封装方法
+  + cookie 只能储存单一格式的数据；
+  + 每个域名下可设置的 cookie 总数是有限的，一般不超过50个；
+  + 每个 cookie 的大小有限，一般不超过 4kb；
+  + 设置和操作 cookie 比较麻烦，需要自行封装方法
 
 ### web storage
 - web storage 一定程度上弥补了 cookie 的局限性，提供了一种容量更大且允许跨会话存在的储存机制
 - storage 是一个引用类，它有两个实例：sessionStorage 和 localStorage
-- 一般可储存容量小于 5MB
+- 一般可储存容量小于 5MB，移动端可能更小。稳妥起见，一般不要超过 2MB
+- 当储存容量达到上限，继续添加数据会报错，需要手动清理空间大小
 - API
   + .clear() 删除所有值
   + .key(index)	获取 index 处的值的名字
