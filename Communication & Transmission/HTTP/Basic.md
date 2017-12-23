@@ -110,3 +110,17 @@
 - 3xx: 重定向（Redirection）
 - 4xx: 一般表示客户端有错误（Client error）
 - 5xx: 一般表示服务端有错误（Server error）
+
+
+### HTTP1.0
+
+- 每个请求都需要打开一个新的 TCP 连接，一个 TCP 连接只能发一个请求，请求完毕后则关闭，新的请求需要重建连接
+
+### HTTP1.1
+- 持久连接（connection: keep-alive），允许多个请求复用同一个 TCP 连接
+- 默认所有连接都是持久连接
+- 服务端为了减少开销会设置 timeout，超过一定时间（例如 nginx 默认为 65 秒）没有发生新的请求，就会自动断连
+- 针对同一个域名，浏览器可并行建立的连接数一般为 4、6、8 个
+- 长连接 enables 管道机制（HTTP pipelining） => 同一个连接中并行响应多个资源
+
+> HTTP keep-alive 与 TCP keep-alive 是完全不同的东西。前者通常由服务端控制，如果一定时间内没有新的请求，就断开连接（断开 HTTP 所依赖的 TCP 连接）。

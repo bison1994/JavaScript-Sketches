@@ -1,0 +1,1 @@
+> [Finally understand Redux by building your own Store](https://toddmotto.com/redux-typescript-store) Todd Motto
