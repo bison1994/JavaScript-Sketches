@@ -312,7 +312,10 @@ obj.f();
     - `hasOwnProperty()` 检测属性是否为自有属性
     - `propertyIsEnumerable()` 检测属性是否为可枚举的自有属性
 
-- 复制
+- 浅复制
+  + Object.assign()
+
+- 深复制
   + 考虑特殊类型
   + 递归复制考虑环
   + JSON 克隆的局限性
@@ -325,3 +328,45 @@ obj.f();
 
 - [原型链](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Advanced%20Topic/Prototype.md)
 - [面向对象](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Advanced%20Topic/OOP.md)
+
+
+```js
+// 递归版
+let deepCopy = (target = {}, obj) => {
+  let keys = Object.keys(obj);
+  keys.forEach(key => {
+    if (typeof obj[key] === 'object' && obj[key]) {
+      target[key] = obj[key] instanceof Array ? [] : {}
+      deepCopy(target[key], obj[key])
+    } else {
+      target[key] = obj[key]
+    }
+  })
+
+  return target
+}
+
+// 循环版
+let deepCopy = obj => {
+  var srcQueque = [obj],
+      copy = {},
+      copyQueque = [copy];
+  while (srcQueque.length > 0) {
+    var src = srcQueque.shift();
+    var tar = copyQueque.shift();
+    visitedSrcQueque.push(src);
+    visitedCopyQueque.push(tar);
+    for (var key in src) {
+      if (typeof src[key] === 'object' && src[key]) {
+        srcQueque.push(src[key]);
+        tar[key] = src[key] instanceof Array ? [] : {};
+        copyQueque.push(tar[key]);
+      } else {
+        tar[key] = src[key]
+      }
+    }
+  }
+
+  return copy
+}
+```
