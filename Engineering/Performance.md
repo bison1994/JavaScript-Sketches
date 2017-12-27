@@ -25,6 +25,7 @@
     - 减少重复请求
       + 缓存
       + 利用客户端储存
+      + 使用可缓存的 get 请求
     - 减少不必要的请求
       + 移动端字体图标只需要用 ttf
     - 减少无效请求
@@ -48,6 +49,7 @@
 
 > [facebook: bigpipe](https://www.facebook.com/notes/facebook-engineering/bigpipe-pipelining-web-pages-for-high-performance/389414033919/)
 
+> [前端性能优化](https://juejin.im/post/59ff2dbe5188254dd935c8ab)
 
 目标二：渲染速度
 
