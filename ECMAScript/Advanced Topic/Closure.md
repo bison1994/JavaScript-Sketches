@@ -20,12 +20,12 @@
 - 除了可以读取外部变量外，闭包的另一个重要特性是，当它作为一个函数的返回值时，它的作用域链会一直保存到闭包不存在为止（即不会被垃圾回收机制自动回收），也就是说闭包具有比其外部函数更长的生命周期
 
 ```js
-  var inner = (function outer () {
-    var a = 1;
-    return function () {
-      console.log(a++)
-    }
-  })()
+var inner = (function outer () {
+  var a = 1;
+  return function () {
+    console.log(a++)
+  }
+})()
 ```
 
 

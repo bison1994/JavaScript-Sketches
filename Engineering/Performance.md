@@ -42,8 +42,9 @@
   + CDN
   + 其它协议：UDP、QUIC、SPDY
 - 浏览器环境
-  + 并行加载      
-- 代码层
+  + 并行加载
+  + 提前加载可能将要用到的资源
+    - prefetch、prerender
 - 交互设计
 
 > [facebook: bigpipe](https://www.facebook.com/notes/facebook-engineering/bigpipe-pipelining-web-pages-for-high-performance/389414033919/)
@@ -52,6 +53,7 @@
 目标二：渲染速度
 
 - 浏览器环境
+  + 关键路径优化
 - 代码层
 - 交互设计
 
@@ -63,4 +65,8 @@
 - 浏览器环境
   + 硬件加速
 - 代码层
+  + 少用 js 动画
+  + requestAnimationFrame
+  + 合并多个 DOM 操作
+  + 函数节流
 - 交互设计

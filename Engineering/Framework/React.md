@@ -8,9 +8,10 @@
   + read-only store，只能通过 reducer 改变 state
   + reducer should be pure function
 
-### 开发要点
+### 最佳实践
 - 使用 propsType 或 typescript 做参数类型校验，一方面可作为组件的描述文档，另一方面可增强可靠性
 - 数据与用到它的组件绑定（connect）
+- 组件粒度尽量小，除了灵活可复用外，还有利于页面更新的性能
 
 
 > [React 最佳实践](https://github.com/camsong/blog/issues/6) by 会影 from 阿里

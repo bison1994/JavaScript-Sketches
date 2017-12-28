@@ -38,3 +38,6 @@ window.addEventListener('popstate', function (event) {
 })
 ```
 
+### 相关主题
+
+> [单页应用的数据流方案探索](https://zhuanlan.zhihu.com/p/26426054) by 民工叔

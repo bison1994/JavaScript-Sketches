@@ -1,7 +1,7 @@
 ### 选择排序 Selection Sort
 
 - 基本思路：不断从剩余数组中选出最小的数，然后移到前面
-- 平方级。需要约 N^2 / 2 次比较，与 N - 1 次交换
+- 平方级。需要约 N^2 / 2 次比较，与最多 N - 1 次交换
 - 运行时间与输入无关，给定 N 的情况下，无论何种输入所需时间均相等
 - 数据交换量最小
 
@@ -14,9 +14,11 @@ function f (arr) {
         min = j
       }
     }
-    var temp = arr[i];
-    arr[i] = arr[min];
-    arr[min] = temp;
+    if (min !== i) {
+      var temp = arr[i];
+      arr[i] = arr[min];
+      arr[min] = temp;
+    }
   }
   return arr
 }
