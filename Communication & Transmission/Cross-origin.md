@@ -42,6 +42,8 @@ echo $callback.'(.json_encode($data).)';
 JSONP 的缺点
 - 没有 error 事件，结果不可控
 
+### window.postMessage
+
 ### 其它跨域技术
 - 图片
 - iframe

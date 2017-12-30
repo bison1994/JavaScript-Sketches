@@ -18,6 +18,9 @@ go('/list');
 HTML5 的 history API 中定义了 pushState 方法，提供了一种更高级的伪造 url 的手段
 
 ```js
+/**
+ * pushState(状态对象, 标题（现在被忽略了）, 可选的 URL 地址)
+ */
 function go (state, path) {
   console.log(state.id)
   // 地址栏 url 会发生改变，但浏览器不会加载这个 url

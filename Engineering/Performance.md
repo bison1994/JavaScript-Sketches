@@ -1,4 +1,4 @@
-### 什么是性能？衡量标准？衡量手段？
+### 什么是性能
 - 快
   + 加载速度
   + 渲染速度
@@ -6,9 +6,14 @@
 - 稳定
 - 低耗
 
-> 渐进式网页指标（Progressive Web Metrics）
-> [performance-metrics](https://codeburst.io/performance-metrics-whats-this-all-about-1128461ad6b)
-> [中文版](https://llp0574.github.io/2017/10/19/performance-metrics-whats-this-all-about/)
+### 衡量标准与手段
+
+- Performance timing API
+- 渐进式网页指标（Progressive Web Metrics）
+  + [英文版](https://codeburst.io/performance-metrics-whats-this-all-about-1128461ad6b)
+  + [中文版](https://llp0574.github.io/2017/10/19/performance-metrics-whats-this-all-about/)
+- 资源加载时序图分析
+
 
 ### 性能优化的方案体系
 
@@ -54,6 +59,7 @@
 目标二：渲染速度
 
 - 浏览器环境
+  + 关键路径优化
 - 代码层
 - 交互设计
 

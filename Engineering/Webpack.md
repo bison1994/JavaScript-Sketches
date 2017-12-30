@@ -1,3 +1,3 @@
-[webpack-front-end-size-caching](https://iamakulov.com/notes/webpack-front-end-size-caching/)
-
-[webpack dll](https://segmentfault.com/a/1190000005969643)
+- [webpack-front-end-size-caching](https://iamakulov.com/notes/webpack-front-end-size-caching/)
+- [webpack dll](https://segmentfault.com/a/1190000005969643)
+- [深入浅出 Webpack](http://webpack.wuhaolin.cn/)
