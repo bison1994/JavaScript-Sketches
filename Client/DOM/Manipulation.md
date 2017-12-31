@@ -8,11 +8,9 @@
   + document.forms / links / images /...
   + document.body / head /...
 
-
 - 节点信息
   + .nodeType
   + .nodeName
-
 
 - 节点关系
   + .childNodes
@@ -31,7 +29,6 @@
   + .hasChildNodes()
   + .contains()
 
-
 - 操作节点
   + document.createElement()
   + document.createTextNode()
@@ -44,7 +41,6 @@
   + .textContent /.innerText（IE）
   + .innerHTML
 
-
 - 操作文本节点
   + .nodeValue / .data
   + .length
@@ -56,7 +52,6 @@
   + .substringData(offset, count)
   + .normalize()
 
-
 - 操作属性
   + .id / .className / ……
   + .style
@@ -67,17 +62,30 @@
   + .removeAttribute()
   + .setAttribute()
 
-
 - 操作表单
 
 
 - 操作样式
+  + window.getComputedStyle(element)
+  + element.style
+  + document.styleSheets
 
+```js
+var sheet = document.styleSheets[0];
+var rules = sheet.cssRules || sheet.rules; // 返回数组
+rules[0].selectorText // 获取选择器
+rules[0].style.cssText // 获取 css 内容文本
+
+sheet.insertRule("body { background-color: silver }", 0) // 非 IE
+sheet.addRule("body", "background-color: silver", 0) // IE
+
+el.style.color = "blue"
+el.style.cssText = "color: blue"
+```
 
 - 遍历节点
   + TreeWalker
   + NodeIterator
-
 
 - 尺寸与坐标
   + 元素尺寸
@@ -94,16 +102,13 @@
     - .scrollIntoView()
     - window.scrollTo()
 
-
 - 动画
   + requestAnimationFrame
-
 
 - 富文本
   + contenteditable 属性
   + document.designmode = 'on'
   + execCommand()
-
 
 - 获取选中文本
   + window.getSelection()
