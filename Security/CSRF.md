@@ -15,7 +15,8 @@
 <br>
 在场景一中，因为是 get 请求，因此不需要跨站也有办法伪造请求，但如果接口的请求方法是 post，则需要编写代码，而代码需要存放在另一个网页，这就是跨站请求伪造。通常伪造 post 请求的方式是构造一个 form 表单用于提交 post 请求，然后用 js 自动提交表单。注意，form 表单提交是不受同源限制的。因此只要诱使用户点击链接进入该页面，该请求就会执行
 
-> [参考](https://zhuanlan.zhihu.com/p/22521378)
+> [什么是 CSRF](https://zhuanlan.zhihu.com/p/22521378)
+> [OAuth 与 CSRF](https://www.zhihu.com/question/19781476)
 
 
 ### 防御措施

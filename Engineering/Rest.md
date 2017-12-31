@@ -11,5 +11,9 @@
 - url 使用名词与层级结构来表示某种资源
 - 正确的设置状态码
 - 使用 HTTP Header 发送某些元数据
-- 对接口使用基于 JWT 的无状态认证机制
+- 对接口使用基于 JWT（JSON Web Token） 的无状态认证机制
 - 对接口访问进行频率限制（Rate-limit）
+- 使用 SSH
+- 使用 query 对进行搜索、过滤和排序
+
+> [best-practices-for-a-pragmatic-restful-api](http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api)
