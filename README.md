@@ -38,6 +38,9 @@
 - Client
   + Browser
   + DOM
+    - [Box-model](https://github.com/bison1994/JavaScript-Sketches/blob/master/Client/DOM/Box-model.md)
+    - [Event](https://github.com/bison1994/JavaScript-Sketches/blob/master/Client/DOM/Event.md)
+    - [Manipulation](https://github.com/bison1994/JavaScript-Sketches/blob/master/Client/DOM/Manipulation.md)
   + [BOM](https://github.com/bison1994/JavaScript-Sketches/blob/master/Client/BOM.md)
   + [File](https://github.com/bison1994/JavaScript-Sketches/blob/master/Client/File.md)
   + [Observer](https://github.com/bison1994/JavaScript-Sketches/blob/master/Client/Observer.md)
