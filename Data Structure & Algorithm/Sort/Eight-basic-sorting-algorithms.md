@@ -211,6 +211,42 @@ function quickSort (arr, lo, hi) {
   + 利用下沉恢复堆有序
   + 重复前两个步骤
 
+```js
+function sink (arr, k, N) {
+  while (2 * k < N) {
+    var j = 2 * k;
+    if (j + 1 < N && arr[j + 1] > arr[j]) {
+      j += 1
+    }
+    if (arr[k] < arr[j]) {
+      var temp = arr[k];
+      arr[k] = arr[j];
+      arr[j] = temp;
+      k = j
+    } else {
+      break;
+    }
+  }
+}
+
+function sort (arr) {
+  var N = arr.length;
+  // 构造堆
+  for (var k = Math.floor(N / 2); k >= 1; k--) {
+    sink(arr, k, N)
+  }
+  // 排序
+  while (N-- > 1) {
+    var temp = arr[1];
+    arr[1] = arr[N];
+    arr[N] = temp;
+    sink(arr, 1, N)
+  }
+
+  return arr
+}
+```
+
 
 ### 基数排序
 
