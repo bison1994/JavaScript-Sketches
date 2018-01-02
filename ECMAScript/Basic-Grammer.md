@@ -202,16 +202,15 @@
 
 ##### Declaration
 
-- 函数声明（语句）
-
 ```js
+// 函数声明（语句）
 function name () {} // 声明一个变量，定义一个函数，然后将函数关联到此变量
-```
 
-- 函数（定义）表达式
-
-```js
+// 函数（定义）表达式
 function () {} // 常使用赋值语句的形式 var name = function () {}
+
+// 构造函数
+var name = new Function(p1, p2, ..., pn, body);
 ```
 
 区别：

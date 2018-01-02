@@ -119,11 +119,9 @@
 - 模拟事件
   + `event = new Event(name, option)` [参考](https://developer.mozilla.org/zh-CN/docs/Web/API/Event/Event)
   + `document.createEvent()`
+  + `dispatchEvent()`
 
 > 通过属性注册的事件会比 addEventListener 注册的事件优先调用
-
-### 触发事件
-- `dispatchEvent()`
 
 ### 执行环境
 - this 值指向事件目标。通过 attachEvent 注册的事件处理程序 this 指向 window

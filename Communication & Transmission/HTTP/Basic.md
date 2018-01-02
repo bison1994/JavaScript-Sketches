@@ -1,3 +1,13 @@
+### 网络
+- 网络的本质是连接 + 传输。网络通信的本质是交换数据包
+- 网络采用分层架构，每一层拥有各自的协议，封装特定的能力，每一层依次建立于下层之上，层与层之间通过接口实现沟通
+- 网络分层
+  + 应用层（Http、DNS、FTP...）
+  + 传输层（TCP、UDP...）
+  + 网络层（IP...）
+  + 链路层（802.11、Ethernet...)
+  + 物理层
+
 ### 资源
 
 - Http 会为每一种资源打上数据格式标签（MIME Type）
@@ -108,8 +118,21 @@
 - 1xx: 表示请求已经接受，继续处理（Informational）
 - 2xx: 表示请求已经处理（Successful）
 - 3xx: 重定向（Redirection）
+  + 301 永久重定向 Moved Permanently
+  + 302 暂时重定向 Move temporarily
+  + 304 Not Modified
 - 4xx: 一般表示客户端有错误（Client error）
+  + 400 请求无效 Bad Request
+  + 401 未授权 Unauthorized
+  + 403 禁止访问 Forbidden
+  + 404 无法找到资源 Not Found
+  + 405 Method Not Allowed
 - 5xx: 一般表示服务端有错误（Server error）
+  + 500 服务器内部错误 Internal Server Error
+  + 501 Not Implemented
+  + 502 Bad Gateway
+  + 503 Service Unavailable
+  + 504 Gateway Timeout
 
 
 ### HTTP1.0

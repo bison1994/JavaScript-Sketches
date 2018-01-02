@@ -1,4 +1,4 @@
-### 什么是性能？衡量标准？衡量手段？
+### 什么是性能
 - 快
   + 加载速度
   + 渲染速度
@@ -6,9 +6,14 @@
 - 稳定
 - 低耗
 
-> 渐进式网页指标（Progressive Web Metrics）
-> [performance-metrics](https://codeburst.io/performance-metrics-whats-this-all-about-1128461ad6b)
-> [中文版](https://llp0574.github.io/2017/10/19/performance-metrics-whats-this-all-about/)
+### 衡量标准与手段
+
+- Performance timing API
+- 渐进式网页指标（Progressive Web Metrics）
+  + [英文版](https://codeburst.io/performance-metrics-whats-this-all-about-1128461ad6b)
+  + [中文版](https://llp0574.github.io/2017/10/19/performance-metrics-whats-this-all-about/)
+- 资源加载时序图分析
+
 
 ### 性能优化的方案体系
 
@@ -25,6 +30,7 @@
     - 减少重复请求
       + 缓存
       + 利用客户端储存
+      + 使用可缓存的 get 请求
     - 减少不必要的请求
       + 移动端字体图标只需要用 ttf
     - 减少无效请求
@@ -49,6 +55,7 @@
 
 > [facebook: bigpipe](https://www.facebook.com/notes/facebook-engineering/bigpipe-pipelining-web-pages-for-high-performance/389414033919/)
 
+> [前端性能优化](https://juejin.im/post/59ff2dbe5188254dd935c8ab)
 
 目标二：渲染速度
 
