@@ -68,13 +68,23 @@ function Fibonacci (n , a1 = 1 , a2 = 1) {
   return Fibonacci (n - 1, a2, a1 + a2);
 }
 
-// 遍历节点树
+// 遍历节点树（深度优先遍历）
 function walk (node, func) {
   func(node);
   node = node.firstChild;
   while (node) {
     walk(node, func);
     node = node.nextSibling;
+  }
+}
+
+// 广度优先遍历
+function walk (node, func) {
+  func(node);
+  node = node.nextSibling;
+  while (node) {
+    walk(node, func);
+    node = node.firstChild;
   }
 }
 ```
