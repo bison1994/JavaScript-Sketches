@@ -8,7 +8,17 @@
 
 ### 衡量标准与手段
 
-- Performance timing API
+- Date.now()
+- [Navigation Timing](https://www.w3.org/TR/navigation-timing/#sec-navigation-timing-interface)
+  + PerformanceTiming
+  + PerformanceNavigation
+  + window.performance
+- [PerformanceResourceTiming](https://www.w3.org/TR/resource-timing/)
+- [User Timing](https://www.w3.org/TR/user-timing/)
+  + PerformanceMark
+  + PerformanceMeasure
+  + Performance extensions
+- [Performance Observer](https://github.com/bison1994/JavaScript-Sketches/blob/master/Client/Observer.md)
 - 渐进式网页指标（Progressive Web Metrics）
   + [英文版](https://codeburst.io/performance-metrics-whats-this-all-about-1128461ad6b)
   + [中文版](https://llp0574.github.io/2017/10/19/performance-metrics-whats-this-all-about/)
