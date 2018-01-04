@@ -46,7 +46,7 @@ function Composition (target, source) {
   var def_prop = Object.defineProperty;
 
   prop(source).forEach(
-    function(key) {
+    function (key) {
       def_prop(target, key, desc(source, key))
     }
   )

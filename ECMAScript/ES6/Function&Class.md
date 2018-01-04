@@ -80,5 +80,5 @@ class ColorPoint extends Point {
 }
 ```
 
-super 关键字表示父类的构造函数，子类没有自己的 this 对象，而是继承父类的 this 对象。
-只有 super 方法才能返回父类实例，子类必须在 constructor 方法中调用 super 方法，才能使用 this，否则新建实例时会报错
+- super 关键字表示父类的构造函数，子类没有自己的 this 对象，而是继承父类的 this 对象
+- 只有 super 方法才能返回父类实例，子类必须在 constructor 方法中调用 super 方法，才能使用 this，否则新建实例时会报错
