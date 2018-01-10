@@ -89,7 +89,7 @@ class Store {
 
 	dispatch (action) {
 		this.state = this.reduce(this.state, action);
-		this.subscribers.forEach(fn => fn(this.value)
+		this.subscribers.forEach(fn => fn(this.value))
 	}
 
 	subscribe (fn) {
