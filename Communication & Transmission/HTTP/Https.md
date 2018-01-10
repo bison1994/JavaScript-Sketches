@@ -14,3 +14,16 @@
 - HTTP 升级到 HTTPs
 
 ### HTTPs 一定安全吗
+
+
+### HSTS
+- 好处
+  + 防止中间人劫持
+  + 减少一次 302 重定向
+- 如何使用
+  + 服务器配置示例：nginx server 块：`add_header Strict-Transport-Security "max-age=63072000; includeSubdomains;`
+  + 添加到 [preload list](https://hstspreload.org)，避免首次访问被劫持
+
+> [参考一](https://www.jianshu.com/p/caa80c7ad45c)
+> [参考二](https://www.jianshu.com/p/005f3466b714)
+> [你所不知道的 HSTS](http://www.barretlee.com/blog/2015/10/22/hsts-intro/) by 小胡子哥

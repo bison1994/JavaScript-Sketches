@@ -104,11 +104,32 @@
   + Expires
   + Last-Modified
 
+> [参考](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)
 
 ### Method
 
-- 常见的 HTTP 方法
-  + GET、HEAD、POST、PUT、TRACE、OPTIONS、DELETE
+方法的分类
+- Safe method
+  + Safe：GET、HEAD
+  + Unsafe: POST、PUT、DELETE
+- Idempotent method
+  + Idempotent: GET、HEAD、PUT、DELETE、OPTIONS、TRACE
+  + None-Idempotent: POST
+
+HTTP1.1 定义的七种方法
+- GET
+- HEAD
+  + 功能同 GET，只是响应中仅包含响应头，不包含实体
+  + 用于 testing hypertext links for validity, accessibility, and recent modification.
+- POST
+- PUT
+  + 将请求中携带的实体数据存放到 URI 指定的位置
+  + 如果服务器是创建新的资源，则返回 201（created），如果是覆盖已有的资源，则返回 200 或 204
+  + 如果服务器不支持创建相应资源，则返回 501（not implemented）
+  + PUT 和 POST 都可以用于 create，但它们在语义上有区别：PUT 类似于给一个对象的某个属性赋值；POST 类似于给一个数组 push 一个值
+- TRACE
+- OPTIONS
+- DELETE
 
 > [post 相比 get 有很多优点，为什么现在的 HTTP 通信中大多数请求还是使用 get？- 回答作者: 罗志宇](https://www.zhihu.com/question/31640769)
 
@@ -117,6 +138,7 @@
 
 - 1xx: 表示请求已经接受，继续处理（Informational）
 - 2xx: 表示请求已经处理（Successful）
+  + 204 No Content
 - 3xx: 重定向（Redirection）
   + 301 永久重定向 Moved Permanently
   + 302 暂时重定向 Move temporarily
