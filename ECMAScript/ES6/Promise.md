@@ -1,3 +1,5 @@
+> [参考](https://promisesaplus.com)
+
 ### 基本用法
 
 ```js
