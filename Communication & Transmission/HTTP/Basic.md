@@ -21,8 +21,7 @@
 - 长连接 enables 管道机制（HTTP pipelining） => 同一个连接中并行实现多个请求-响应
 - 针对同一个域名/服务器，浏览器最多可并行发出的 request 一般为 4、6、8 个
 - Clients SHOULD NOT pipeline requests using non-idempotent methods
-
-> HTTP keep-alive 与 TCP keep-alive 是完全不同的东西。前者通常由服务端控制，如果一定时间内没有新的请求，就断开连接（断开 HTTP 所依赖的 TCP 连接）
+- HTTP keep-alive 与 TCP keep-alive 是完全不同的东西。前者通常由服务端控制，如果一定时间内没有新的请求，就断开连接（断开 HTTP 所依赖的 TCP 连接）
 
 ### 资源
 
@@ -109,7 +108,7 @@ HTTP1.1 定义的八种方法
   + 305 Use Proxy
   + 307 Temporary Redirect
 - 4xx: 客户端错误（Client error）
-  + 400 请求无效 Bad Request
+  + 400 请求无效 Bad Request（Host 无效）
   + 401 未授权 Unauthorized
   + 402 Payment Required
   + 403 禁止访问 Forbidden
@@ -117,7 +116,7 @@ HTTP1.1 定义的八种方法
   + 405 Method Not Allowed
 - 5xx: 服务端错误（Server error）
   + 500 Internal Server Error
-  + 501 Not Implemented 不支持某种 method
+  + 501 Not Implemented 不支持某种 method 或编码格式
   + 502 Bad Gateway
   + 503 Service Unavailable
   + 504 Gateway Timeout
@@ -126,12 +125,12 @@ HTTP1.1 定义的八种方法
 
 ### 首部
 
-- HTTP 定义了几种类型的首部：通用、请求、响应、实体、扩展
-- 应用程序可以自定义首部
+- HTTP 定义了四种类型的首部：通用首部、请求首部、响应首部、实体首部
+- 应用程序还可以自定义首部
 - General
   + Cache-Control
-    - 请求头：no-cache | no-store | max-age | ...
-    - 响应头：private | no-cache | no-store | no-transform | ...
+    - 请求：no-cache | no-store | max-age | ...
+    - 响应：private | no-cache | no-store | no-transform | ...
   + Connection
   + Date 构建报文的时间
   + Pragma
@@ -175,9 +174,19 @@ HTTP1.1 定义的八种方法
 
 - Entity Headers
   + Allow 可对实体执行的请求方法列表
-  + Content
-    - Content-Length | Content-Location | Content-Type | Content-Range | Content-MD5 | Content-Language | Content-Encoding
+  + Content-Length
+  + Content-Location 
+  + Content-Type 
+  + Content-Range 
+  + Content-MD5 
+  + Content-Language 
+  + [Content-Encoding](http://web.jobbole.com/85681/) 内容压缩的编码格式
   + Expires
   + Last-Modified
 
 > [参考](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)
+
+
+### 缓存
+
+> [参考](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Cache.md)

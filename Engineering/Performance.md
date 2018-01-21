@@ -68,6 +68,8 @@
 
 > [facebook: bigpipe](https://www.facebook.com/notes/facebook-engineering/bigpipe-pipelining-web-pages-for-high-performance/389414033919/)
 > [前端性能优化](https://juejin.im/post/59ff2dbe5188254dd935c8ab)
+> [移动 WEB 通用优化策略（一）](http://web.jobbole.com/85673/)
+> [移动 WEB 通用优化策略（二）](http://web.jobbole.com/87524/)
 
 目标二：渲染速度
 
