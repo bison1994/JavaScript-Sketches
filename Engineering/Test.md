@@ -33,7 +33,7 @@
 - 测试环境
    + Selenium、Appnium、phantomjs 
 - 测试框架
-  + Unit test 框架：Karma、Mocha、Jasmine
+  + Unit test 框架：Karma、Mocha、Jasmine、Jest
   + e2e test 框架：Nightwatch
 - 断言库
   + chai、should.js
