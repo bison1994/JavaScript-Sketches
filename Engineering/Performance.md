@@ -39,7 +39,7 @@
       + 控制域名数量，减少 DNS 查询（雅虎14条之9）
     - 减少重复请求
       + 客户端缓存（雅虎14条之3、13）
-      + 利用客户端储存
+      + 利用客户端储存（localStorage）
       + 使用可缓存的 get 请求（雅虎14条之3、14）
     - 减少不必要的请求
       + 移动端字体图标只需要用 ttf
@@ -50,7 +50,7 @@
       + 根据网络、设备 DPI 加载不同的图片
       + 控制 cookie
     - 只请求当前需要的资源
-      + 增量加载（懒加载、渐进式加载）
+      + 增量加载（懒加载、渐进式加载、异步加载）
     - 减少无效请求
       + 避免空 src
       + 避免重定向（雅虎14条之11）
@@ -67,10 +67,15 @@
 - 交互设计
 
 > [front-end-performance-checklist-2018](https://www.smashingmagazine.com/2018/01/front-end-performance-checklist-2018-pdf-pages/)
+
 > [facebook: bigpipe](https://www.facebook.com/notes/facebook-engineering/bigpipe-pipelining-web-pages-for-high-performance/389414033919/)
+
 > [前端性能优化](https://juejin.im/post/59ff2dbe5188254dd935c8ab)
+
 > [移动 WEB 通用优化策略（一）](http://web.jobbole.com/85673/)
+
 > [移动 WEB 通用优化策略（二）](http://web.jobbole.com/87524/)
+
 > [Web静态资源缓存及优化](https://juejin.im/post/5a098b5bf265da431a42b227)
 
 目标二：渲染速度
@@ -81,6 +86,7 @@
 - 交互设计
 
 > [什么阻塞了 DOM](https://juejin.im/post/587f4afb61ff4b00651b3c18)
+
 > [浏览器页面资源加载过程与优化](https://juejin.im/post/5a4ed917f265da3e317df515) from 网易
 
 
@@ -94,3 +100,4 @@
   + 合并多个 DOM 操作
   + 函数节流
 - 交互设计
+  + 动效元素少用阴影和渐变

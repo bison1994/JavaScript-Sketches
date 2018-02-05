@@ -40,3 +40,5 @@
 - [caniuse](http://caniuse.com/)
 - [msdn](https://msdn.microsoft.com/en-us/library/cc351024(VS.85).aspx)
 - [w3help](http://www.w3help.org/zh-cn/causes/ )
+
+> [Taking the guesswork out of web compatibility](https://hacks.mozilla.org/2018/02/mdn-browser-compatibility-data/)
