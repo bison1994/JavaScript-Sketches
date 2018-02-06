@@ -1,3 +1,4 @@
 - [webpack-front-end-size-caching](https://iamakulov.com/notes/webpack-front-end-size-caching/)
 - [webpack dll](https://segmentfault.com/a/1190000005969643)
 - [深入浅出 Webpack](http://webpack.wuhaolin.cn/)
+- [keep-webpack-fast](https://slack.engineering/keep-webpack-fast-a-field-guide-for-better-build-performance-f56a5995e8f1)
