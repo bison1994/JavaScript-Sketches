@@ -78,6 +78,8 @@
 
 > [Web静态资源缓存及优化](https://juejin.im/post/5a098b5bf265da431a42b227)
 
+> [how-medium-does-progressive-image-loading](https://medium.com/@jmperezperez/how-medium-does-progressive-image-loading-fd1e4dc1ee3d)
+
 目标二：渲染速度
 
 - 浏览器环境

@@ -11,6 +11,20 @@ Observables are **created** using Rx.Observable.create or a creation operator, a
 
 一个应用的整个生命周期就是一连串的事件，事件会产生数据的输入、处理与输出。RxJS 专注于事件与数据流的处理，试图通过一种“Observable stream”的抽象模型来描述一连串的事件并处理相应的数据流
 
+```js
+Rx.Observable.fromEvent(document, 'mousemove') // 密集型事件流
+  .throttleTime(1000) // 稀疏型事件流
+  .map(event => { // 数据流
+    return {
+      x: event.pageX,
+      y: event.pageY
+    }
+  })
+  .subscribe(obj => {
+    console.log(`x: ${obj.x} y: ${obj.y}`)
+  })
+```
+
 ### feature
 - Observable：可观察序列、流（stream）、管道、类似 EventEmitter
 - observer: simply a set of callbacks
@@ -57,9 +71,10 @@ An Operator is a function which creates a new Observable based on the current Ob
 
 ```js
 // 生成数据流
-Rx.Observable.fromEvent(document.getElementById('input'), 'input').map(event => {
-	console.log(event.target.value)
-})
+Rx.Observable.fromEvent(document.getElementById('input'), 'input')
+  .map(event => {
+    console.log(event.target.value)
+  })
 ```
 
 > [Categories of operators](http://reactivex.io/rxjs/manual/overview.html#categories-of-operators)

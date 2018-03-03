@@ -67,3 +67,5 @@ $.when(fetch())
 
 
 ### ReactiveX
+
+> [Event Loop 必知必会（六道题）](https://zhuanlan.zhihu.com/p/34182184?group_id=953036433800331264)
