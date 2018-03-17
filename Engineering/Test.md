@@ -73,3 +73,7 @@ elem.send_keys(Keys.ENTER)
   + 运行 `python test.py`，如果 Chrome 浏览器自动打开，并且选中输入框，输入了相应内容，并跳转到搜索结果页，则说明运行成功
 
 > [参考教程](http://selenium-python.readthedocs.io/installation.html)
+
+### Resource
+- [a-guide-to-automating](https://codeburst.io/a-guide-to-automating-scraping-the-web-with-javascript-chrome-puppeteer-node-js-b18efb9e9921)
+- [Automatic visual diffing with Puppeteer](https://meowni.ca/posts/2017-puppeteer-tests/)
