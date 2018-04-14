@@ -29,13 +29,18 @@ entry {
 entry {
   main: ['./src/main.js', './src/sub.js']
 }
+// 单个入口包含的模块既可以是 js 模块，也可以是其它类型的模块，它们会被打包成一个 bundle
+entry {
+  vendor: ['./src/common.js', './src/base.css']
+}
 // 多入口：多组键值对，对应多个依赖关系图
 entry: {
   home: './src/home.js',
   about: './src/about.js',
-  vendor: ['vue', 'jquery', 'moment'] // 不推荐手动指定 vendor，而应使用 CommonsChunkPlugin 或 DllPlugin
+  vendor: ['vue', 'jquery', 'moment'] // 除了手动指定 vendor，还可以使用 CommonsChunkPlugin 或 DllPlugin 来提取公共模块
 }
 ```
+
 > webpack 将图片、CSS 等所有资源都视为模块并打包到 js 中的设计理念可能是造成理解困难的重要原因。gulp、fis 等传统的构建工具通过定义任务流来处理不同类型的资源，自动化的执行原本需要人工执行的任务，而 webpack 原本的定位是 js bundler，它本非构建工具，却被用作了构建工具。我们更习惯 process assets，而不是 webpack 官网宣示的 bundle your scripts、images、styles、assets。正因为 webpack 用打包 js 模块的思路来对待所有资源，所以才会出现一些反直觉的用法，比如在 js 中 import CSS 或图片，又比如为了得到独立的 css 文件，必须额外配置插件。 
 
 ### chunk
@@ -52,3 +57,4 @@ entry: {
 - [webpack-front-end-size-caching](https://iamakulov.com/notes/webpack-front-end-size-caching/)
 - [webpack dll](https://segmentfault.com/a/1190000005969643)
 - [keep-webpack-fast](https://slack.engineering/keep-webpack-fast-a-field-guide-for-better-build-performance-f56a5995e8f1)
+- [webpack 运行流程图](https://img.alicdn.com/tps/TB1GVGFNXXXXXaTapXXXXXXXXXX-4436-4244.jpg)

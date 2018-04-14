@@ -80,6 +80,8 @@
 
 > [how-medium-does-progressive-image-loading](https://medium.com/@jmperezperez/how-medium-does-progressive-image-loading-fd1e4dc1ee3d)
 
+> [the-critical-path-optimizing](https://www.lucidchart.com/techblog/2018/03/13/the-critical-path-optimizing-load-times-with-the-chromedev-tools/)
+
 目标二：渲染速度
 
 - 浏览器环境
