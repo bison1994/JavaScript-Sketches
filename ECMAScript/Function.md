@@ -22,9 +22,9 @@ Array.prototype.push.call(arguments, 'value');
 Array.prototype.shift.call(arguments); // 获取第一个参数
 
 (function () {
-	Array.prototype.forEach.call(arguments, function (val) {
-	  console.log(val + 1);
-	});
+  Array.prototype.forEach.call(arguments, function (val) {
+    console.log(val + 1);
+  });
 })(1, 2, 3); // 输出2, 3, 4
 
 // 数组借用 Math 方法
@@ -32,11 +32,11 @@ Math.max.apply(null, arr)
 
 // 借用构造函数
 function f (a) {
-	this.a = a;
+  this.a = a;
 }
 function foo () {
-	f.apply(this, arguments);
-	console.log(this.a)
+  f.apply(this, arguments);
+  console.log(this.a)
 }
 new foo('a') // 输出a
 ```
@@ -49,7 +49,7 @@ new foo('a') // 输出a
 var second = 60;
 function countdown (btn) {
   if (second == 0) { 
-    btn.removeAttribute("disabled");    
+    btn.removeAttribute("disabled");
     btn.value = "获取验证码"; 
     second = 60; 
   } else { 
@@ -137,8 +137,8 @@ function cached (fn) {
 
 ### 惰性载入
 
-	惰性载入的基本思想是只在调用的时候创建，而不是在程序初始化的时候创建。
-	通过替换变量，仅在第一次调用时执行有关逻辑，以后再次调用无须重复执行有关逻辑。
+  惰性载入的基本思想是只在调用的时候创建，而不是在程序初始化的时候创建。
+  通过替换变量，仅在第一次调用时执行有关逻辑，以后再次调用无须重复执行有关逻辑。
 
 
 ### 函数节流（throttle）
@@ -174,7 +174,7 @@ _.throttle = function (func, wait) {
   }
 }
 ```
-	
+  
 与函数节流类似的是函数防抖（debounce），表示直到某一段时间 t 以后，再执行下一次函数。当 t 设定为常数时，就是函数节流。
 
 ```js
