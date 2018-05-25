@@ -46,3 +46,6 @@ xhr.setRequestHeader("Cache-Control", "no-cache");
 - 是否需要缓存
 - 是否被中间层缓存 => public/private
 - 最大缓存时间 => max-age
+
+> [浏览器缓存机制 by Laruence](http://www.laruence.com/2010/03/05/1332.html)
+> [Web 缓存机制系列 from AlloyTeam](http://www.alloyteam.com/2012/03/web-cache-2-browser-cache/)
