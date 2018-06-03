@@ -134,22 +134,30 @@ class Promise {
     if (this.status === 'rejected') return;
     this.status = 'fulfilled';
     // 应该是 microtask，这里仅用 setTimeout 作简化模拟
-    this._resolveCallback.forEach(func => setTimeout(() => {
-      func(data);
-    }, 0))
+    setTimeout(() => {
+      this._resolveCallback.forEach(func => setTimeout(() => {
+        func(data);
+      }, 0))
+    })
   }
 
   _reject (data) {
     if (this.status === 'fulfilled') return;
     this.status = 'rejected';
     setTimeout(() => {
-      this._rejectCallback(data)
+      this._rejectCallback.forEach(func => setTimeout(() => {
+        func(data);
+      }, 0))
     }, 0)
   }
 
   then (resolveCallback, rejectCallback) {
-    this._resolveCallback.push(resolveCallback);
-    this._rejectCallback.push(rejectCallback);
+    if (resolveCallback) {
+      this._resolveCallback.push(resolveCallback);
+    }
+    if (rejectCallback) {
+      this._rejectCallback.push(rejectCallback);
+    }
     return this // 实际上 then 方法返回值很复杂，这里做了极其粗略的简化
   }
 
