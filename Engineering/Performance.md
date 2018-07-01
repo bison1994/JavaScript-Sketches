@@ -116,3 +116,5 @@
   
 - 交互设计
   + 动效元素少用阴影和渐变色（纯色、扁平化）
+
+> [7-performance-tips-jank-free-javascript-animations](https://www.sitepoint.com/7-performance-tips-jank-free-javascript-animations/)
