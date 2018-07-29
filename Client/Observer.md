@@ -22,7 +22,10 @@ observer.observe(element, config);
 
 
 ### IntersectionObserver
-
+```js
+const observer = new IntersectionObserver(callback, options);
+observer.observe(element);
+```
 
 ### ResizeObserver
 Generally, ResizeObserver reports the content rectangle of an element. It only watches the contentRect.
