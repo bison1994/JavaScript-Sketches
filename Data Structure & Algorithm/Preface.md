@@ -62,6 +62,8 @@
   + 符号表 Symbol Table | 字典 Dictionary
   + 散列表 Hash Table
 
+> [数据结构示意图](https://www.interviewcake.com/data-structures-reference)
+
 ### 算法的衡量标准
 - 时间维度：算法耗时与数据量的关系
   + 执行每条语句的时间

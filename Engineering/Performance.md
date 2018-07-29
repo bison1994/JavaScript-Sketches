@@ -27,7 +27,7 @@
 
 ### 性能优化的方案体系
 
-目的一：加载速度快
+#### 目标一：加载速度快
 - 网络层
   + 请求的资源尽量少
     - 减少请求次数（雅虎14条之1）
@@ -45,7 +45,7 @@
       + 移动端字体图标只需要用 ttf
     - 减小资源体积（雅虎14条之4、10）
       + 压缩
-      + Gzip
+      + Gzip（服务端开启，只压缩文本文件，**不要压缩图片文件**）
       + 图片优化（渐进式、尺寸适配、剪裁、格式）
       + 根据网络、设备 DPI 加载不同的图片
       + 控制 cookie
@@ -56,6 +56,8 @@
       + 避免重定向（雅虎14条之11）
     - 减小无效资源（雅虎14条之4、12）
       + 删除无效的代码（可使用浏览器开发工具检测）
+    - 分块并行传输
+      + [BigPipe](https://xianyulaodi.github.io/2018/02/10/BigPipe%E5%B0%8F%E6%8E%A2/)
   + CDN （雅虎14条之2）
   + 其它协议：UDP、QUIC、SPDY
 - 浏览器环境
@@ -82,26 +84,37 @@
 
 > [the-critical-path-optimizing](https://www.lucidchart.com/techblog/2018/03/13/the-critical-path-optimizing-load-times-with-the-chromedev-tools/)
 
-目标二：渲染速度
+#### 目标二：渲染速度
 
 - 浏览器环境
   + 关键路径优化（雅虎14条之5、6）
 - 代码层
+  + 控制 DOM 的层级深度
+  + 固定图片的宽高
+  + 检测 JS 执行时各函数的耗时与 CPU 占用率，针对性地进行优化
 - 交互设计
+  + 渐进式
 
 > [什么阻塞了 DOM](https://juejin.im/post/587f4afb61ff4b00651b3c18)
 
 > [浏览器页面资源加载过程与优化](https://juejin.im/post/5a4ed917f265da3e317df515) from 网易
 
 
-目标三：交互、动画流畅度
+#### 目标三：交互、动画流畅度
 
 - 浏览器环境
   + 硬件加速
+  + 减少重排
+    - 重排由 CPU 处理，重绘由 GPU 处理，CPU 的处理效率远不及 GPU，重排一定会引发重绘，重绘不一定会引发重排
+    - [CSS 属性的改变对不同浏览器重绘/重排的影响](https://csstriggers.com/)
 - 代码层
   + 少用 js 动画
   + requestAnimationFrame
   + 合并多个 DOM 操作
   + 函数节流
+  + DOM 元素离线更新（例如使用 Document Fragment）
+  
 - 交互设计
-  + 动效元素少用阴影和渐变
+  + 动效元素少用阴影和渐变色（纯色、扁平化）
+
+> [7-performance-tips-jank-free-javascript-animations](https://www.sitepoint.com/7-performance-tips-jank-free-javascript-animations/)

@@ -2,6 +2,7 @@
 - 客户端缓存分为：强制缓存与协商缓存，强制缓存优先级更高
 - 缓存机制由服务端和客户端共同实现，二者通过 HTTP Headers 通信
 - 浏览器在发送请求前，首先会检查本地是否存在对应的缓存。如果有，则判断缓存时间是否过期（新鲜度测试 Freshness check）。如果是，再依次根据 Etag 和 Last-Modified 向服务端验证资源是否改变
+- 浏览器默认的缓存是放在内存里的（from memory cache），浏览器检测到 Etag，才会将缓存写入硬盘（from disk cache）
 - 静态文件的缓存时间通常在服务器中配置，例如 Nginx：
 
 ```
@@ -45,3 +46,6 @@ xhr.setRequestHeader("Cache-Control", "no-cache");
 - 是否需要缓存
 - 是否被中间层缓存 => public/private
 - 最大缓存时间 => max-age
+
+> [浏览器缓存机制 by Laruence](http://www.laruence.com/2010/03/05/1332.html)
+> [Web 缓存机制系列 from AlloyTeam](http://www.alloyteam.com/2012/03/web-cache-2-browser-cache/)
