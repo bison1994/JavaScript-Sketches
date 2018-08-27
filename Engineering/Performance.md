@@ -51,6 +51,7 @@
       + 控制 cookie
     - 只请求当前需要的资源
       + 增量加载（懒加载、渐进式加载、异步加载）
+      + 按需加载 polyfill
     - 减少无效请求
       + 避免空 src
       + 避免重定向（雅虎14条之11）
@@ -83,6 +84,10 @@
 > [how-medium-does-progressive-image-loading](https://medium.com/@jmperezperez/how-medium-does-progressive-image-loading-fd1e4dc1ee3d)
 
 > [the-critical-path-optimizing](https://www.lucidchart.com/techblog/2018/03/13/the-critical-path-optimizing-load-times-with-the-chromedev-tools/)
+
+> [Conditionally-load-polyfills](https://golb.hplar.ch/2018/02/Conditionally-load-polyfills.html)
+
+> [loading-polyfills-only-when-needed](https://philipwalton.com/articles/loading-polyfills-only-when-needed/)
 
 #### 目标二：渲染速度
 
