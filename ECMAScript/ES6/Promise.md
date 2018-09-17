@@ -1,4 +1,4 @@
-> [参考](https://promisesaplus.com)
+> [promise 规范](https://promisesaplus.com)、[promise 规范中文版](https://juejin.im/post/5b9ce8fe6fb9a05cf3711c98)
 
 ### 基本用法
 
@@ -86,6 +86,7 @@ Promise.try()
 ```
 
 ### Promise Chain
+
 - then 方法返回一个新的 promise，因此可以链式调用
 - Promise 链中的 promise 能够向下一个 promise 传递数据
 
@@ -98,71 +99,4 @@ new Promise(res => res(1))
 .then (val => console.log(val))
 // 1
 // 2
-```
-
-### 自制简易 Promise
-
-```js
-// 省略了参数校验
-class Promise {
-  constructor (func) {
-    func(this._resolve.bind(this), this._reject.bind(this));
-    this.status = 'pending';
-    this._resolveCallback = [];
-    this._rejectCallback = [];
-    this.resolve = function (data) {
-      if (typeof data.then === 'function') {
-        var promise = new Promise(data.then);
-        promise.status = 'fulfilled';
-        return promise
-      } else {
-        return new Promise(resolve => resolve(data))
-      }
-    }
-    this.reject = function (data) {
-      if (typeof data.then === 'function') {
-        var promise = new Promise(data.then);
-        promise.status = 'rejected';
-        return promise
-      } else {
-        return new Promise((_, reject)  => reject(data))
-      }
-    }
-  }
-
-  _resolve (data) {
-    if (this.status === 'rejected') return;
-    this.status = 'fulfilled';
-    // 应该是 microtask，这里仅用 setTimeout 作简化模拟
-    setTimeout(() => {
-      this._resolveCallback.forEach(func => setTimeout(() => {
-        func(data);
-      }, 0))
-    })
-  }
-
-  _reject (data) {
-    if (this.status === 'fulfilled') return;
-    this.status = 'rejected';
-    setTimeout(() => {
-      this._rejectCallback.forEach(func => setTimeout(() => {
-        func(data);
-      }, 0))
-    }, 0)
-  }
-
-  then (resolveCallback, rejectCallback) {
-    if (resolveCallback) {
-      this._resolveCallback.push(resolveCallback);
-    }
-    if (rejectCallback) {
-      this._rejectCallback.push(rejectCallback);
-    }
-    return this // 实际上 then 方法返回值很复杂，这里做了极其粗略的简化
-  }
-
-  catch (rejectCallback) {
-    return this.then(null, rejectCallback)
-  }
-}
 ```
