@@ -25,6 +25,9 @@
 - 资源加载时序图分析
 
 
+> [Google web.dev](https://web.dev)
+
+
 ### 性能优化的方案体系
 
 #### 目标一：加载速度快
@@ -88,6 +91,8 @@
 > [Conditionally-load-polyfills](https://golb.hplar.ch/2018/02/Conditionally-load-polyfills.html)
 
 > [loading-polyfills-only-when-needed](https://philipwalton.com/articles/loading-polyfills-only-when-needed/)
+
+> [css-and-network-performance](https://csswizardry.com/2018/11/css-and-network-performance/)
 
 #### 目标二：渲染速度
 
