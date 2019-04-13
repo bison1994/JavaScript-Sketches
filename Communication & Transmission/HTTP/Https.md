@@ -25,5 +25,7 @@
   + 添加到 [preload list](https://hstspreload.org)，避免首次访问被劫持
 
 > [参考一](https://www.jianshu.com/p/caa80c7ad45c)
+
 > [参考二](https://www.jianshu.com/p/005f3466b714)
+
 > [你所不知道的 HSTS](http://www.barretlee.com/blog/2015/10/22/hsts-intro/) by 小胡子哥

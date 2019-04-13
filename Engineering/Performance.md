@@ -23,6 +23,10 @@
   + [英文版](https://codeburst.io/performance-metrics-whats-this-all-about-1128461ad6b)
   + [中文版](https://llp0574.github.io/2017/10/19/performance-metrics-whats-this-all-about/)
 - 资源加载时序图分析
+- [用户中心视角的性能指标](https://developers.google.com/web/fundamentals/performance/user-centric-performance-metrics)
+
+
+> [Google web.dev](https://web.dev)
 
 
 ### 性能优化的方案体系
@@ -49,8 +53,10 @@
       + 图片优化（渐进式、尺寸适配、剪裁、格式）
       + 根据网络、设备 DPI 加载不同的图片
       + 控制 cookie
+      + 增量更新：只加载变化的部分
     - 只请求当前需要的资源
       + 增量加载（懒加载、渐进式加载、异步加载）
+      + 按需加载 polyfill
     - 减少无效请求
       + 避免空 src
       + 避免重定向（雅虎14条之11）
@@ -58,7 +64,12 @@
       + 删除无效的代码（可使用浏览器开发工具检测）
     - 分块并行传输
       + [BigPipe](https://xianyulaodi.github.io/2018/02/10/BigPipe%E5%B0%8F%E6%8E%A2/)
-  + CDN （雅虎14条之2）
+  + 缩短资源加载路径
+    - CDN （雅虎14条之2）
+    - 缓存
+  + 加载时机
+    - 前置
+    - 并行
   + 其它协议：UDP、QUIC、SPDY
 - 浏览器环境
   + 突破并行加载上限（Domain Sharding、SPDY）
@@ -66,6 +77,9 @@
     - 移动端 DNS 解析很慢，分片不要超过 2 个
   + 提前加载可能将要用到的资源
     - prefetch、prerender
+- webview
+  + 容器初始化时间
+  + DNS 时间
 - 交互设计
 
 > [front-end-performance-checklist-2018](https://www.smashingmagazine.com/2018/01/front-end-performance-checklist-2018-pdf-pages/)
@@ -83,6 +97,12 @@
 > [how-medium-does-progressive-image-loading](https://medium.com/@jmperezperez/how-medium-does-progressive-image-loading-fd1e4dc1ee3d)
 
 > [the-critical-path-optimizing](https://www.lucidchart.com/techblog/2018/03/13/the-critical-path-optimizing-load-times-with-the-chromedev-tools/)
+
+> [Conditionally-load-polyfills](https://golb.hplar.ch/2018/02/Conditionally-load-polyfills.html)
+
+> [loading-polyfills-only-when-needed](https://philipwalton.com/articles/loading-polyfills-only-when-needed/)
+
+> [css-and-network-performance](https://csswizardry.com/2018/11/css-and-network-performance/)
 
 #### 目标二：渲染速度
 
