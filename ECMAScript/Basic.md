@@ -1,10 +1,10 @@
-### 字符集
+### 字符集 Charset
 
 - `Unicode` 字符集
 - 仅支持 16 位 `UTF-16` 编码，不支持 32 位
 - ES6 增加了对 32 位的支持
 
-> [Unicode 与 JavaScript详解](http://www.ruanyifeng.com/blog/2014/12/unicode.html)
+> [Unicode 与 JavaScript详解 by 阮一峰](http://www.ruanyifeng.com/blog/2014/12/unicode.html)
 
 
 ### 标识符 Identifier
@@ -17,11 +17,12 @@
 
 ### 操作符/运算符 Operator
 
-- 符号: + - || &&...
-- 词语：typeof delete...
+- 符号: `+`、`-`、`||`、`&&` ...
+- 词语：`typeof`、`delete` ...
 - 优先级
 
-### 值 Literal/Value
+
+### 值 Literal/Value/Primitive
 
 > 从形式上看，写程序就是用标识符符与操作符来操控值。
 
@@ -30,17 +31,16 @@
 
 - ES5 引入严格模式，目的是保持向后兼容的前提下，规范某些不确定、不合理、不安全的行为，降低代码解析与执行的容错性，为下一代标准做铺垫
 
-- 可以在脚本顶部或函数内顶部使用 `"use strict";` 编译指示，在全局或局部开启严格模式。考虑到文件合并，一般都在自执行函数顶部使用该指令
+- 可以在脚本顶部或函数内顶部使用编译指示 `"use strict";`，在全局或局部开启严格模式。考虑到文件合并，一般都在自执行函数顶部使用该指令
 
 - 部分规范项
   + 未使用 `var` 声明的变量不再默认设置为全局变量，而是报错
   + 全局上下文函数中的 `this` 不再指向 `Global`，而是 `undefined`，避免扰乱 `window` 对象的属性
-  + 出于安全考虑，禁用 `arguments.callee`、`arguments.caller`、`f.caller`、`f.arguments`
+  + 禁用 `arguments.callee`、`arguments.caller`、`f.caller`、`f.arguments`
+    - [Why was the arguments.callee.caller property deprecated in JavaScript?](https://stackoverflow.com/questions/103598/why-was-the-arguments-callee-caller-property-deprecated-in-javascript)
   + 禁用 `with`，目的是性能优化
 
-> 更多参考之 [MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Strict_mode)
-
-> 更多参考之 [阮一峰](http://www.ruanyifeng.com/blog/2013/01/javascript_strict_mode.html)
+> [更多参考 from MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Strict_mode)
 
 
 ### 值的类型
@@ -63,28 +63,33 @@
   + ...
 - Symbol (ES6)
 
+
 ##### Number
-- JavaScript 中所有数都用64位浮点数表示，整数也是如此。因此1 === 1.0 // true
-- 如同任何使用二进制浮点数的编程语言，JavaScript 中的小数运算也会失去一定的精确性，例如:console.log(0.1 + 0.2) // 0.30000000000000004
-- 科学计数法，如：3.14e12。
+
+- JavaScript 中所有数都用64位浮点数表示，整数也是如此。因此 1 === 1.0 // true
+- 如同任何使用二进制浮点数的编程语言，JavaScript 中的小数运算也会失去一定的精确性，例如: console.log(0.1 + 0.2) // 0.30000000000000004
+- 科学计数法，如：3.14e12
 - 四个特殊的数：Infinity、NaN、Number.MAX_VALUE 和 Number.MIN_VALUE
-- NaN表示非数字。之所以设计 NaN 这样一个值，是为了避免程序在本应计算出数值却未得到数值时抛出错误而停止运行。
-- 任何有 NaN 参与的运算都会返回NaN；NaN 和任何数都不相等，包括其自身。
+- NaN 表示非数字。之所以设计 NaN 这样一个值，是为了避免程序在本应计算出数值却未得到数值时抛出错误而停止运行
+- 任何有 NaN 参与的运算都会返回NaN；NaN 和任何数都不相等，包括其自身
 
 
 ##### Boolean
+
 - 当一个表达式需要被解析为布尔值却无法计算出布尔值时，会由系统按如下规则自动转换为真值或假值，使得逻辑运算能够正常进行：
 	+ 除了 false、null、" "、0、NaN、undefined 为假值，其它的值均为真值
 - 真/假值并不是一种值，它仅仅表示某个值可被解析为 true 或 false
 
 
 ##### Undefined
-- undefined 是一个全局变量，表示"值的空缺"或"未定义"（missing value），例如：变量已声明却未初始化（赋值）、未指定返回值时函数的返回值、未指定实参时形参的值、对象属性不存在等。
-- 可使用`void 0`来获得 undefined 值。
+
+- undefined 是一个全局变量，表示“值的空缺”或“未定义”（missing value），例如：变量已声明却未初始化（赋值）、未指定返回值时函数的返回值、未指定实参时形参的值、对象属性不存在等
+- 可用 `void 0` 来获得 undefined 值
 
 
 ##### Null
-- null 是一个特殊的值："空值"（empty value）。
+
+- null 是一个特殊的值：“空值”（empty value）
 -	typeof null == object // true，null 并不是对象，但它的数据类型是对象
 -	undefined == null // true
 -	undefined === null // false
@@ -141,11 +146,11 @@
 
 ### 变量声明
 
-- ES5 中有两种声明变量的命令：var 和 function
+- ES5 中有两个声明变量的命令：var 和 function
 
 - 变量的声明和赋值是分开的两个步骤，如果只是声明变量而没有赋值，则该变量的值为 undefined。变量的声明是最先被解析的，其次才是赋值，因此在函数中声明的变量会被提前至函数顶部，这被称为变量提升（hoisting）
 
-- 全局变量是全局对象的属性，局部变量是"调用对象"或"声明上下文对象"的属性。变量与作用域紧密相关
+- 全局变量是全局对象的属性，局部变量是“调用对象”或“声明上下文对象”的属性。变量与作用域紧密相关
 
 
 ### 表达式与运算符
@@ -165,7 +170,7 @@
 
 ### 语句
 
-语句，是JavaScript的执行单位。从形式上看，语句就是以分号结尾的一段代码。无论这段代码是表达式，还是别的什么东西，甚至什么都没有，只要以分号结尾，就会被解释器当做语句。
+语句，是 JavaScript 的执行单位。从形式上看，语句就是以分号结尾的一段代码。无论这段代码是表达式，还是别的什么东西，甚至什么都没有，只要以分号结尾，就会被解释器当做语句。
 
 - 条件
 - 循环
@@ -182,7 +187,6 @@
 - 数组的索引不一定是连续的，索引非连续的数组被称为稀疏数组
 - 数组的 length 属性值总是等于索引最大值+1，length 并不一定等于数组元素的个数
 - 如果将 length 设置为比当前最大索引小的一个数，那么尾部的元素会被截掉
-
 
 
 ### 函数
@@ -214,6 +218,7 @@ var name = new Function(p1, p2, ..., pn, body);
 ```
 
 区别：
+
 1. 函数声明类似于变量声明，在作用域中会最先执行（hoist），所以可在函数定义之前调用函数。函数表达式则不可，因为变量的声明执行在先，赋值的执行在后
 
 2. 函数表达式是一种受限的语句，它只能出现在全局作用域或者函数中，而不能出现在语句块中（比如条件和循环）。函数声明则可以出现在任何位置
@@ -317,7 +322,7 @@ obj.f();
 - 深复制
   + 考虑特殊类型
   + 递归复制考虑环
-  + JSON 克隆的局限性
+  + JSON 克隆的局限性：对数据类型的支持有限
   + 考虑是否克隆 \_\_proto\_\_
 
 - 扩展性
@@ -325,47 +330,46 @@ obj.f();
   + 封闭 `Object.seal(object)`
   + 冻结 `Object.freeze(object)`
 
-- [原型链](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Advanced%20Topic/Prototype.md)
-- [面向对象](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Advanced%20Topic/OOP.md)
 
+### 对象的深复制
 
 ```js
+const is = (value, type) => Object.prototype.toString.call(value) === `[object ${type}]`
+
+// 模拟环，不能用 const a = { a: a } // a.a => undefined
+const test = { b: 1, c: { e: null, f: { g: [''] } }, d: [] }
+test.a = test
+test.d[0] = test.c
+
 // 递归版
-let deepCopy = (target = {}, obj) => {
-  let keys = Object.keys(obj);
-  keys.forEach(key => {
-    if (typeof obj[key] === 'object' && obj[key]) {
-      target[key] = obj[key] instanceof Array ? [] : {}
-      deepCopy(target[key], obj[key])
+const deepClone = (obj, visited = []) => {
+  let target
+  if (is(obj, 'Object')) {
+    if (visited.includes(obj)) {
+      target = obj
     } else {
-      target[key] = obj[key]
+      visited.push(obj)
+      target = {}
+      Object.keys(obj).forEach(key => {
+        target[key] = deepClone(obj[key], visited)
+      })
     }
-  })
+  } else if (is(obj, 'Array')) {
+    if (visited.includes(obj)) {
+      target = obj
+    } else {
+      visited.push(obj)
+      target = []
+      obj.forEach((val, i) => {
+        target[i] = deepClone(obj[i], visited)
+      })
+    }
+  } else {
+    target = obj
+  }
 
   return target
 }
 
-// 循环版
-let deepCopy = obj => {
-  var srcQueque = [obj],
-      copy = {},
-      copyQueque = [copy];
-  while (srcQueque.length > 0) {
-    var src = srcQueque.shift();
-    var tar = copyQueque.shift();
-    visitedSrcQueque.push(src);
-    visitedCopyQueque.push(tar);
-    for (var key in src) {
-      if (typeof src[key] === 'object' && src[key]) {
-        srcQueque.push(src[key]);
-        tar[key] = src[key] instanceof Array ? [] : {};
-        copyQueque.push(tar[key]);
-      } else {
-        tar[key] = src[key]
-      }
-    }
-  }
-
-  return copy
-}
+deepClone(test)
 ```
