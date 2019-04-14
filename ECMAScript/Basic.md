@@ -64,7 +64,7 @@
 - Symbol (ES6)
 
 
-##### Number
+**Number**
 
 - JavaScript 中所有数都用64位浮点数表示，整数也是如此。因此 1 === 1.0 // true
 - 如同任何使用二进制浮点数的编程语言，JavaScript 中的小数运算也会失去一定的精确性，例如: console.log(0.1 + 0.2) // 0.30000000000000004
@@ -73,21 +73,20 @@
 - NaN 表示非数字。之所以设计 NaN 这样一个值，是为了避免程序在本应计算出数值却未得到数值时抛出错误而停止运行
 - 任何有 NaN 参与的运算都会返回NaN；NaN 和任何数都不相等，包括其自身
 
-
-##### Boolean
+**Boolean**
 
 - 当一个表达式需要被解析为布尔值却无法计算出布尔值时，会由系统按如下规则自动转换为真值或假值，使得逻辑运算能够正常进行：
 	+ 除了 false、null、" "、0、NaN、undefined 为假值，其它的值均为真值
 - 真/假值并不是一种值，它仅仅表示某个值可被解析为 true 或 false
 
 
-##### Undefined
+**Undefined**
 
 - undefined 是一个全局变量，表示“值的空缺”或“未定义”（missing value），例如：变量已声明却未初始化（赋值）、未指定返回值时函数的返回值、未指定实参时形参的值、对象属性不存在等
 - 可用 `void 0` 来获得 undefined 值
 
 
-##### Null
+**Null**
 
 - null 是一个特殊的值：“空值”（empty value）
 -	typeof null == object // true，null 并不是对象，但它的数据类型是对象
@@ -119,7 +118,7 @@
 - typeof 操作符
   + @return undefined | boolean | number | string | object | function
 
-- Object.prototype.toString().call()
+- Object.prototype.toString.call()
   + @return [[class class]]
   + @example [object Function]
 
@@ -191,7 +190,7 @@
 
 ### 函数
 
-##### 参数
+**参数**
 
 - 参数是函数的局部变量，在函数执行完成后自动销毁
   + parameter 形参：定义函数时设置的参数
@@ -204,7 +203,7 @@
 - `fn.length` 表示形参的个数
 
 
-##### Declaration
+**Declaration**
 
 ```js
 // 函数声明（语句）
@@ -224,7 +223,7 @@ var name = new Function(p1, p2, ..., pn, body);
 2. 函数表达式是一种受限的语句，它只能出现在全局作用域或者函数中，而不能出现在语句块中（比如条件和循环）。函数声明则可以出现在任何位置
 
 
-##### Invoke
+**Invoke**
 
 - 仅当调用函数时，函数内部的语句才会执行
 
@@ -235,7 +234,7 @@ var name = new Function(p1, p2, ..., pn, body);
 - 函数有两个内部（internal-only）方法：[[call]] 与 [[Construct]]。当函数未被 new 调用时，执行 [[call]] 方法；当函数被 new 调用时，执行 [[Construct]] 方法。带有 [[Construct]] 方法的函数被称为构造函数（constructor）。箭头函数没有 [[Construct]] 方法
 
 
-#### this
+**this**
 
 this 指向一个对象，具体指向谁，取决于函数定义和调用的方式，与定义在哪儿无关
 
