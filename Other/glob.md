@@ -5,7 +5,7 @@
 
 ### wildcard character
 
-> [js implement](https://www.npmjs.com/package/glob)
+> [js implement: glob](https://www.npmjs.com/package/glob)
 
 - `*` 匹配任意数量的字符
 - `？` 匹配 1 个字符
