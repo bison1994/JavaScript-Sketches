@@ -13,4 +13,6 @@ var obj = {
 }
 obj[s]; // 'hello'
 obj['s']; // 'world'
+
+Object.keys(obj) // ['s']
 ```
