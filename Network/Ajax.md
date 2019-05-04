@@ -37,36 +37,37 @@
 - 请求主体（可选）
 
 ```js
-var xhr = new XMLHttpRequest();
+var xhr = new XMLHttpRequest()
 
 // 设置方法和地址，第三个参数：true 表示异步发送，false 表示同步发送
-xhr.open("get", "example.php", false);
+xhr.open("get", "example.php", false)
 
 // 设置请求头，通常 send 方法会自动设置，一般无须操作
-xhr.setRequestHeader();
+xhr.setRequestHeader()
 
 // 发送，参数为请求主体
-xhr.send(null);
+xhr.send(null)
 
 // 取得响应
 xhr.onreadystatechange = function () {
   if (xhr.readyState == 4) {
     if (xhr.status >= 200 && xhr.status <= 300 || xhr.status == 304) {
-      var type = xhr.getResponseHeader("Content-Type");
+      var type = xhr.getResponseHeader("Content-Type")
       // 返回文本格式数据，也可能是文档格式数据 responseXML
       if (type.match(/^text/)) {
-        var data = xhr.responseText; 
+        var data = xhr.responseText 
       }
       // 获得JSON格式的数据
       if (type === "application/json") {
-        var data = xhr.responseText; 
-        data = JSON.parse(data);
+        var data = xhr.responseText 
+        data = JSON.parse(data)
       }
     }
   }
 }
 ```
 > 一次ajax请求, 并非所有的部分都是异步的, 至少"readyState==1"的 onreadystatechange 回调以及 onloadstart 回调就是同步执行的
+
 
 ### API
 
@@ -114,6 +115,7 @@ loadEnd // 传输结束，但是不知道成功还是失败
 
 
 ### 数据格式与编码
+
 由于 Http 只能传输特定格式的数据，因此数据的发送和接收都需要相应的编码和解码的工作，有的工作是由浏览器实现的，而有的工作需要人工完成。
 
 - 表单型数据编码
@@ -123,26 +125,28 @@ loadEnd // 传输结束，但是不知道成功还是失败
   + 可在 URL 中使用该种数据类型进行 GET 只读查询
 
 - JSON 编码
+
 ```js
-xhr.setRequestHeader("Content-Type", "application/json");
-xhr.send(JSON.stringify(data));
+xhr.setRequestHeader("Content-Type", "application/json")
+xhr.send(JSON.stringify(data))
 ```
 
 - 文件
+
 ```js
 // XHR2 支持 Blob 的数据格式
 input.addEventListener("change", function () {
-  var file = this.files[0]; 
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", url);
-  xhr.send(file);
+  var file = this.files[0] 
+  var xhr = new XMLHttpRequest()
+  xhr.open("POST", url)
+  xhr.send(file)
 })
-// jQuery
-// 使用 FormData 对象一次性上传混合多种格式的数据（multipart/form-data）。
+
+// 使用 FormData 对象一次性上传混合多种格式的数据（multipart/form-data）
 input.addEventListener("change", function (e) {
-  var file = e.target.files[0];
-  var fd = new FormData();
-  fd.append('file', file);
+  var file = e.target.files[0]
+  var fd = new FormData()
+  fd.append('file', file)
   $.ajax({
     url: '',
     type: 'post',
@@ -152,12 +156,3 @@ input.addEventListener("change", function (e) {
   })
 })
 ```
-
-### ajax 的执行过程
-
-
-
-
-
-
-

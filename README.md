@@ -53,7 +53,7 @@
   + [Ajax](https://github.com/bison1994/JavaScript-Sketches/blob/master/Network/Ajax.md)
   + [Communication](https://github.com/bison1994/JavaScript-Sketches/blob/master/Network/Communication.md)
   + [Cookie](https://github.com/bison1994/JavaScript-Sketches/blob/master/Network/Cookie.md)
-  + [Cross-origin](https://github.com/bison1994/JavaScript-Sketches/blob/master/Network/Cross-origin.md)
+  + [Cross-Origin](https://github.com/bison1994/JavaScript-Sketches/blob/master/Network/Cross-Origin.md)
 
 
 - Security

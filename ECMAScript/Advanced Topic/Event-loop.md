@@ -1,8 +1,8 @@
 ### 单线程 & Task
 - JavaScript 是单线程的。即一次只能完成一件任务，如果有多个任务，就必须排队，前面一个任务完成，再执行后面一个任务
 - 任务，就是由某个事件引发的一系列操作指令。事件可能是：run script、dispatch click、setTimeout、onload...
-- 一旦发生某个事件，该事件就会被推入事件队列（schedule a task）
-- JS 线程内含一个无限的事件循环，只要当前执行栈被清空，就会立即检查事件队列里有没有事件，如果有就执行事件对应的任务，没有就继续轮询检查
+- 一旦发生某个事件，该事件就会被推入**事件队列**（schedule a task）
+- JS 线程内含一个无限的事件循环，只要当前**执行栈**被清空，就会立即检查事件队列里有没有事件，如果有就执行事件对应的任务，没有就继续轮询检查
 - 如果当前执行栈一直没有执行完，就永远不会执行下一个事件，这就是阻塞
 - 所有 JS 代码的执行必然是由某个事件引发的，因为 JS 线程只会运行事件队列中事件的对应任务
 - 所以说 JS 是一门事件驱动的语言
@@ -57,6 +57,18 @@ for (macroTask of macroTaskQueue) {
     handleMicroTask(microTask);
   }
 }
+
+// 在同步任务间插入 microtask
+document.addEventListener('click', function () { console.log(1) }, false)
+document.body.addEventListener('click', function () {
+  console.log(2);
+  Promise.resolve(3).then(res => console.log(res))
+  setTimeout(function () { console.log(4) }, 0)
+}, false)
+// 2
+// 3
+// 1
+// 4
 ```
 
 ### macrotask | microtask

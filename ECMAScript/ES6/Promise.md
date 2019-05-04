@@ -11,7 +11,7 @@
 new Promise(function (resolve, reject) {
   // resolve(data) 内部状态 [[PromiseState]] 由 pending => fulfilled
   // reject(data) 内部状态由 pending => rejected
-  // 状态一旦改变，就不可再改变
+  // 状态一旦改变，就不可再改变，任何一个 Promise 只会返回两种状态之一
 })
 
 // 比回调嵌套更“优雅”的语法
@@ -89,14 +89,33 @@ Promise.try()
 
 - then 方法返回一个新的 promise，因此可以链式调用
 - Promise 链中的 promise 能够向下一个 promise 传递数据
+- 一旦 resolve，所有的 then 都会依次执行，不会阻断，包括 catch 后跟的 then
+- **reject 时，catch 后跟的 then 也会执行!**
+- catch 不会继续传递到后面的 catch，除非在 catch 中 throw error
 
 ```js
 new Promise(res => res(1))
-.then(val => {
-  console.log(val);
-  return val + 1;
-})
-.then (val => console.log(val))
+  .then(val => {
+    console.log(val);
+    return val + 1;
+  })
+  .then (val => console.log(val))
 // 1
 // 2
+
+new Promise(resolve => resolve(1))
+ .then(() => console.log(1))
+ .catch(() => console.log(2))
+ .then(() => console.log(3))
+ .catch(() => console.log(4))
+// 1
+// 3
+
+new Promise((_, reject) => reject(1))
+ .then(() => console.log(1))
+ .catch(() => console.log(2))
+ .then(() => console.log(3))
+ .catch(() => console.log(4))
+// 2
+// 3
 ```

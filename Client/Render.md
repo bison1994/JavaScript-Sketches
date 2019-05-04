@@ -12,7 +12,7 @@
 
 ### 渲染阻塞
 
-- FOUC(flash of unstyled content)
+- FOUC (flash of unstyled content)
 - 
 
 > [什么阻塞了 DOM](https://juejin.im/post/587f4afb61ff4b00651b3c18)

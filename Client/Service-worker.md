@@ -17,7 +17,7 @@
 ```js
 /* 主线程 */
 var worker = new Worker(/* js file */)
-worker.postMessage(string | object); // tell worker to start up
+worker.postMessage(string | object) // tell worker to start up
 ```
 
 ### 主线程与子线程的通信
@@ -25,13 +25,13 @@ worker.postMessage(string | object); // tell worker to start up
 ```js
 /* 子线程 */
 self.onmessage = function (event) {
-  var data = event.data; // get message from parent thread
-  self.postMessage(string | object); // send message to parent thread
+  var data = event.data // get message from parent thread
+  self.postMessage(string | object) // send message to parent thread
 }
 /* 主线程 */
 worker.onmessage = function (event) {
-  var data = event.data; // get message from child thread
-  self.postMessage(string | object); // send message to child thread
+  var data = event.data // get message from child thread
+  self.postMessage(string | object) // send message to child thread
 }
 // 主线程与子线程间也可以传递二进制数据。
 ```
@@ -40,7 +40,7 @@ worker.onmessage = function (event) {
 
 ```js
 /* 主线程 */
-worker.terminate();
+worker.terminate()
 /* 子线程 */
-self.close();
+self.close()
 ```
