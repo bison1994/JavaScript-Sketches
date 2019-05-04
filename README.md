@@ -7,9 +7,9 @@
 - ECMAScript
   + Advanced Topics
     - [Asynchronous](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Advanced%20Topic/Asynchronous.md)
-    - [Call-stack](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Advanced%20Topic/Call-stack.md)
+    - [Call-Stack](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Advanced%20Topic/Call-Stack.md)
     - [Closure](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Advanced%20Topic/Closure.md)
-    - [Event-loop](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Advanced%20Topic/Event-loop.md)
+    - [Event-Loop](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Advanced%20Topic/Event-Loop.md)
     - [Function](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Advanced%20Topic/Function.md)
     - [Modulization](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Advanced%20Topic/Modulization.md)
     - [OOP](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Advanced%20Topic/OOP.md)
@@ -18,14 +18,14 @@
   + ES6
     - [DataType-Enhance](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/ES6/DataType-Enhance.md)
     - [Destructuring](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/ES6/Destructuring.md)
-    - [Function&Class](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/ES6/Function%26Class.md)
-    - [Iterators&Generators](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/ES6/Iterators%26Generators.md)
+    - [Function & Class](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/ES6/Function%26Class.md)
+    - [Iterators & Generators](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/ES6/Iterators%26Generators.md)
     - [Module](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/ES6/Module.md)
     - [Promise](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/ES6/Promise.md)
-    - [Proxies&Reflection](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/ES6/Proxies%26Reflection.md)
-    - [Set&Map](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/ES6/Set%26Map.md)
+    - [Proxies & Reflection](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/ES6/Proxies%26Reflection.md)
+    - [Set & Map](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/ES6/Set%26Map.md)
     - [Symbol](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/ES6/Symbol.md)
-    - [Variable-declaration](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/ES6/Variable-declaration.md)
+    - [Variable-Declaration](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/ES6/Variable-Declaration.md)
   + Native API
     - [API](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Native%20API/API.md)
     - [Array](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Native%20API/Array.md)
