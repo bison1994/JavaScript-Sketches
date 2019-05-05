@@ -1,4 +1,5 @@
 ### 单线程 & Task
+
 - JavaScript 是单线程的。即一次只能完成一件任务，如果有多个任务，就必须排队，前面一个任务完成，再执行后面一个任务
 - 任务，就是由某个事件引发的一系列操作指令。事件可能是：run script、dispatch click、setTimeout、onload...
 - 一旦发生某个事件，该事件就会被推入**事件队列**（schedule a task）
@@ -10,6 +11,7 @@
 
 
 ### 同步与异步
+
 - 微观的划分
   + 一个事件会引发许多任务，甚至其他事件
   + 推送到执行栈的任务就是同步任务
@@ -21,12 +23,14 @@
 
 
 ### 事件队列
+
 - 在执行线程外，存在着一个事件队列，又称为消息队列或任务队列
 - 事件队列就是一个先进先出的数据结构，可以看作是待办事项列表
 - 执行线程将上一个事件对应的的任务执行完毕后，就会立即读取任务队列头部，如果有待执行的事件，那么就执行该事件对应的任务
 
 
 ### Event-loop
+
 - JS 线程内含一个无限的事件循环
 - 每个事件循环称为一个 tick，每个 tick 执行一个事件（macroTask）
 - 当前执行栈中所有该执行的任务都执行完毕后，就会进入下一个 tick，取出事件队列中的队头事件
@@ -72,14 +76,19 @@ document.body.addEventListener('click', function () {
 ```
 
 ### macrotask | microtask
+
 - 常见的 macro task 有 setTimeout、MessageChannel、postMessage、setImmediate
 - 常见的 micro task 有 MutationObsever 和 Promise.then
 
 
 ### Node.js 中的 setImmediate 和 process.nextTick
+
 - process.nextTick：microTask
 - setImmediate: macroTask
 
 > setImmediate 和 setTimeout 可能存在竞态关系（race condition）
 
-> [参考](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/)
+
+> [tasks-microtasks-queues-and-schedules](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/)
+
+> [Event Loop 必知必会（六道题）](https://zhuanlan.zhihu.com/p/34182184?group_id=953036433800331264)
