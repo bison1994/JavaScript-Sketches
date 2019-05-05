@@ -82,4 +82,7 @@ document.body.addEventListener('click', function () {
 
 > setImmediate 和 setTimeout 可能存在竞态关系（race condition）
 
-> [参考](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/)
+
+> [tasks-microtasks-queues-and-schedules](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/)
+
+> [Event Loop 必知必会（六道题）](https://zhuanlan.zhihu.com/p/34182184?group_id=953036433800331264)

@@ -46,6 +46,7 @@
   + [File](https://github.com/bison1994/JavaScript-Sketches/blob/master/Client/File.md)
   + [Observer](https://github.com/bison1994/JavaScript-Sketches/blob/master/Client/Observer.md)
   + [Storage](https://github.com/bison1994/JavaScript-Sketches/blob/master/Client/Storage.md)
+  + [Web-Component](https://github.com/bison1994/JavaScript-Sketches/blob/master/Client/Web-Component.md)
 
 
 - Network
