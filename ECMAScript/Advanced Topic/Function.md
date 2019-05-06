@@ -18,24 +18,24 @@ function hasOwn (obj, key) {
 var newArray = Array.prototype.slice.call(arrayLikeObj)
 
 // 类数组对象借用数组方法
-Array.prototype.push.call(arguments, 'value');
-Array.prototype.shift.call(arguments); // 获取第一个参数
+Array.prototype.push.call(arguments, 'value')
+Array.prototype.shift.call(arguments) // 获取第一个参数
 
 (function () {
   Array.prototype.forEach.call(arguments, function (val) {
-    console.log(val + 1);
-  });
-})(1, 2, 3); // 输出2, 3, 4
+    console.log(val + 1)
+  })
+})(1, 2, 3) // 输出2, 3, 4
 
 // 数组借用 Math 方法
 Math.max.apply(null, arr)
 
 // 借用构造函数
 function f (a) {
-  this.a = a;
+  this.a = a
 }
 function foo () {
-  f.apply(this, arguments);
+  f.apply(this, arguments)
   console.log(this.a)
 }
 new foo('a') // 输出a
@@ -46,45 +46,45 @@ new foo('a') // 输出a
 
 ```js
 // 倒计时
-var second = 60;
+var second = 60
 function countdown (btn) {
   if (second == 0) { 
-    btn.removeAttribute("disabled");
-    btn.value = "获取验证码"; 
-    second = 60; 
+    btn.removeAttribute("disabled")
+    btn.value = "获取验证码" 
+    second = 60 
   } else { 
-    btn.setAttribute("disabled", true); 
-    btn.value = second + "秒后重新获取"; 
-    second --; 
+    btn.setAttribute("disabled", true) 
+    btn.value = second + "秒后重新获取" 
+    second -- 
   } 
   setTimeout(function() { 
-    countdown(btn);
-  }, 1000);
+    countdown(btn)
+  }, 1000)
 }
 
 // 菲波那切数列
 function Fibonacci (n , a1 = 1 , a2 = 1) {
-  if ( n <= 1 ) { return a2 };
-  return Fibonacci (n - 1, a2, a1 + a2);
+  if ( n <= 1 ) { return a2 }
+  return Fibonacci (n - 1, a2, a1 + a2)
 }
 
 // 遍历节点树（深度优先遍历）
 function walk (node, func) {
-  func(node);
-  node = node.firstChild;
+  func(node)
+  node = node.firstChild
   while (node) {
-    walk(node, func);
-    node = node.nextSibling;
+    walk(node, func)
+    node = node.nextSibling
   }
 }
 
 // 广度优先遍历
 function walk (node, func) {
-  func(node);
-  node = node.nextSibling;
+  func(node)
+  node = node.nextSibling
   while (node) {
-    walk(node, func);
-    node = node.firstChild;
+    walk(node, func)
+    node = node.firstChild
   }
 }
 ```
@@ -97,14 +97,14 @@ function walk (node, func) {
 - 柯里化是因为 lambda 演算只有一个参数才被发明的，是函数式编程的一个自然结果
 
 ```js
-f(1); // 仅仅将参数保存起来，除此以外什么都不做
-f(1)(2); // 同上
-f(1)(2)(3); // 真正执行了
+f(1) // 仅仅将参数保存起来，除此以外什么都不做
+f(1)(2) // 同上
+f(1)(2)(3) // 真正执行了
 
 const curry = (fn, arity = fn.length, ...args) =>
   arity <= args.length
     ? fn(...args)
-    : curry.bind(null, fn, arity, ...args);
+    : curry.bind(null, fn, arity, ...args)
 ```
 
 
@@ -113,9 +113,9 @@ const curry = (fn, arity = fn.length, ...args) =>
 一种使用匿名单参数函数来实现多参数函数的方法
 uncurrying 的作用是将通过 apply/call 实现对象间互调方法的方式泛化为一种通用形式
 Function.prototype.uncurrying = function () {
-  var self = this;
+  var self = this
   return function () {
-  var obj = Array.prototype.shift.call(arguments);
+  var obj = Array.prototype.shift.call(arguments)
     return self.apply(obj, arguments)
   }
 }
@@ -126,9 +126,9 @@ Function.prototype.uncurrying = function () {
 ```js
 // Create a cached version of a pure function
 function cached (fn) {
-  var cache = Object.create(null);
+  var cache = Object.create(null)
   return (function cachedFn (str) {
-    var hit = cache[str];
+    var hit = cache[str]
     return hit || (cache[str] = fn(str))
   })
 }
@@ -147,30 +147,30 @@ function cached (fn) {
 
 ```js
 _.throttle = function (func, wait) {
-  var context, args, result;
-  var timeout = null;
-  var previous = 0;
+  var context, args, result
+  var timeout = null
+  var previous = 0
   var later = function() {
-    previous = _.now();
-    timeout = null;
-    result = func.apply(context, args);
-    if (!timeout) context = args = null;
+    previous = _.now()
+    timeout = null
+    result = func.apply(context, args)
+    if (!timeout) context = args = null
   }
   return function () {
-    var now = _.now();
-    var remaining = wait - (now - previous);
-    context = this;
-    args = arguments;
+    var now = _.now()
+    var remaining = wait - (now - previous)
+    context = this
+    args = arguments
     if (remaining <= 0 || remaining > wait) {
-      clearTimeout(timeout);
-      timeout = null;
-      previous = now;
-      result = func.apply(context, args);
-      if (!timeout) context = args = null;
+      clearTimeout(timeout)
+      timeout = null
+      previous = now
+      result = func.apply(context, args)
+      if (!timeout) context = args = null
     } else if (!timeout) {
-      timeout = setTimeout(later, remaining);
+      timeout = setTimeout(later, remaining)
     }
-    return result;
+    return result
   }
 }
 ```
@@ -179,34 +179,34 @@ _.throttle = function (func, wait) {
 
 ```js
 _.debounce = function (func, wait, immediate) {
-  var timeout, args, context, timestamp, result;
+  var timeout, args, context, timestamp, result
 
   var later = function() {
-    var last = _.now() - timestamp;
+    var last = _.now() - timestamp
 
     if (last < wait && last > 0) {
-      timeout = setTimeout(later, wait - last);
+      timeout = setTimeout(later, wait - last)
     } else {
-      timeout = null;
+      timeout = null
       if (!immediate) {
-        result = func.apply(context, args);
-        if (!timeout) context = args = null;
+        result = func.apply(context, args)
+        if (!timeout) context = args = null
       }
     }
   }
 
   return function() {
-    context = this;
-    args = arguments;
-    timestamp = _.now();
-    var callNow = immediate && !timeout;
-    if (!timeout) timeout = setTimeout(later, wait);
+    context = this
+    args = arguments
+    timestamp = _.now()
+    var callNow = immediate && !timeout
+    if (!timeout) timeout = setTimeout(later, wait)
     if (callNow) {
-      result = func.apply(context, args);
-      context = args = null;
+      result = func.apply(context, args)
+      context = args = null
     }
 
-    return result;
+    return result
   }
 }
 ```
@@ -215,5 +215,5 @@ _.debounce = function (func, wait, immediate) {
 ### 函数串行
 
 ```js
-const pipeFunctions = (...fns) => fns.reduce((f, g) => (...args) => g(f(...args)));
+const pipeFunctions = (...fns) => fns.reduce((f, g) => (...args) => g(f(...args)))
 ```

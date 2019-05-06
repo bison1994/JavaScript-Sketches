@@ -50,18 +50,18 @@
 ```js
 for (macroTask of macroTaskQueue) {
   // 1. Handle current MACRO-TASK
-  handleMacroTask();
+  handleMacroTask()
 
   // 2. Handle all MICRO-TASK
   for (microTask of microTaskQueue) {
-    handleMicroTask(microTask);
+    handleMicroTask(microTask)
   }
 }
 
 // 在同步任务间插入 microtask
 document.addEventListener('click', function () { console.log(1) }, false)
 document.body.addEventListener('click', function () {
-  console.log(2);
+  console.log(2)
   Promise.resolve(3).then(res => console.log(res))
   setTimeout(function () { console.log(4) }, 0)
 }, false)

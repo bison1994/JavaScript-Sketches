@@ -2,6 +2,7 @@
 
 客户端和服务端通过 TCP 连接，以“请求-响应”的方式，以报文（message）为载体进行通信。请求的目标数据或服务被称为资源，资源由唯一的 URI 标记。
 
+
 ### HTTP 核心概念
 
 - 连接
@@ -13,6 +14,7 @@
 
 
 ### 连接
+
 - HTTP1.0 一个 TCP 连接只能发一个请求，每个请求都需要打开一个新的 TCP 连接
 - HTTP1.1 引入持久连接（connection: keep-alive），允许多个请求复用同一个 TCP 连接，并且默认所有连接都是持久连接
 - 客户端和服务端通过 Connection 请求头来决定连接的维持和关闭
@@ -22,6 +24,7 @@
 - 针对同一个域名/服务器，浏览器最多可并行发出的 request 一般为 4、6、8 个
 - Clients SHOULD NOT pipeline requests using non-idempotent methods
 - HTTP keep-alive 与 TCP keep-alive 是完全不同的东西。前者通常由服务端控制，如果一定时间内没有新的请求，就断开连接（断开 HTTP 所依赖的 TCP 连接）
+
 
 ### 资源
 
@@ -44,6 +47,7 @@
 
 - HTTP 报文由三部分组成：起始行、首部和主体
 - 请求报文
+
 ```
 <Method> <URL> <Version>
 <Headers>
@@ -51,6 +55,7 @@
 ```
 
 - 响应报文
+
 ```
 <Version> <status> <Reason-phrase>
 <Headers>

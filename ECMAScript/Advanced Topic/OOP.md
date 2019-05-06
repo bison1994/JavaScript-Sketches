@@ -95,9 +95,3 @@ Descendant.prototype = Object.create(Parent.prototype, {
 
 new Descendant()
 ```
-
-
-### 多态
-
-
-

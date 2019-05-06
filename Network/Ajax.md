@@ -1,27 +1,30 @@
 ### 客户端发起 Http 请求的方式
 
+- navigation
 - `<img src="">`
   + 返回图片格式数据
   + 不受同源限制
-  + 常用于仅发送不接受的场景
+  + 常用于仅发送而不需要响应的场景，比如日志、埋点信息
 - `<iframe src="">`
   + 返回 HTML 文档
   + 受限于同源政策
 - `<script src="">`
   + 返回 js 文件
   + 不受同源限制
+- `<link href="">`
 - XMLHttpRequest
   + XMLHttpRequest 对象的每一个实例支持一个独立的请求/响应对
   + 老版的实现仅支持文本类型的数据，且受同源限制
   + 新版本（XHR2，IE10 以下不支持，IE8/9 可用 XDomainRequest）扩展了许多功能
-    - 可以设置HTTP请求的时限
-    - 可以使用FormData对象管理表单数据
+    - 可以设置 HTTP 请求的时限
+    - 可以使用 FormData 对象管理表单数据
     - 可以上传文件
     - 可以跨域请求（CORS）
     - 可以获取服务器端的二进制数据
     - 可以获得数据传输的进度信息
 
 > [XHR2 参考](http://www.ruanyifeng.com/blog/2012/09/xmlhttprequest_level_2.html)
+
 
 ### Asynchronous JavaScript and XML
 
@@ -30,7 +33,9 @@
 - JavaScript：ajax 由 JS 发起。但 JS 对请求头的操作是受限的
 - XML：响应的数据格式，目前被 JSON 取代
 
+
 ### Http 请求的四个组成部分
+
 - 方法（必须）
 - 地址（必须）
 - 请求头（可选）
@@ -66,6 +71,7 @@ xhr.onreadystatechange = function () {
   }
 }
 ```
+
 > 一次ajax请求, 并非所有的部分都是异步的, 至少"readyState==1"的 onreadystatechange 回调以及 onloadstart 回调就是同步执行的
 
 
@@ -120,7 +126,7 @@ loadEnd // 传输结束，但是不知道成功还是失败
 
 - 表单型数据编码
   + 将名与值进行URL编码（十六进制转义码）并以=连接，名值对之间以&连接
-  + 该数据格式的 MIME 类型：application/x-www-form-urlencoded
+  + 该数据格式的 MIME 类型：`application/x-www-form-urlencoded`
   + 使用 POST 方法提交数据时，需设置 Content-Type 为该值
   + 可在 URL 中使用该种数据类型进行 GET 只读查询
 
