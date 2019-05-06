@@ -123,6 +123,8 @@ Function.prototype.uncurrying = function () {
 
 ### 记忆 Memorize
 
+通过缓存，避免重复的计算
+
 ```js
 // Create a cached version of a pure function
 function cached (fn) {
@@ -134,11 +136,14 @@ function cached (fn) {
 }
 ```
 
+> [memoize-one](https://github.com/alexreardon/memoize-one)
+
 
 ### 惰性载入
 
-  惰性载入的基本思想是只在调用的时候创建，而不是在程序初始化的时候创建。
-  通过替换变量，仅在第一次调用时执行有关逻辑，以后再次调用无须重复执行有关逻辑。
+惰性载入的基本思想是只在调用的时候创建，而不是在程序初始化的时候创建。
+
+通过替换变量，仅在第一次调用时执行有关逻辑，以后再次调用无须重复执行有关逻辑。
 
 
 ### 函数节流（throttle）
