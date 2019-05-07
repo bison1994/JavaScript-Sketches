@@ -40,7 +40,7 @@
 - Client
   + Browser
   + DOM
-    - [Box-model](https://github.com/bison1994/JavaScript-Sketches/blob/master/Client/DOM/Box-model.md)
+    - [Box-Model](https://github.com/bison1994/JavaScript-Sketches/blob/master/Client/DOM/Box-Model.md)
     - [Event](https://github.com/bison1994/JavaScript-Sketches/blob/master/Client/DOM/Event.md)
     - [Manipulation](https://github.com/bison1994/JavaScript-Sketches/blob/master/Client/DOM/Manipulation.md)
   + [BOM](https://github.com/bison1994/JavaScript-Sketches/blob/master/Client/BOM.md)
@@ -88,7 +88,7 @@
 
 - Data-Structure&Algorithm
   + ADT
-    - [Linked-list](https://github.com/bison1994/JavaScript-Sketches/blob/master/Data%20Structure%20%26%20Algorithm/ADT/Linked-list.md)
+    - [Linked-List](https://github.com/bison1994/JavaScript-Sketches/blob/master/Data%20Structure%20%26%20Algorithm/ADT/Linked-List.md)
     - [Priority-Queque](https://github.com/bison1994/JavaScript-Sketches/blob/master/Data%20Structure%20%26%20Algorithm/ADT/Priority-Queque.md)
     - [Stack](https://github.com/bison1994/JavaScript-Sketches/blob/master/Data%20Structure%20%26%20Algorithm/ADT/Stack.md)
     - [Symbol-Table](https://github.com/bison1994/JavaScript-Sketches/blob/master/Data%20Structure%20%26%20Algorithm/ADT/Symbol-Table.md)
