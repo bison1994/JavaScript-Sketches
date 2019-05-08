@@ -1,8 +1,9 @@
 ### 客户端缓存
+
 - 客户端缓存分为：强制缓存与协商缓存，强制缓存优先级更高
 - 缓存机制由服务端和客户端共同实现，二者通过 HTTP Headers 通信
 - 浏览器在发送请求前，首先会检查本地是否存在对应的缓存。如果有，则判断缓存时间是否过期（新鲜度测试 Freshness check）。如果是，再依次根据 Etag 和 Last-Modified 向服务端验证资源是否改变
-- 浏览器默认的缓存是放在内存里的（from memory cache），浏览器检测到 Etag，才会将缓存写入硬盘（from disk cache）
+- 浏览器默认的缓存是放在硬盘里的（from disk cache），但浏览器有一定的优化机制：刷新页面时，体积小于一定值的资源会走 memory cache（from memory cache）。后者与网页进程相关，进程消失（切换或关闭 tab），缓存即消失
 - 静态文件的缓存时间通常在服务器中配置，例如 Nginx：
 
 ```
@@ -11,7 +12,9 @@ location ~* \.(jpg|jpeg|png|gif|ico|css|js)$ {
 }
 ```
 
+
 ### HTTP Headers
+
 - 强制缓存
   + Expires
     - 规定缓存失效时间。属于 HTTP1.0
@@ -35,17 +38,20 @@ location ~* \.(jpg|jpeg|png|gif|ico|css|js)$ {
 
 ```js
 // 取消 get 请求的缓存
-xhr.setRequestHeader("If-Modified-Since", "0");
-xhr.setRequestHeader("Cache-Control", "no-cache");
+xhr.setRequestHeader("If-Modified-Since", "0")
+xhr.setRequestHeader("Cache-Control", "no-cache")
 
 // meta 标签的问题是所有缓存代理服务器都不支持，因为代理服务器不会解析文档内容
 <meta http-equiv="Pragma" content="no-cache"> 
 ```
 
+
 ### 设置缓存的决策流
+
 - 是否需要缓存
 - 是否被中间层缓存 => public/private
 - 最大缓存时间 => max-age
 
 > [浏览器缓存机制 by Laruence](http://www.laruence.com/2010/03/05/1332.html)
+
 > [Web 缓存机制系列 from AlloyTeam](http://www.alloyteam.com/2012/03/web-cache-2-browser-cache/)
