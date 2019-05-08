@@ -104,7 +104,7 @@ function fullName (first: string, ...other: string[]) { return first + other.joi
 > 还可以用 interface 声明函数类型
 
 
-### 定义 Interface
+### 接口 Interface
 
 ```ts
 // 值必须严格遵守接口定义的结构，不能少一个属性，也不能多一个属性
@@ -148,9 +148,9 @@ const str2:number = <number> str  // error: Type 'string' cannot be converted to
 ```
 
 
-### 泛型
+### 泛型 Generic
 
-泛型，即参数类型化。可以将泛型看成一个函数，可以将某个类型作为参数传入，从而得到一个新的 interface
+泛型，即参数类型化。泛型类似一个函数，可以将某个类型作为参数传入，从而得到一个新的 interface
 
 ```ts
 interface Generic<T> {
@@ -209,7 +209,7 @@ function getProperty<T, K extends keyof T>(obj: T, key: K) {
 > 内置的泛型 class：Array、Promise...
 
 
-### 枚举
+### 枚举 Enum
 
 枚举会被编译为真实存在的对象
 
