@@ -28,7 +28,7 @@ exports default {
 
 // a.js 编译后 
 var a = function (module, require) {
-	var b = require(1)
+  var b = require(1)
   var c = require(2)
 
   console.log(b.name)
@@ -37,7 +37,7 @@ var a = function (module, require) {
 
 // b.js 编译后
 var b = function (module, require) {
-	console.log('module b runs')
+  console.log('module b runs')
 
   module.exports = {
     name: 'b'
@@ -47,7 +47,7 @@ var b = function (module, require) {
 // c.js 编译后
 var c = function (module, require) {
   var b = require(1)
-	console.log('module c runs')
+  console.log('module c runs')
   console.log(b.name)
   
   module.exports = {
@@ -58,19 +58,18 @@ var c = function (module, require) {
 webpack([a, b, c]);
 
 var webpack = function (modules) {
-	var installedModules = {};
+  var installedModules = {};
 
-	function require (id) {
-		if (installedModules[id]) 
-			return installedModules[id].exports
+  function require (id) {
+    if (installedModules[id]) return installedModules[id].exports
 
-		var module = installedModules[id] = {}
+    var module = installedModules[id] = {}
 
-		modules[id](module, require);
+    modules[id](module, require);
 
-		return module.exports
-	}
+    return module.exports
+  }
 
-	require(0);
+  require(0);
 }
 ```
