@@ -78,10 +78,10 @@ private class MyWebViewClient extends WebViewClient {
 class JSInterface {
   @JavascriptInterface
   public String getUserData () {
-    return 'userData'
+    return "userData";
   }
 }
-webview.addJavascriptInterface(new JSInterface(), 'jsBridge')
+webview.addJavascriptInterface(new JSInterface(), "jsBridge");
 
 window.jsBridge.getUserData() // 'userData'
 ```
@@ -104,7 +104,7 @@ class CustomWebChromeClient extends WebChromeClient {
 方式一：利用 webview 的 loadUrl API
 
 ```js
-webView.loadUrl('javascript:onPageShow()')
+webView.loadUrl("javascript:onPageShow()");
 ```
 
 

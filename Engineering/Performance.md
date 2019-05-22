@@ -1,4 +1,4 @@
-### 什么是性能
+## 什么是性能
 
 - **快**
   + 加载速度
@@ -8,7 +8,7 @@
 - 低耗
 
 
-### 衡量标准
+## 衡量标准
 
 - 传统指标
   + 首字节
@@ -20,7 +20,7 @@
   + FMP（First Meaningful Paint）
  
 
-### 测量手段/工具
+## 测量手段/工具
 
 - Date.now()
 - [Navigation Timing](https://www.w3.org/TR/navigation-timing/#sec-navigation-timing-interface)
@@ -41,9 +41,9 @@
 > [Google web.dev](https://web.dev)
 
 
-### 性能优化方案体系
+## 性能优化方案体系
 
-#### 加载速度
+### 针对加载速度
 
 提高加载性能的四个基本方向：时间规划、距离规划、体量规划、特定环境规划
 
@@ -82,11 +82,12 @@
   + 使用可缓存的 get 请求（雅虎14条之3、14）
 - 减少不必要的请求
   + 移动端字体图标只需要用 ttf
-- 只请求当前需要的资源
+- 只请求当前环境需要的资源
   + 增量加载（懒加载、渐进式加载、异步加载）
   + 按需加载 polyfill
     - [Conditionally-load-polyfills](https://golb.hplar.ch/2018/02/Conditionally-load-polyfills.html)
     - [loading-polyfills-only-when-needed](https://philipwalton.com/articles/loading-polyfills-only-when-needed/)
+  + [modern 构建模式](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/)
 - 减小资源体积（雅虎14条之4、10）
   + 压缩
   + Gzip（服务端开启，只压缩文本文件，**不要压缩图片文件**）
@@ -127,7 +128,7 @@
 > [how-medium-does-progressive-image-loading](https://medium.com/@jmperezperez/how-medium-does-progressive-image-loading-fd1e4dc1ee3d)
 
 
-#### 渲染性能、交互、动画流畅度
+### 针对渲染性能、交互、动画流畅度
 
 - 浏览器环境
   + 控制 DOM 和 CSS 的层级深度
@@ -149,7 +150,7 @@
 > [7-performance-tips-jank-free-javascript-animations](https://www.sitepoint.com/7-performance-tips-jank-free-javascript-animations/)
 
 
-### 性能保障
+## 性能保障
 
 - 建立指标
 - 监控数据（维度、分位...）
