@@ -1,10 +1,15 @@
 ### What
+
 > webpack is a module bundler. Its main purpose is to bundle JavaScript files for usage in a browser, yet it is also capable of transforming, bundling, or packaging just about any resource or asset.
 
+
 ### Origin
+
 webpack 的创始人叫 Tobias Koppers，他创造 webpack 的初衷就是希望给一个叫 modules-webmake 的 js 打包工具加上 code spliting 的功能，[看这里](https://github.com/medikoo/modules-webmake/issues/7)。webpack 的创造也得益于从 browserify 和 require.js 中获得灵感。
 
+
 ### 核心概念
+
 - webpack 根据**依赖关系图 dependency graph**将**模块 module**打包为**js bundle**
 - 所有的文件，无论何种类型，都被视为模块，模块间通过下列方式建立依赖关系
   + ES2015 import 语句
@@ -43,7 +48,9 @@ entry: {
 
 > webpack 将图片、CSS 等所有资源都视为模块并打包到 js 中的设计理念可能是造成理解困难的重要原因。gulp、fis 等传统的构建工具通过定义任务流来处理不同类型的资源，自动化的执行原本需要人工执行的任务，而 webpack 原本的定位是 js bundler，它本非构建工具，却被用作了构建工具。我们更习惯 process assets，而不是 webpack 官网宣示的 bundle your scripts、images、styles、assets。正因为 webpack 用打包 js 模块的思路来对待所有资源，所以才会出现一些反直觉的用法，比如在 js 中 import CSS 或图片，又比如为了得到独立的 css 文件，必须额外配置插件。 
 
+
 ### chunk
+
 - webpack 的本意是将所有模块打包成 1 个 js bundle
 - 但是，我们可以通过配置打包出多个文件（separate files），这就等于是对 bundle 做了 code spliting
 - 拆分出来的独立的 js 文件就被称为 chunk。注意，是 js
@@ -52,7 +59,112 @@ entry: {
   + CommonsChunkPlugin
   + 动态引入 import()
 
+
+### 极简 Webpack
+
+```js
+/**
+ * 1、parse file and extract its dependencies
+ * 2、build dependency graph recursively
+ * 3、pack everything into one file
+ */
+
+const traverse = require("@babel/traverse").default
+const babel = require('@babel/core')
+const path = require('path')
+const fs = require('fs')
+
+let id = 0
+
+function createAsset (file) {
+  const content = fs.readFileSync(file, 'utf-8')
+  const ast = babel.parseSync(content, { sourceType: "module" })
+  const deps = []
+
+  traverse(ast, {
+    ImportDeclaration ({ node }) {
+      deps.push(node.source.value)
+    }
+  })
+
+  const { code } = babel.transformFromAstSync(ast, null, {
+    presets: ['@babel/preset-env']
+  })
+
+  return {
+    id: id++,
+    file,
+    deps,
+    code,
+    map: {}
+  }
+}
+
+function createGraph (entry) {
+  const main = createAsset(entry)
+
+  const queque = [main]
+
+  for (const asset of queque) {
+    asset.deps.forEach(val => {
+      const dirname = path.dirname(asset.file)
+      const absPath = path.join(dirname, val)
+      const child = createAsset(absPath)
+      asset.map[val] = child.id
+      queque.push(child)
+    })
+
+    replacePath(asset)
+  }
+
+  return queque
+}
+
+function replacePath (asset) {
+  asset.deps.forEach(path => {
+    asset.code = asset.code.replace(`require("${path}")`, `require(${asset.map[path]})`)
+  })
+}
+
+const graph = createGraph('main.js')
+
+const createBundle = function (graph) {
+  return `
+    (function (modules) {
+      const installedModule = {}
+
+      const require = function (moduleId) {
+        if (installedModule[moduleId]) return installedModule[moduleId].exports
+        const module = installedModule[moduleId] = {
+          exports: {}
+        }
+
+        modules[moduleId](module.exports, module, require)
+
+        return module.exports
+      }
+
+      require(0)
+    })([${
+      graph.map(({ code }) => {
+        return `function (exports, module, require) {
+          ${code}
+        }`
+      }).join(',')
+    }])
+  `
+}
+
+const bundle = createBundle(graph)
+
+fs.writeFileSync('bundle.js', bundle)
+```
+
+> [参考来源](https://www.youtube.com/watch?v=Gc9-7PBqOC8)
+
+
 ### Resource
+
 - [webpack book](https://survivejs.com/webpack/)
 - [webpack-front-end-size-caching](https://iamakulov.com/notes/webpack-front-end-size-caching/)
 - [webpack dll](https://segmentfault.com/a/1190000005969643)
