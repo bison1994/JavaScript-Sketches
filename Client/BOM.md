@@ -77,8 +77,16 @@ function update (data) {
 alert()、prompt()、confirm()
 
 
+### 打开新页面
+open(url)
+
+
 ### 异常处理
 Window 对象的 onerror 属性用于捕获异常并在控制台输出指定的信息
+
+```js
+window.onerror = function (message, source, lineno, colno, error) {}
+```
 
 
 ### Document

@@ -82,3 +82,19 @@ echo $callback.'(.json_encode($data).)';
 
 - 图片
 - iframe
+
+
+### 检测跨域问题
+
+```js
+// https://github.com/eligrey/FileSaver.js/blob/master/src/FileSaver.js
+function corsEnabled (url) {
+  var xhr = new XMLHttpRequest()
+  // use sync to avoid popup blocker
+  xhr.open('HEAD', url, false)
+  try {
+    xhr.send()
+  } catch (e) {}
+  return xhr.status >= 200 && xhr.status <= 299
+}
+```

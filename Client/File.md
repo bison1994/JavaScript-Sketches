@@ -18,6 +18,9 @@ function () {
     end = start + BYTES_PER_CHUNK
   }
 }
+
+var debug = { hello: "world" }
+var blob = new Blob([JSON.stringify(debug, null, 2)], { type : 'application/json' })
 ```
 
 ### FileList
@@ -42,8 +45,8 @@ FileReader 用于把文件内容读入内存。它的参数是 File 对象或 Bl
 ```js
 var reader = new FileReader()
 reader.readAsDataURL(input.files[0])
-reader.onload = function() {
-  img.src = reader.result
+reader.onload = function () {
+  img.src = reader.result // reader.result contains the contents of blob as a typed array
 }
 ```
 
@@ -66,8 +69,30 @@ reader.onload = function() {
 
 ### URL
 
-URL 对象用于将 File 或 Blob 数据转化为 URL
+URL 对象用于将 File 或 Blob 数据转化为 data URL
 
 ```js
 var url = window.URL.createObjectURL(file)
+window.URL.revokeObjectURL(url) // 用完 url 后应主动释放
 ```
+
+
+### 文件上传
+
+[uppy](https://github.com/transloadit/uppy)
+
+
+### 文件下载/保存
+
+[FileSaver](https://github.com/eligrey/FileSaver.js/)
+
+下载文件有两类场景
+
+- 通过一个 url 下载
+- 直接下载文件数据
+
+下载文件的基本方式
+
+- 创建 a 标签，利用 download 属性，触发点击事件（有跨域限制，适用于普通 url 和 data URL）
+- 用 XHR 发送 get ajax 请求（可跨域，适用于普通 url）
+- 新建窗口 `var popup = open('', '_blank')`，触发下载 `popup.location.href = url`（适用于文件，需转换成 data URL）
