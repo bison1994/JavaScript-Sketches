@@ -10,7 +10,9 @@
     + 每个 commit 都包含上一个 commit 的引用，由此形成一条链
 
 > 工作区、暂存区、commit 都是整个项目的完整副本，可以抽象成三颗独立的树
+
 > staged changes 是暂存区与 HEAD 两颗树 diff 的结果
+
 > changes 是工作区与暂存区这两颗树 diff 的结果
 
 
@@ -74,7 +76,7 @@
 
 补漏。如果还想向上一个 commit 继续添加一些东西，用 `git commit --amend`
 
-合写，添加暂存并提交：`git commit -am"xxx"`
+合写。添加暂存并提交：`git commit -am"xxx"`
 
 
 ### 查看历史变更记录
