@@ -11,6 +11,28 @@
     + 每个 commit 就是一个版本，都代表整个项目所处的一个状态
     + 每个 commit 都包含上一个 commit 的引用，由此形成一条链
 
+```js
+const commit = {
+  id: 'xxx',
+  parent: 'yyy'
+  tree: tree_a,
+  committer
+}
+
+const tree_a = {
+  file1: 'nnn',
+  file2: 'mmm',
+  file3: 'qqq',
+}
+
+const repository = {
+  'nnn': Blob,
+  'mmm': Blob,
+  'qqq': Blob
+  ...
+}
+```
+
 > 工作区、暂存区、commit 都是整个项目的完整副本，可以抽象成三颗独立的树
 
 > staged changes 是暂存区与 HEAD 两颗树 diff 的结果
@@ -78,10 +100,10 @@
 
 补漏。如果还想向上一个 commit 继续添加一些东西，用 `git commit --amend`
 
-合写。添加暂存并提交：`git commit -am"xxx"`
+合写。添加暂存并提交：`git commit -am"xxx"`。注意，仅对 tracked 文件有效，如有 untracked 文件，仍需执行 `git add`
 
 
-### 查看历史变更记录
+### 查看历史记录和变更
 
 - `git log`
 - `git log -p` 查看历史 commit 记录以及每次的变更
@@ -89,9 +111,35 @@
 - `git log --stat`
 - `git log --graph`
 
+- `git status`
+
+查看版本差异（三棵树间的 diff）
+
+- `git diff` 工作区和暂存区的差异（已修改还未暂存的内容）
+- `git diff HEAD` 工作区和 HEAD 的差异
+- `git diff --staged` 暂存区和 HEAD 的差异（即将提交到下一个 commit 的内容）
+- `git diff <commit-id> <commit-id>` 两个版本间的差异
+
+> --staged 和 --cached 是等同的
+
+查看两个分支的差异
+
+- `git diff branch1 branch2` 两个分支 HEAD 间的差异
+
+查看某个文件的变化
+
+- `git diff file` 工作区和暂存区的差异
+- `git diff HEAD file` 工作区和 HEAD 的差异
+- `git diff --cached file` 暂存区和 HEAD 的差异
+- `git diff branch1 branch2 file` 查看两个分支的某个文件的差异
+- `git diff commit-id commit-id file` 查看两个 commit 的某个文件的差异
+
+> commit-id 可以只写开头的一部分，但必须大于等于四个字符
+
+
 ### 撤销更改/删除记录
 
-reset 本质是在操控 HEAD、暂存区和工作区这三棵树
+`git reset` 本质是在操控 HEAD、暂存区和工作区这三棵树
 
 语法：`git reset [commit id] [file] --[mode]`
 
@@ -108,19 +156,28 @@ commit 默认为 HEAD，file 默认为空，mode 默认为 mixed
 **实例**
 
 - 取消暂存：`git reset` or `git reset HEAD` or `git reset master`（假设当前在 master 分支）
-- 取消某个已暂存文件：`git reset file`
-- 放弃一部分 commit，但不放弃暂存和工作区的变更：`git reset <id> --soft`
+- 取消某个已暂存文件：`git reset file`（从 HEAD 复制并替换暂存区的 file）
+- 放弃一部分 commit，回到某个 commit，但不放弃暂存和工作区的变更：`git reset <id> --soft`
 - 彻底放弃所有变更，回到某个 commit：`git reset <id> --hard`
 - 撤销当前的 merge：`git reset HEAD~ --hard`
 
-根据 reset 的工作原理，显然无法用 reset 取消当前尚未暂存的更改，解决办法是：git checkout
+根据 reset 的工作原理，显然无法用 reset 取消当前尚未暂存的更改，解决办法是 `git checkout`
 
 - 取消某个文件的尚未暂存的变更：`git checkout <file>`，含义是：从暂存区的树中复制 file 并覆盖当前的 file
 - 重置整个工作区：`git checkout .`
 
-如何删除任意某个 commit 呢？
+git checkout 只对 tracked 的文件有用，如果要清除工作区中所有 untracked 的文件怎么办？`git clean`
 
-如何删除文件的版本追踪记录？
+> 某些 undo 型操作有可能无法恢复，对此 git 有两种预防误操作的措施：1、强制要求用 `-f`；2、可用 `-n` 预演操作，仅提示执行的影响结果，而不实际执行
+
+如何删除任意某个 commit 呢？如果目的是撤销某个 commit 引入的变更，可用 `git revert`，该命令不会清除历史记录，而是将指定 commit 的变化，做一次逆向提交，覆盖之前的变化
+
+- `git revert HEAD`：提取 HEAD commit 引入的变化，逆向提交一个新的 commit
+- `git revert <commit-id>`
+
+如果希望从历史记录中彻底移除某个 commit，需要用到 rebase，参见“分支”一节
+
+`git rm` 删除文件的版本追踪记录
 
 - 如果文件没有新的暂存更改（暂存区和 HEAD 记录一致），则用 `git rm <file>` 将文件从**暂存区**移除，同时会删除文件
 - 如果已经有新的更改提交到暂存区，为了彻底移除，需要 `git rm <file> -f`
@@ -133,12 +190,40 @@ commit 默认为 HEAD，file 默认为空，mode 默认为 mixed
 - 如果把 node_modules 给加到了版本追踪，忘了用 gitignore 怎么办？`git rm --cached -r node_modules`
 
 - 不小心把一个特别大的文件加到了版本管理，导致 .git 特别大，想删除该文件的全部历史记录怎么办？
-
-
-### 比较差异
+  + 用工具，如 [bfg-repo-cleaner](https://rtyley.github.io/bfg-repo-cleaner/)
 
 
 ### 分支
+
+- `git branch <name>`
+- `git checkout <name>`
+- `git checkout <new-branch> <base-branch>`
+- `git checkout -b <name>`
+- `git merge <name>`
+- `git branch` 查看本地分支
+- `git branch -v`
+- `git branch -d <name>` 删除本地分支
+
+> 如果远程仓库名称为 origin，那么远程分支名为：`origin/name`
+
+**变基**
+
+变基的本质：在指定分支上重新提交某个分支的历次更改
+
+<img src="https://wac-cdn.atlassian.com/dam/jcr:e4a40899-636b-4988-9774-eaa8a440575b/02.svg?cdnVersion=375">
+
+- `git rebase master`
+  + 找出变化：先找到当前分支（假设为 A）和 master 分支的共同祖先 commit
+  + 计算当前分支 HEAD 与祖先 commit 间历次提交版本的差异
+  + 将上述差异依次应用到 master 分支，相当于在 master 分支重新创建整个分支 A
+
+rebase 的作用
+
+- 保持线性的提交记录（clean history）。历史记录是按提交时间顺序呈现的，合并多个分支后，历史记录可能杂糅来自不同分支的提交
+
+如何删除任意一个或多个 commit？
+
+- ``
 
 
 ### 与远程交互
