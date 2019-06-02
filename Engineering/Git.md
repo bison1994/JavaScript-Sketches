@@ -2,8 +2,10 @@
 
 ### 核心概念
 
-- 工作区（working directory）
-- 暂存区（index）
+- 快照（snapshot）副本
+- 仓库（Repository）保存文件快照的数据库
+- 工作区（working directory | workspace）
+- 暂存区（index | stage）
 - commit
     + git 采用全量记录的策略来保存每个版本
     + 每个 commit 就是一个版本，都代表整个项目所处的一个状态
@@ -13,7 +15,7 @@
 
 > staged changes 是暂存区与 HEAD 两颗树 diff 的结果
 
-> changes 是工作区与暂存区这两颗树 diff 的结果
+> unstaged changes 是工作区与暂存区这两颗树 diff 的结果
 
 
 - HEAD：对当前分支最后一次 commit 的引用
@@ -81,6 +83,11 @@
 
 ### 查看历史变更记录
 
+- `git log`
+- `git log -p` 查看历史 commit 记录以及每次的变更
+- `git log -p -2` 查看最近两次 commit 及其变更
+- `git log --stat`
+- `git log --graph`
 
 ### 撤销更改/删除记录
 
@@ -98,7 +105,7 @@ commit 默认为 HEAD，file 默认为空，mode 默认为 mixed
 
 > 如果没有指定 file，则整体复制；若指定 file，则仅复制文件
 
-实例：
+**实例**
 
 - 取消暂存：`git reset` or `git reset HEAD` or `git reset master`（假设当前在 master 分支）
 - 取消某个已暂存文件：`git reset file`
@@ -113,6 +120,19 @@ commit 默认为 HEAD，file 默认为空，mode 默认为 mixed
 
 如何删除任意某个 commit 呢？
 
+如何删除文件的版本追踪记录？
+
+- 如果文件没有新的暂存更改（暂存区和 HEAD 记录一致），则用 `git rm <file>` 将文件从**暂存区**移除，同时会删除文件
+- 如果已经有新的更改提交到暂存区，为了彻底移除，需要 `git rm <file> -f`
+- 如果不想删除文件，仅仅是删除 git 记录：`git rm --cached <file>`
+- 如果是删除文件夹，需要明确指定 `-r`（recursively）
+- 还可以用 glob 指定删除目标
+
+**实例**
+
+- 如果把 node_modules 给加到了版本追踪，忘了用 gitignore 怎么办？`git rm --cached -r node_modules`
+
+- 不小心把一个特别大的文件加到了版本管理，导致 .git 特别大，想删除该文件的全部历史记录怎么办？
 
 
 ### 比较差异
@@ -148,17 +168,24 @@ remote -- local
 
 查看所有的远程仓库：`git remote -v`
 
+查看某个远程仓库：`git romote show <remote-name>`
+
 添加远程仓库：`git remote add <shortname> <url>`
 
 拉取与推送
 
 - `git clone <url>`
-- `git fetch [shortname]`
-- `git pull [shortname>`
+- `git fetch [remote-name] [branch]`
+- `git fetch [remote-name]`
+- `git pull [remote-name]`：建立追踪关系后，可以省略远程分支名
+- `git pull <remote-name> <远程分支A>:<本地分支B>`：拉取远程分支 A 与本地分支 B 合并
+- `git pull <remote-name> <远程分支A>`：拉取远程分支 A 与本地当前分支合并
 - `git push [remote-name] [branchname]`
 
 > 使用 clone 命令克隆一个仓库时，命令会自动将其添加为远程仓库并默认以 “origin” 为简写
 
-实例
+**实例**
 
 - 如何删除远程的 commit：在本地删除，然后 `git push origin +master` or `git push origin master -f`
+- 删除远程分支：`git push origin --delete [branch]`
+- 删除远程文件：``
