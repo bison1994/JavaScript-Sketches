@@ -89,7 +89,7 @@
   + [Webpack](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Webpack.md)
 
 
-### Data-Structure & Algorithm
+### Data Structure & Algorithm
   + ADT
     - [Linked-List](https://github.com/bison1994/JavaScript-Sketches/blob/master/Data%20Structure%20%26%20Algorithm/ADT/Linked-List.md)
     - [Priority-Queque](https://github.com/bison1994/JavaScript-Sketches/blob/master/Data%20Structure%20%26%20Algorithm/ADT/Priority-Queque.md)
