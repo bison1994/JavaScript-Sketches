@@ -40,6 +40,9 @@
   + .cloneNode()
   + .textContent /.innerText（IE）
   + .innerHTML
+  + .insertAdjacentHTML
+  + .insertAdjacentElement
+  + .insertAdjacentText
 
 - 操作文本节点
   + .nodeValue / .data
