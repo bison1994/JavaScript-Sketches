@@ -76,6 +76,8 @@
   + [Cache](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Cache.md)
   + [Compatibility](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Compatibility.md)
   + [Construction](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Construction.md)
+  + [Deploy](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Deploy.md)
+  + [Git](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Git.md)
   + [Hybrid](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Hybrid.md)
   + [Modulization](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Modulization.md)
   + [Monitor](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Monitor.md)
