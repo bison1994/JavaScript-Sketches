@@ -139,6 +139,8 @@ const repository = {
 
 ### 撤销更改/删除记录
 
+#### git reset | git checkout | git clean | git revert
+
 `git reset` 本质是在操控 HEAD、暂存区和工作区这三棵树
 
 语法：`git reset [commit id] [file] --[mode]`
@@ -170,12 +172,17 @@ git checkout 只对 tracked 的文件有用，如果要清除工作区中所有 
 
 > 某些 undo 型操作有可能无法恢复，对此 git 有两种预防误操作的措施：1、强制要求用 `-f`；2、可用 `-n` 预演操作，仅提示执行的影响结果，而不实际执行
 
+> git checkout <commit>，[参考](https://www.atlassian.com/git/tutorials/using-branches/git-checkout) 
+
 如何删除任意某个 commit 呢？如果目的是撤销某个 commit 引入的变更，可用 `git revert`，该命令不会清除历史记录，而是将指定 commit 的变化，做一次逆向提交，覆盖之前的变化
 
 - `git revert HEAD`：提取 HEAD commit 引入的变化，逆向提交一个新的 commit
 - `git revert <commit-id>`
 
 如果希望从历史记录中彻底移除某个 commit，需要用到 rebase，参见“分支”一节
+
+
+#### git rm
 
 `git rm` 删除文件的版本追踪记录
 
