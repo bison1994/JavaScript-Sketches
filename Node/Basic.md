@@ -34,6 +34,11 @@ node 除了自身架构，还引入了有限的一组第三方库，运行 proce
     + console
     + setTimeout
     + __dirname
+    + ...
+
+> 查看所有全局变量：node => global. => tab twice
+
+> 全局变量里包含了所有 built-in libraries
 
 > 某些涉及 script 文件的变量在 REPL 中不存在，例如 __dirname，[参考](https://stackoverflow.com/questions/8817423/node-dirname-not-defined)
 

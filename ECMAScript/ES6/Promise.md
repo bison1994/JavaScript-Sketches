@@ -51,19 +51,19 @@ function fetch (data) {
 
 fetch(0)
 .then(data => {
-  console.log(data);
-  return fetch(data);
+  console.log(data)
+  return fetch(data)
 })
 .then(data => {
-  console.log(data);
-  return fetch(data);
+  console.log(data)
+  return fetch(data)
 })
 .then(data => {
-  console.log(data);
+  console.log(data)
 })
 
 // 对同一个 promise 可以添加多个 then 方法
-var p = fetch(1);
+var p = fetch(1)
 p.then(data => console.log(data))
 p.then(data => console.log(data))
 p.then(data => console.log(data))
@@ -96,8 +96,8 @@ Promise.try()
 ```js
 new Promise(res => res(1))
   .then(val => {
-    console.log(val);
-    return val + 1;
+    console.log(val)
+    return val + 1
   })
   .then (val => console.log(val))
 // 1
@@ -118,4 +118,23 @@ new Promise((_, reject) => reject(1))
  .catch(() => console.log(4))
 // 2
 // 3
+```
+
+### Promisify
+
+将 `f (arg1, arg2, ..., callback)` 形式的函数转化为 promise 形式：`f (arg1, arg2, ...).then()`
+
+```js
+function promisify (f) {
+  return function (...args) {
+    return new Promise(resolve, reject) {
+      function callback (err, res) {
+        if (err) return reject(err)
+        resolve(res)
+      }
+      args.push(callback)
+      f.call(this, ...args)
+    }
+  }
+}
 ```
