@@ -72,7 +72,7 @@
     - [jQuery](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Framework/jQuery.md)
     - [React](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Framework/React.md)
     - [Redux](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Framework/Redux.md)
-    - [Vue-Computed-Property.js](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Framework/Vue-Computed-Property.md)
+    - [Vue-Computed-Property](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Framework/Vue-Computed-Property.md)
   + [Cache](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Cache.md)
   + [Compatibility](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Compatibility.md)
   + [Construction](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Construction.md)
