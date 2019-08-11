@@ -1,17 +1,30 @@
 ### 客户端发起 Http 请求的方式
 
 - navigation
+  + 直接在地址栏输入 http 开头的 url 请求
+  + 只能发送 get 请求
+
+- form submitter elements
+  + 比如 `<input type="submit">`
+  + 可以通过 form 元素的 method 属性指定两种方法：get | post
+  + 问题是会重定向，不重定向的话，没办法处理响应结果，因为是非编程式的请求。参考[表单提交规范](https://www.w3.org/TR/html52/sec-forms.html#form-submission-algorithm)
+  + 可以[通过 iframe 避免重定向](https://stackoverflow.com/questions/25983603/how-to-submit-html-form-without-redirection)
+
 - `<img src="">`
   + 返回图片格式数据
   + 不受同源限制
   + 常用于仅发送而不需要响应的场景，比如日志、埋点信息
+
 - `<iframe src="">`
   + 返回 HTML 文档
   + 受限于同源政策
+
 - `<script src="">`
   + 返回 js 文件
   + 不受同源限制
+
 - `<link href="">`
+
 - XMLHttpRequest
   + XMLHttpRequest 对象的每一个实例支持一个独立的请求/响应对
   + 老版的实现仅支持文本类型的数据，且受同源限制
@@ -24,6 +37,10 @@
     - 可以获得数据传输的进度信息
 
 > [XHR2 参考](http://www.ruanyifeng.com/blog/2012/09/xmlhttprequest_level_2.html)
+
+- [fetch](./Fetch.md)
+
+- [reporting API](https://w3c.github.io/reporting/)
 
 
 ### Asynchronous JavaScript and XML
