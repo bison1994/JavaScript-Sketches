@@ -1,0 +1,83 @@
+## 知识架构
+
+- 工程实践
+    + 开发
+        - 架构模型
+        - 内存管理
+    + 测试
+    + 部署
+        - CI
+        - 进程守护
+        - 多进程
+    + 运维
+        - 日志
+        - 监控报警
+- 核心模块
+    + 网络
+        - http
+        - https
+        - http2
+        - UDP
+        - net
+        - TLS
+        - dns
+    + I/O
+        - Buffer
+        - Stream
+        - fs
+        - console
+        - readline
+        - repl
+        - tty
+    + 进程线程
+        - process
+        - worker_threads
+        - child_process
+        - cluster
+    + 工具方法
+        - util
+        - events
+        - async_hooks
+        - path
+        - querystring
+        - string_decoder
+        - timers
+        - zlib
+    + 模块功能
+        - url
+        - crypto
+        - os
+        - v8
+        - vm
+    + 开发调试
+        - assert
+        - debugger
+        - inspector
+        - perf_hooks
+        - trace_events
+    + 语言相关
+        - 命令行参数
+        - 模块
+        - 异常
+        - 全局变量
+        - 国际化
+    + C++ 扩展
+- 语言基础
+    + JavaScript \ C++
+    + 异步、事件模型及其编程方法
+        - 实现方案
+        - 异常处理
+        - 超时控制
+        - 并发控制
+    + 模块化与代码运行机制
+        - 模块语法
+        - 路径分析
+        - 模块机制：阻塞式加载、编译包装、内存常驻（缓存）
+        - 包
+    + 内存模型与垃圾回收
+
+
+## 资料汇编
+
+- 书
+    + 《深入浅出node.js》朴灵
