@@ -81,3 +81,17 @@
 - 接入日志
 - 按需接入体验优化方案（例如骨架屏、前端离线等）
 - 按需接入容器层提供的技术方案（例如离线化、预加载等）
+
+
+## 制定了标准，如何约束
+
+### 如何约束开发者复用公共模块中已有的方法，而不是重新造一个？
+
+[lint-a-specific-variable-name-with-eslint](https://stackoverflow.com/questions/39106367/is-there-way-to-lint-a-specific-variable-name-with-eslint)
+
+
+### 如何限制函数的复杂度，避免逻辑在后续迭代中失控式膨胀？
+
+[eslint complexity](https://eslint.org/docs/rules/complexity)
+
+### 如何约束目录结构？
