@@ -4,15 +4,22 @@
 
 - 代码健壮性。避免常见的类型错误：cannot read property 'xxx' of undefined | undefined is not a function
 - 天然的文档
+- 代码自动补全提示
+
 
 **具体案例**
 
-<img src="https://raw.githubusercontent.com/bison1994/JavaScript-Sketches/master/assets/ts-example-1.png">
+<img width="500px" src="https://raw.githubusercontent.com/bison1994/JavaScript-Sketches/master/assets/ts-example-1.png">
 
-<img src="https://raw.githubusercontent.com/bison1994/JavaScript-Sketches/master/assets/ts-example-2.png">
+<img width="500px" src="https://raw.githubusercontent.com/bison1994/JavaScript-Sketches/master/assets/ts-example-2.png">
 
 
-### Basic
+### 整体概览
+
+
+
+
+### 类型
 
 使用 typescript，就是给 js 包装类型。js 中需要声明类型的地方，即需要用到 ts 的地方，主要有：
 
@@ -23,8 +30,6 @@
 - 声明类
 
 如果不声明，typescript 会自动采用类型推断（Inferred Typing）
-
-> 除了添加类型，ts 还给 class 声明添加了 public、private、protected 等类似 Java 中的语法，或者说 ts 提供了自己的 class 语法
 
 
 **类型的分类**
@@ -209,6 +214,15 @@ function getProperty<T, K extends keyof T>(obj: T, key: K) {
 > 内置的泛型 class：Array、Promise...
 
 
+### Type Aliases
+
+type name = xxx
+
+type name = xxx & xxx
+
+type Generic<T> = xxx
+
+
 ### 枚举 Enum
 
 枚举会被编译为真实存在的对象
@@ -233,7 +247,12 @@ var Status
 
 ### 其它语法
 
-除了类型系统，ts 还给自己加了别的戏（有些戏是必要的）
+除了类型系统，ts 还加了别的戏
+
+**class**
+
+ts 还给 class 声明添加了 public、private、protected 等类似 Java 中的语法，或者说 ts 提供了自己的 class 语法
+
 
 **modules**
 
@@ -318,4 +337,15 @@ let sq = new polygons.Square()
 declare module 'date-fns'
 ```
 
+### 类型推导 Type Inference
 
+**Basic**
+
+- 赋值操作
+- 函数参数默认值
+- 函数返回值（前提是返回的值/变量本身有 type 信息）
+
+> [参考](https://basarat.gitbooks.io/typescript/content/docs/types/type-inference.html)
+
+
+**Contextual Typing**
