@@ -7,8 +7,8 @@
 - Object
 - Function
 - Array
-- Map WeakMap
-- Set WeakSet
+- Map/WeakMap
+- Set/WeakSet
 - Boolean
 - Number
 - String
@@ -24,7 +24,7 @@
 - ArrayBuffer
 - DataView
 
-### 抽象控制
+### 异步
 - Promise
 - Generator
 - Proxy

@@ -3,6 +3,7 @@
 函数的使用技巧和各类设计模式，主要是基于闭包、高阶函数（以函数为参数或以函数为返回值的函数），并结合 apply 等函数方法实现的。
 
 ### call、apply&bind
+
 - call 和 apply 本质上是函数调用的一种方式，可以指定函数调用的上下文，改变函数内部 this 的指向
 - bind 用于绑定 this 指向
 - call 和 bind 都是基于 apply 的
@@ -90,6 +91,87 @@ function walk (node, func) {
 ```
 
 
+### 节流防抖
+
+throttle：事件处理降频
+
+应用场景：避免过于频繁的执行事件响应（例如 onscroll、onmousemove、onresize 的回调函数），限定在 t 时间段内仅执行一次
+
+同类方案：requestAnimationFrame
+
+```js
+_.throttle = function (func, wait) {
+  var context, args, result
+  var timeout = null
+  var previous = 0
+  var later = function() {
+    previous = _.now()
+    timeout = null
+    result = func.apply(context, args)
+    if (!timeout) context = args = null
+  }
+  return function () {
+    var now = _.now()
+    var remaining = wait - (now - previous)
+    context = this
+    args = arguments
+    if (remaining <= 0 || remaining > wait) {
+      clearTimeout(timeout)
+      timeout = null
+      previous = now
+      result = func.apply(context, args)
+      if (!timeout) context = args = null
+    } else if (!timeout) {
+      timeout = setTimeout(later, remaining)
+    }
+    return result
+  }
+}
+```
+  
+debounce：一系列事件，按时间间隔 t 分组，每组仅执行一次
+
+应用场景：一系列事件，待停顿一段时间后再触发响应操作，如果事件一直不停的产生，时间间隔未达到阈值，则一直不予响应
+
+应用案例：1、窗口 resize；2、输入框自动补全
+
+```js
+_.debounce = function (func, wait, immediate) {
+  var timeout, args, context, timestamp, result
+
+  var later = function() {
+    var last = _.now() - timestamp
+
+    if (last < wait && last > 0) {
+      timeout = setTimeout(later, wait - last)
+    } else {
+      timeout = null
+      if (!immediate) {
+        result = func.apply(context, args)
+        if (!timeout) context = args = null
+      }
+    }
+  }
+
+  return function() {
+    context = this
+    args = arguments
+    timestamp = _.now()
+    var callNow = immediate && !timeout
+    if (!timeout) timeout = setTimeout(later, wait)
+    if (callNow) {
+      result = func.apply(context, args)
+      context = args = null
+    }
+
+    return result
+  }
+}
+```
+
+> [参考](https://css-tricks.com/debouncing-throttling-explained-examples/)
+
+
 ### 柯里化 Currying
 
 - 柯里化就是将多参数函数转化为单参数函数：f(arg1, arg2) => f(arg1)(arg2)
@@ -144,77 +226,6 @@ function cached (fn) {
 惰性载入的基本思想是只在调用的时候创建，而不是在程序初始化的时候创建。
 
 通过替换变量，仅在第一次调用时执行有关逻辑，以后再次调用无须重复执行有关逻辑。
-
-
-### 函数节流（throttle）
-
-避免过于频繁的执行函数（例如 onscroll、onmousemove、onresize 的回调函数）
-
-```js
-_.throttle = function (func, wait) {
-  var context, args, result
-  var timeout = null
-  var previous = 0
-  var later = function() {
-    previous = _.now()
-    timeout = null
-    result = func.apply(context, args)
-    if (!timeout) context = args = null
-  }
-  return function () {
-    var now = _.now()
-    var remaining = wait - (now - previous)
-    context = this
-    args = arguments
-    if (remaining <= 0 || remaining > wait) {
-      clearTimeout(timeout)
-      timeout = null
-      previous = now
-      result = func.apply(context, args)
-      if (!timeout) context = args = null
-    } else if (!timeout) {
-      timeout = setTimeout(later, remaining)
-    }
-    return result
-  }
-}
-```
-  
-与函数节流类似的是函数防抖（debounce），表示直到某一段时间 t 以后，再执行下一次函数。当 t 设定为常数时，就是函数节流。
-
-```js
-_.debounce = function (func, wait, immediate) {
-  var timeout, args, context, timestamp, result
-
-  var later = function() {
-    var last = _.now() - timestamp
-
-    if (last < wait && last > 0) {
-      timeout = setTimeout(later, wait - last)
-    } else {
-      timeout = null
-      if (!immediate) {
-        result = func.apply(context, args)
-        if (!timeout) context = args = null
-      }
-    }
-  }
-
-  return function() {
-    context = this
-    args = arguments
-    timestamp = _.now()
-    var callNow = immediate && !timeout
-    if (!timeout) timeout = setTimeout(later, wait)
-    if (callNow) {
-      result = func.apply(context, args)
-      context = args = null
-    }
-
-    return result
-  }
-}
-```
 
 
 ### 函数串行

@@ -1,3 +1,5 @@
+### API
+
 - 常规
   + .length
   + Array.isArray(arr)
@@ -42,52 +44,47 @@
   + .copyWithin(target, start, end)
 
 
-### 比较函数的基本格式
+### 数组排序
+
+sort 内部采用某种原地排序算法，不同的引擎实现可能不同，例如 v8 采用的是 QuickSort
+
 ```js
 function compare (v1, v2) {
   if (v1 < v2) {
-    return -1; // v1 和 v2 位置不变
+    return -1
   } else if (v1 > v2) {
-    return 1; // v1 和 v2 交换位置
+    return 1
   } else {
-    return 0; // v1 和 v2 位置不变
+    return 0
   }
 }
-// 数组排序
-var numbers = [4, 2, 5, 1, 3];
+// 数字排序
+var numbers = [4, 2, 5, 1, 3]
 numbers.sort(function(a, b) {
-  console.log(`a=${a}, b=${b}, ${numbers}`)
-  return a - b;
-});
-// a=4, b=2, [4,2,5,1,3]
-// a=4, b=5, [2,4,5,1,3]
-// a=5, b=1, [2,4,5,1,3]
-// a=4, b=1, [2,4,5,5,3]
-// a=2, b=1, [2,4,4,5,3]
-// a=5, b=3, [1,2,4,5,3]
-// a=4, b=3, [1,2,4,5,5]
-// a=2, b=3, [1,2,4,4,5]
+  return a - b
+})
 ```
 
 
-### 迭代方法的函数参数
+### 迭代方法的参数
+
 ```js
-function (item, index, array) {
-  return sth;
-}
-
 // 迭代方法除接收一个迭代器函数外，还接受第二个参数，表示迭代器函数的 this 指向的对象
+xxx(function (item, [index], [array]) {
+  return sth
+}, [thisArg])
 ```
 
 
-### 数组操作的一些技巧
+### 数组操作技巧
+
 ```js
 // 复制数组（浅复制）
-var copies = someArray.slice(0);
+var copies = someArray.slice(0)
 
 // 生成自然数列
-var arr = Array(9).fill().map((_, i) => i);
-Array.from({length: 5}, (_, index) => index);
+var arr = Array(9).fill().map((_, i) => i)
+Array.from({length: 5}, (_, index) => index)
 
 // 计算数组中某一个值出现的次数
 var countOccurrences = (arr, value) => arr.reduce((pre, next) => next === value ? pre + 1 : pre, 0)
@@ -96,13 +93,13 @@ var countOccurrences = (arr, value) => arr.reduce((pre, next) => next === value 
 arr.filter(i => arr.indexOf(i) === arr.lastIndexOf(i))
 
 // 乱序
-var shuffle = arr => arr.sort(() => Math.random() - 0.5);
+var shuffle = arr => arr.sort(() => Math.random() - 0.5)
 
 // 解析 query
-var query = 'name=Peter&age=12';
+var query = 'name=Peter&age=12'
 query.split('&').reduce(function (pre, next) {
-  next = next.split('=');
-  pre[next[0]] = next[1];
+  next = next.split('=')
+  pre[next[0]] = next[1]
   return pre
 }, {})
 ```
