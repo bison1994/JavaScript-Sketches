@@ -17,7 +17,7 @@
 
 ### 操作符/运算符 Operator
 
-- 符号: `+`、`-`、`||`、`&&` ...
+- 符号：`+`、`-`、`||`、`&&` ...
 - 词语：`typeof`、`delete` ...
 - 优先级
 
@@ -203,27 +203,38 @@
 - `fn.length` 表示形参的个数
 
 
-**Declaration**
+**创建**
+
+从形式上看，函数声明语句（statement/declareation）和函数表达式似乎是一样的，区别在于：
+
+- 语句：定义函数，稍后使用，必须有名称，名称会提升到作用域最开始（hoist）
+- 表达式：被当成表达式立即使用，名称是可选的，无 hoist。要么赋给一个变量，通过变量调用，要么自执行
+  + 用于赋值语句：var name = function () {}
+  + 用于立即执行函数（Immediately-invoked function expression, IIFE）
+  + 用于高阶函数（作为参数传给函数、作为函数返回值）
 
 ```js
 // 函数声明（语句）
 function name () {} // 声明一个变量，定义一个函数，然后将函数关联到此变量
 
 // 函数（定义）表达式
-function () {} // 常使用赋值语句的形式 var name = function () {}
+function () {} // 常使用
 
 // 构造函数
-var name = new Function(p1, p2, ..., pn, body);
+var name = new Function(p1, p2, ..., pn, body)
 ```
 
-区别：
+> [function-declarations-vs-function-expressions](https://medium.com/@mandeep1012/function-declarations-vs-function-expressions-b43646042052)
 
-1. 函数声明类似于变量声明，在作用域中会最先执行（hoist），所以可在函数定义之前调用函数。函数表达式则不可，因为变量的声明执行在先，赋值的执行在后
-
-2. 函数表达式是一种受限的语句，它只能出现在全局作用域或者函数中，而不能出现在语句块中（比如条件和循环）。函数声明则可以出现在任何位置
+> [Function Definition Specification](http://ecma-international.org/ecma-262/5.1/#sec-13)
 
 
-**Invoke**
+有名称的表达式，在函数内部，其名称只可读不可改。如果内部声明了同名变量，那么该变量会将函数名覆盖
+
+> The Identifier in a FunctionExpression can be referenced from inside the FunctionExpression's FunctionBody to allow the function to call itself recursively. However, unlike in a FunctionDeclaration, the Identifier in a FunctionExpression cannot be referenced from and does not affect the scope enclosing the FunctionExpression.
+
+
+**调用（Invoke）**
 
 - 仅当调用函数时，函数内部的语句才会执行
 
@@ -241,36 +252,36 @@ this 指向一个对象，具体指向谁，取决于函数定义和调用的方
 1. 作为函数调用，`this` 指向 `global`。但在严格模式中，`this` 为 `undefined`
 
 ```js
-'use strict';
+'use strict'
 (function () {
-  console.log(typeof this); // undefined
+  console.log(typeof this) // undefined
 })()
 ```
 
 2. 作为对象方法调用，`this` 指向调用对象（调用对象会作为一个隐式的实参传给函数）
 
 ```js
-var a = 1;
+var a = 1
 var obj = {
   a: 2,
   f: function () {
     // f 作为方法调用，所以 this 指向 obj
     console.log(this.a) // 2
-    foo(); // foo 作为普通函数调用，this 指向 global 或 undefined，而不是 obj
+    foo() // foo 作为普通函数调用，this 指向 global 或 undefined，而不是 obj
     function foo () {
       console.log(this.a) // 1
     }
   }
-};
-obj.f();
+}
+obj.f()
 ```
 
-3. 作为构造函数调用，执行下列逻辑
+3. 作为构造函数调用（new），执行下列逻辑
   - 创建一个空对象
   - 该对象继承构造函数的 `prototype` 属性
   - 该空对象被赋值给构造函数内部的 `this` 对象
   - 执行构造函数
-  - 如果构造函数中显式的 return 了一个对象，那么就返回这个对象（此对象是没有继承原型的，除非返回的是 this）。否则，一律返回新创建的空对象。
+  - 如果构造函数中显式的 return 了一个非 null 的对象/函数，那么就返回这个对象/函数（此对象没有继承原型，除非返回的是 this）。否则，一律返回新创建的对象
 
 4. 间接调用，`this` 由 `call()、apply()` 的第一个参数指定
 
@@ -282,7 +293,7 @@ obj.f();
 ### 对象
 
 - 分类
-  + 本地对象（内置对象）
+  + 本地对象（内置对象，[共 12 个](http://ecma-international.org/ecma-262/5.1/#sec-15)）
     - 单体内置对象：Global、Math、JSON
     - 构造函数（ES5 中有 9 个）
       + 基本包装类型：String、Number、Boolean // 字面量和实例对象不一样

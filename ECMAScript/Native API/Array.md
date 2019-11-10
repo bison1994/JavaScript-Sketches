@@ -65,6 +65,8 @@ numbers.sort(function(a, b) {
 })
 ```
 
+如果没有传 compareFunc，那么默认算法是将元素转化为 string，按 UTF-16 code units values 升序排列
+
 
 ### 迭代方法的参数
 

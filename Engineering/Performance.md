@@ -1,5 +1,7 @@
 ## 什么是性能
 
+对网页而言，性能主要是指加载快。对于 js 框架而言，性能主要是指算法速度。对于后端接口或服务，性能又有其它定义。本文主要探讨网页性能
+
 - **快**
   + 加载速度
   + 渲染速度
@@ -18,6 +20,7 @@
   + FP（First Paint）
   + FCP（First Contentful Paint）
   + FMP（First Meaningful Paint）
+- 检测 DOM 节点变化最大的时刻
  
 
 ## 测量手段/工具
@@ -35,7 +38,6 @@
 - [Performance Observer](https://github.com/bison1994/JavaScript-Sketches/blob/master/Client/Observer.md)
 - [资源加载时序图分析](https://chromedevtools.github.io/timeline-viewer/)
 - Lighthouse、Web Pagetest
-- 检测 DOM 节点变化最大的时刻
 - YSlow
 
 > [Google web.dev](https://web.dev)
@@ -49,8 +51,9 @@
 
 **时间规划**
 
-- 并行
+- 并行/管道
   + [BigPipe](https://xianyulaodi.github.io/2018/02/10/BigPipe%E5%B0%8F%E6%8E%A2/)
+  + [流式 JSON](https://www.zhihu.com/question/297751687/answer/887453401)
 - 前置
   + SSR
   + prefetch、prerender、preload
@@ -64,6 +67,7 @@
 - CDN （雅虎14条之2）
 - 缓存（服务器缓存、localStorage、离线化、本地化、web worker、redis...）
 - [kv-storage](https://developers.google.com/web/updates/2019/03/kv-storage)
+- [stale-while-revalidate](https://mp.weixin.qq.com/s/hW5POjIEujBaIyd4kpiIPQ)
 
 
 > 动静分离：不经常变化的类静态数据，基本策略是缓存、本地化；要求实时更新的动态数据，基本策略是前置，尽早请求
@@ -99,9 +103,11 @@
   + 控制 cookie 大小
   + 控制 header 大小
   + 增量更新：只加载变化的部分
+  + 用字符数最少的代码：例如用 void 0 代替 undefined
 - 减小无效资源（雅虎14条之4、12）
-  + 删除无效的代码（可使用浏览器开发工具检测）
-  + Dead Code Elimination
+  + 删除无效的代码（Dead Code Elimination）
+    - 可使用浏览器开发工具检测
+  + 删除重复的代码（[检测重复代码](https://elijahmanor.com/js-copypaste-detect/)）
 - 减少无效请求
   + 避免空 src
   + 避免重定向（雅虎14条之11）
@@ -151,6 +157,12 @@
   + 动效元素少用阴影和渐变色（纯色、扁平化）
 
 > [7-performance-tips-jank-free-javascript-animations](https://www.sitepoint.com/7-performance-tips-jank-free-javascript-animations/)
+
+代码执行的效率，对用户而言基本无感知，但是对追求极致的框架而言，代码层的性能就很重要，除了算法设计，还有原生 api 的执行效率（测量工具：[jsperf](https://jsperf.com/)、[benchmarkjs](https://github.com/bestiejs/benchmark.js/)）
+
+- call vs apply
+- for vs forEach vs map
+- ...
 
 
 ## 性能保障
