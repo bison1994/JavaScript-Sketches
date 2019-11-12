@@ -17,7 +17,7 @@
   + 实例对象“继承”了类的方法，这里的“继承”是另一个概念，勿混淆
 
 - 多态
-	父类的通用行为可以被子类用更特殊的行为重写
+	+ 父类的通用行为可以被子类用更特殊的行为重写
 
 
 ### 封装
@@ -33,24 +33,24 @@ var parent = {
 var descendant = ?
 
 // “拷贝式”、“混合式”继承
-var descendant = $.extend(parent, { b: 'b' });
-var descendant = Object.assign({ b: 'b' }, parent);
+var descendant = $.extend(parent, { b: 'b' })
+var descendant = Object.assign({ b: 'b' }, parent)
 ```
 
 另一种“混合式”继承
 
 ```js
 function Composition (target, source) {
-  var desc  = Object.getOwnPropertyDescriptor;
-  var prop  = Object.getOwnPropertyNames;
-  var def_prop = Object.defineProperty;
+  var desc  = Object.getOwnPropertyDescriptor
+  var prop  = Object.getOwnPropertyNames
+  var def_prop = Object.defineProperty
 
   prop(source).forEach(
     function (key) {
       def_prop(target, key, desc(source, key))
     }
   )
-  return target;
+  return target
 }
 ```
 
@@ -63,8 +63,8 @@ function Composition (target, source) {
 - 父类的方法如果不希望被继承，则应该定义为静态方法
 
 ```js
-function Parent () {};
-Parent.f = function () {}; // 静态方法
+function Parent () {}
+Parent.f = function () {} // 静态方法
 ```
 
 
@@ -72,17 +72,17 @@ Parent.f = function () {}; // 静态方法
 
 ```js
 function Parent () {
-  this.a = 'a';
+  this.a = 'a'
 }
 Parent.prototype = {
   foo: function () { console.log(this.a) }
 }
 
 function Descendant () {
-  Parent.apply(this, arguments);
-  this.b = 'b';
+  Parent.apply(this, arguments)
+  this.b = 'b'
 }
-Descendant.prototype = Object.assign(Parent.prototype, { constructor: Descendant });
+Descendant.prototype = Object.assign(Parent.prototype, { constructor: Descendant })
 // or
 Descendant.prototype = Object.create(Parent.prototype, { 
   constructor: {
@@ -91,7 +91,7 @@ Descendant.prototype = Object.create(Parent.prototype, {
     writable: true,
     configurable: true
   }
-});
+})
 
 new Descendant()
 ```
