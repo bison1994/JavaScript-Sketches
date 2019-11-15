@@ -1,11 +1,16 @@
 ### What
+
 cookie 是以分号区隔的名值对形式储存于客户端的一段字符串。
 
+
 ### 工作机制
+
 同域内，浏览器发送的任何请求都会带上 cookie，cookie 设置于请求头中的 Cookie 字段。<br>
 服务端可以在响应头 Set-Cookie 字段任意操作 Cookie，客户端也能通过 `document.cookie` 读取非 httponly 的 cookie 以及设置 cookie
 
+
 ### 组成
+
 Cookie 是由键值对构成的字符串，其中有几个重要字段：
 - [name]
 - [value]
@@ -17,7 +22,9 @@ Cookie 是由键值对构成的字符串，其中有几个重要字段：
 
 name 和 value 为必填，其余为选填
 
+
 ### Cookie 的局限
+
 - cookie 只能储存单一格式的数据
 - 单个域名下 cookie 总数有限，一般不超过 50 个
 - 单个域名下 cookie 总体大小有限，一般不超过 4kb
@@ -25,3 +32,6 @@ name 和 value 为必填，其余为选填
 - 过度使用 cookie 会影响请求与响应的效率
 
 
+### Cross-Site Tracking and Third-Party Cookies
+
+https://webkit.org/blog/7675/intelligent-tracking-prevention/
