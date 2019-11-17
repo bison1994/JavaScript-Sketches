@@ -53,8 +53,7 @@ entry: {
 
 - webpack 的本意是将所有模块打包成 1 个 js bundle
 - 但是，我们可以通过配置打包出多个文件（separate files），这就等于是对 bundle 做了 code spliting
-- 拆分出来的独立的 js 文件就被称为 chunk。注意，是 js
-- 拆分的方式
+- 拆分出来的独立的 js 文件就被称为 chunk。简单的说，源码中的每个文件叫 module，打包后的每个文件叫 chunk，一个 chunk 可以包含多个 module
   + 多入口，每一组键值对对应一个 chunk
   + CommonsChunkPlugin
   + 动态引入 import()

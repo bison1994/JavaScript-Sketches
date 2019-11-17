@@ -2,7 +2,7 @@
 
 ### Benefit
 
-- 代码健壮性。避免常见的类型错误：cannot read property 'xxx' of undefined | undefined is not a function
+- 在编译期提前发现错误
 - 天然的文档
 - 代码自动补全提示
 
@@ -14,16 +14,13 @@
 <img width="500px" src="https://raw.githubusercontent.com/bison1994/JavaScript-Sketches/master/assets/ts-example-2.png">
 
 
-### 整体概览
-
-
-
-
 ### 类型
 
 使用 typescript，就是给 js 包装类型。js 中需要声明类型的地方，即需要用到 ts 的地方，主要有：
 
 - 声明变量
+    + 普通声明
+    + 解构
 - 声明函数
     + 函数参数
     + 函数返回值
@@ -34,22 +31,36 @@
 
 **类型的分类**
 
-- any
-- build-in types
-    + number
-    + string
-    + boolean
+- 原子类型
+    + number | string | boolean | object
+    + Array<T> | [] | ReadonlyArray<T>
+    + any
     + void
-    + null
-    + undefined
+    + null | undefined (sub-types)
     + never
-    + ...
-- user-defined types
-    + 接口 interface
-    + 元组 Tuple
-    + 泛型 Generics
-    + 枚举 Enums
-    + 数组 Array
+    + enum
+    + Literal Types
+        - string
+        - number
+    + this
+- 复合类型
+    + interface | class
+    + tuple
+- 工具类型
+    + [see](http://www.typescriptlang.org/docs/handbook/utility-types.html)
+- 组合类型
+    + &（intersection）
+    + |（Union）
+- 计算类型
+    + Index types `keyof`
+    + Mapped types `[P in keyof T]: T[P]`
+    + Conditional Types `T extends U ? X : Y`
+        - Exclude<T, U>
+        - Extract<T, U>
+        - NonNullable<T>
+        - ReturnType<T>
+        - InstanceType<T>
+
 
 **声明类型的语法**
 
@@ -104,9 +115,35 @@ function fullName (first: string, last = 'bob') { return first + last }
 
 // 剩余参数
 function fullName (first: string, ...other: string[]) { return first + other.join(' ') }
-```
 
-> 还可以用 interface 声明函数类型
+// 参数解构
+function f ({ a, b }: { a: number, b: number }) {
+    return a + b
+}
+
+// 还可以用 interface 声明函数类型
+interface Counter {
+    (start: number): string // 函数体
+}
+
+// Hybrid Types
+interface Counter {
+    (start: number): string // 函数体
+    interval: number // 静态变量
+    reset(): void // 静态方法
+}
+
+// 用第一个参数声明 this 类型（编译后会被忽略）
+function f (this: any, a: string) { this.a = a }
+
+// this 可以被自动推导
+var obj = {
+    a: "",
+    f (a: string) {
+       this.a = a
+    }
+}
+```
 
 
 ### 接口 Interface
@@ -120,7 +157,7 @@ interface Obj {
     readonly z: boolean // 只读属性
     [extraProp: string]: any // 索引签名
     fn: (param1: string, param2: number) => boolean // 函数方法
-    fn(param1: string, param2: number): boolean // 同上，简写形式
+    fn (param1: string, param2: number): boolean // 同上，简写形式
 }
 const obj: Obj = { ... }
 
@@ -137,90 +174,72 @@ const drummer = <Musician>{}
 drummer.age = 27
 drummer.instrument = 'Drums'
 
-// 继承多个：interface A extends B, C {}
-```
+// 继承多个
+interface A extends B, C {}
 
-
-### 类型断言 Type Assertions
-
-可用于类型转换。但仅允许向子类型方向转换
-
-```ts
-const str = '1' 
-const str2:number = <any> str  // ok
-const str2:number = <number> <any> str  // ok
-const str2:number = <number> str  // error: Type 'string' cannot be converted to type 'number'
+// 实现
+class A inplements Interface {}
 ```
 
 
 ### 泛型 Generic
 
-泛型，即参数类型化。泛型类似一个函数，可以将某个类型作为参数传入，从而得到一个新的 interface
+泛型，用参数变量表示类型。具体类型由实际调用时指定
+
+- interface
+- function
+- class
 
 ```ts
+// interface
 interface Generic<T> {
     status: T
 }
 const obj: Generic<string> = { status: 'ok' }
 const obj2: Generic<number> = { status: 1 }
 
+// function
 function identity<T>(arg: T): T {
     return arg
 }
 const output = identity<string>('myString')
 const output = identity('myString') // 也可以不指定具体类型，ts 会自动推导出 T = string
 
-function loggingIdentity<T>(arg: T[]): T[] {
-    console.log(arg.length)  // Array has a .length, so no error
-    return arg
-}
-
-interface GenericIdentityFn {
-    <T>(arg: T): T
-}
-
-let myIdentity: GenericIdentityFn = identity
-
-// 让 T 的作用域扩大到整个 interface
 interface GenericIdentityFn<T> {
     (arg: T): T
 }
 
 let myIdentity: GenericIdentityFn<number> = identity
 
-// class 泛型
+// class
 class GenericNumber<T> {
     zeroValue: T
     add: (x: T, y: T) => T
 }
 let myGenericNumber = new GenericNumber<number>()
+```
 
-// 对参数变量的限定（constraint）
+期望泛型满足某种条件，用 extend 对泛型变量作限定（constraint）
+
+```ts
 interface Lengthwise {
     length: number
 }
 
 function loggingIdentity<T extends Lengthwise>(arg: T): T {
-    console.log(arg.length)  // Now we know it has a .length property, so no more error
+    console.log(arg.length) // 期望参数有 length 属性
     return arg
 }
 
-// 用参数变量的 type 限定其它变量
+loggingIdentity('') // ok
+loggingIdentity({ length: 1 }) // ok
+loggingIdentity(1) // error
+
+// 用泛型参数 T 的属性限定泛型参数 K
 function getProperty<T, K extends keyof T>(obj: T, key: K) {
     return obj[key]
 }
 ```
-
-> 内置的泛型 class：Array、Promise...
-
-
-### Type Aliases
-
-type name = xxx
-
-type name = xxx & xxx
-
-type Generic<T> = xxx
 
 
 ### 枚举 Enum
@@ -244,14 +263,117 @@ var Status
 // {0: "todo", 1: "doing", 2: "done", todo: 0, doing: 1, done: 2}
 ```
 
+### 类型推导 Type Inference
+
+**Basic**
+
+- 赋值操作
+- 函数参数默认值
+- 函数返回值（前提是返回的值/变量本身有 type 信息）
+
+> [参考](https://basarat.gitbooks.io/typescript/content/docs/types/type-inference.html)
+
+
+**Contextual Typing**
+
+- 事件对象的属性
+- `this` in arrow function
+
+
+### 类型的兼容
+
+- type 兼容 subtype
+- 结构的一致性兼容
+    + interface
+    + function
+    + class
+    + generic
+
+```ts
+interface Named {
+    name: string
+}
+
+let x: Named
+// y's inferred type is { name: string location: string }
+let y = { name: "Alice", location: "Seattle" }
+x = y // ok. y has at least the same members as x
+```
+
+
+### Type Guards
+
+某些情况下（联合类型、可能为 null 的值）即便代码完全正确，但 ts 的类型系统会判定错误，因此需要做些额外调整
+
+- in
+- typeof | instanceof
+- is
+- !
+
+```ts
+// 案例一
+interface Bird {
+    fly (): any
+}
+
+interface Fish {
+    swim (): any
+}
+
+function getSmallPet (): Fish | Bird {
+    return Math.random() > 0.5 ? { fly() {} } : { swim() {} }
+}
+
+const pet = getSmallPet()
+if (pet.swim) { // errors
+    pet.swim() // errors
+} else {
+    pet.fly() // errors
+}
+
+if ('swim' in pet) {
+    pet.swim()
+} else { 
+    pet.fly()
+}
+
+// 案例二
+function f (name: string | null): string {
+  function postfix (epithet: string) {
+    return name.charAt(0) + '.  the ' + epithet // error, 'name' is possibly null
+    // 解决方案：return name!.charAt(0) + '.  the ' + epithet
+  }
+  name = name || "Bob"
+  return postfix("great")
+}
+```
+
+
 
 ### 其它语法
 
-除了类型系统，ts 还加了别的戏
-
 **class**
 
-ts 还给 class 声明添加了 public、private、protected 等类似 Java 中的语法，或者说 ts 提供了自己的 class 语法
+- public、private、protected
+- readonly
+- get | set
+- static
+- abstract class
+- 用作 interface（声明一个 class，既创造了一个构造函数，也创造了一个类型）
+
+
+
+**type**
+
+Aliases
+
+```ts
+type name = xxx
+
+type name = xxx & xxx
+
+type Generic<T> = xxx
+```
 
 
 **modules**
@@ -337,15 +459,4 @@ let sq = new polygons.Square()
 declare module 'date-fns'
 ```
 
-### 类型推导 Type Inference
 
-**Basic**
-
-- 赋值操作
-- 函数参数默认值
-- 函数返回值（前提是返回的值/变量本身有 type 信息）
-
-> [参考](https://basarat.gitbooks.io/typescript/content/docs/types/type-inference.html)
-
-
-**Contextual Typing**
