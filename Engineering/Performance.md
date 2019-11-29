@@ -164,6 +164,8 @@
 - for vs forEach vs map
 - ...
 
+> [performance-vs-readability](https://blog.usejournal.com/performance-vs-readability-2e9332730790)
+
 
 ## 性能保障
 
