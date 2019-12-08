@@ -67,6 +67,8 @@ numbers.sort(function(a, b) {
 
 如果没有传 compareFunc，那么默认算法是将元素转化为 string，按 UTF-16 code units values 升序排列
 
+> [sort 与随机排序问题](https://www.h5jun.com/post/array-shuffle.html)
+
 
 ### 迭代方法的参数
 

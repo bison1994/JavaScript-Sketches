@@ -1,3 +1,10 @@
+## script 标签
+
+[everything-I-know-about-the-script-tag](https://eager.io/blog/everything-I-know-about-the-script-tag/)
+
+
+### DOM 操作
+
 - 选取元素
   + document.getElementById()
   + document.getElementsByName()
