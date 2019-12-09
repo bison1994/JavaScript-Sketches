@@ -1,4 +1,5 @@
 ### What
+
 - 盒模型是关于元素结构大小、定位布局和层叠的一系列规则
 - box 分类
   + block
@@ -9,7 +10,9 @@
   + content-box 标准盒模型
   + border-box IE 盒模型
 
+
 ### Positioning schemes
+
 - normal flow
   + Block formatting context
   + Inline formatting contexts
@@ -17,8 +20,11 @@
 - float
 - absolute positioning
 
+
 ### Visual Formatting Context
+
 - 格式化上下文是一块独立的渲染区域，区域内的元素根据相应规则排列，与外部元素互不干扰
+
 
 ### Block Formatting Context
 
