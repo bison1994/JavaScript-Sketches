@@ -1,6 +1,6 @@
 # JavaScript Sketches
 
-![em...](pic)
+![em...][pic]
 
 ## Table of Contents
 
