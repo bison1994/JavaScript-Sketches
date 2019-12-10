@@ -50,7 +50,7 @@
   + [Worker](https://github.com/bison1994/JavaScript-Sketches/blob/master/Client/Worker.md)
 
 
-### Node
+### Server
 
 ### Network
   + HTTP
@@ -62,12 +62,6 @@
   + [Cookie](https://github.com/bison1994/JavaScript-Sketches/blob/master/Network/Cookie.md)
   + [Cross-Origin](https://github.com/bison1994/JavaScript-Sketches/blob/master/Network/Cross-Origin.md)
   + [Fetch](https://github.com/bison1994/JavaScript-Sketches/blob/master/Network/Fetch.md)
-
-
-### Security
-  + [Abstract](https://github.com/bison1994/JavaScript-Sketches/blob/master/Security/Abstract.md)
-  + [CSRF](https://github.com/bison1994/JavaScript-Sketches/blob/master/Security/CSRF.md)
-  + [XSS](https://github.com/bison1994/JavaScript-Sketches/blob/master/Security/XSS.md)
 
 
 ### Engineering
@@ -94,8 +88,14 @@
   + [Webpack](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Webpack.md)
 
 
-### Others
-  + [base64](https://github.com/bison1994/JavaScript-Sketches/blob/master/Other/base64.md)
-  + [hash](https://github.com/bison1994/JavaScript-Sketches/blob/master/Other/hash.md)
-  + [glob](https://github.com/bison1994/JavaScript-Sketches/blob/master/Other/glob.md)
-  + [OAuth](https://github.com/bison1994/JavaScript-Sketches/blob/master/Other/OAuth.md)
+### Security
+  + [Abstract](https://github.com/bison1994/JavaScript-Sketches/blob/master/Security/Abstract.md)
+  + [CSRF](https://github.com/bison1994/JavaScript-Sketches/blob/master/Security/CSRF.md)
+  + [XSS](https://github.com/bison1994/JavaScript-Sketches/blob/master/Security/XSS.md)
+
+
+### General
+  + [base64](https://github.com/bison1994/JavaScript-Sketches/blob/master/General/base64.md)
+  + [hash](https://github.com/bison1994/JavaScript-Sketches/blob/master/General/hash.md)
+  + [glob](https://github.com/bison1994/JavaScript-Sketches/blob/master/General/glob.md)
+  + [OAuth](https://github.com/bison1994/JavaScript-Sketches/blob/master/General/OAuth.md)
