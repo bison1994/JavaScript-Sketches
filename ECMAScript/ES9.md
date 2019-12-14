@@ -1,8 +1,12 @@
-# ECMAScript 9(2018)
+# ECMAScript 9 (2018)
 
 ### Rest/Spread Properties
 
+- [proposal](https://github.com/tc39/proposal-object-rest-spread)
+
 ### Asynchronous Iteration
+
+- [tc39](https://github.com/tc39/proposal-async-iteration)
 
 ### RegExp
 

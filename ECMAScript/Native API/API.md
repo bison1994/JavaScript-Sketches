@@ -16,7 +16,7 @@
 - Error
 - Math
 - Date
-  + [https://flaviocopes.com/javascript-dates/](https://flaviocopes.com/javascript-dates/)
+  + [The definitive guide to JavaScript Dates](https://flaviocopes.com/javascript-dates/)
 - Symbol
 
 ### 结构化数据

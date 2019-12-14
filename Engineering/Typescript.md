@@ -9,9 +9,9 @@
 
 **具体案例**
 
-<img width="500px" src="https://raw.githubusercontent.com/bison1994/JavaScript-Sketches/master/assets/ts-example-1.png">
+<img width="500px" src="https://raw.githubusercontent.com/bison1994/JavaScript-Sketches/master/Assets/ts-example-1.png">
 
-<img width="500px" src="https://raw.githubusercontent.com/bison1994/JavaScript-Sketches/master/assets/ts-example-2.png">
+<img width="500px" src="https://raw.githubusercontent.com/bison1994/JavaScript-Sketches/master/Assets/ts-example-2.png">
 
 
 ### 类型

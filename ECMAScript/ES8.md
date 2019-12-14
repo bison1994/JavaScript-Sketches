@@ -1,4 +1,4 @@
-# ECMAScript 8(2017)
+# ECMAScript 8 (2017)
 
 > [ES8 finished-proposals](https://github.com/tc39/proposals/blob/master/finished-proposals.md)
 
