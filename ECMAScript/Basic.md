@@ -383,3 +383,7 @@ const deepClone = (obj, visited = []) => {
 
 deepClone(test)
 ```
+
+> [You Dont Know JS](https://github.com/getify/You-Dont-Know-JS)
+
+> [Exploring JS](https://exploringjs.com/)

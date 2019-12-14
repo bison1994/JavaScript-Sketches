@@ -5,14 +5,10 @@
 ## Table of Contents
 
 ### ECMAScript
-  + Native API
-    - [API](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Native%20API/API.md)
-    - [Array](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Native%20API/Array.md)
-    - [Error](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Native%20API/Error.md)
-    - [Object](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Native%20API/Object.md)
-    - [RegExp](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Native%20API/RegExp.md)
-    - [String](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Native%20API/String.md)
   + [Basic](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Basic.md)
+  + [Native-API](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Native-API.md)
+  + [Array](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Array.md)
+  + [RegExp](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/RegExp.md)
   + [ES6](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/ES6.md)
   + [ES7](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/ES7.md)
   + [ES8](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/ES8.md)
@@ -46,10 +42,10 @@
 ### Server
 
 ### Network
-  + HTTP
-    - [Basic](https://github.com/bison1994/JavaScript-Sketches/blob/master/Network/HTTP/Basic.md)
-    - [DNS](https://github.com/bison1994/JavaScript-Sketches/blob/master/Network/HTTP/DNS.md)
-    - [HTTP2.0](https://github.com/bison1994/JavaScript-Sketches/blob/master/Network/HTTP/HTTP2.0.md)
+  + [HTTP](https://github.com/bison1994/JavaScript-Sketches/blob/master/Network/HTTP/HTTP.md)
+  + [DNS](https://github.com/bison1994/JavaScript-Sketches/blob/master/Network/HTTP/DNS.md)
+  + [HTTP2.0](https://github.com/bison1994/JavaScript-Sketches/blob/master/Network/HTTP2.0.md)
+  + [HTTPs](https://github.com/bison1994/JavaScript-Sketches/blob/master/Network/HTTPs.md)
   + [Ajax](https://github.com/bison1994/JavaScript-Sketches/blob/master/Network/Ajax.md)
   + [Communication](https://github.com/bison1994/JavaScript-Sketches/blob/master/Network/Communication.md)
   + [Cookie](https://github.com/bison1994/JavaScript-Sketches/blob/master/Network/Cookie.md)
