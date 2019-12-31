@@ -158,6 +158,8 @@
 
 > [7-performance-tips-jank-free-javascript-animations](https://www.sitepoint.com/7-performance-tips-jank-free-javascript-animations/)
 
+> [百度APP流畅度全流程质量监控实践](https://mp.weixin.qq.com/s/JWdFxpTSEWIkYejQZrMRfw)
+
 代码执行的效率，对用户而言基本无感知，但是对追求极致的框架而言，代码层的性能就很重要，除了算法设计，还有原生 api 的执行效率（测量工具：[jsperf](https://jsperf.com/)、[benchmarkjs](https://github.com/bestiejs/benchmark.js/)）
 
 - call vs apply
