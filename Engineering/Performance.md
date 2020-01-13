@@ -136,6 +136,8 @@
 
 > [how-medium-does-progressive-image-loading](https://medium.com/@jmperezperez/how-medium-does-progressive-image-loading-fd1e4dc1ee3d)
 
+> [h5 秒开方案大全](http://www.alloyteam.com/2019/10/h5-performance-optimize/)
+
 
 ### 针对渲染性能、交互、动画流畅度
 
