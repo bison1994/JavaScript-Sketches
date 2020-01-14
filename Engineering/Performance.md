@@ -162,19 +162,21 @@
 
 > [百度APP流畅度全流程质量监控实践](https://mp.weixin.qq.com/s/JWdFxpTSEWIkYejQZrMRfw)
 
-代码执行的效率，对用户而言基本无感知，但是对追求极致的框架而言，代码层的性能就很重要，除了算法设计，还有原生 api 的执行效率（测量工具：[jsperf](https://jsperf.com/)、[benchmarkjs](https://github.com/bestiejs/benchmark.js/)）
+**代码执行的效率**，对用户而言基本无感知，但是对追求极致的框架而言，代码层的性能就很重要，除了算法设计，还有原生 api 的执行效率（测量工具：[jsperf](https://jsperf.com/)、[benchmarkjs](https://github.com/bestiejs/benchmark.js/)）
 
 - call vs apply
 - for vs forEach vs map
 - ...
+
+针对 js 引擎，编写有利于引擎优化的代码，也成为各类最佳实践的指导思路。比如按照 [asm.js 规范](http://asmjs.org/spec/latest/)编写的代码，将直接获得引擎层面的优化支持
 
 > [performance-vs-readability](https://blog.usejournal.com/performance-vs-readability-2e9332730790)
 
 
 ## 性能保障
 
-- 建立指标
-- 监控数据（维度、分位...）
+- 建立指标体系，设置 benchmark
+- 监控数据（维度、分位、竞对数据...）
 - 巡检与通报
 - CI 环节校验
 
