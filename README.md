@@ -83,3 +83,19 @@
   + [hash](https://github.com/bison1994/JavaScript-Sketches/blob/master/General/hash.md)
   + [glob](https://github.com/bison1994/JavaScript-Sketches/blob/master/General/glob.md)
   + [OAuth](https://github.com/bison1994/JavaScript-Sketches/blob/master/General/OAuth.md)
+
+
+## Awesome Resources
+
+> [You Dont Know JS](https://github.com/getify/You-Dont-Know-JS)
+
+> [2ality - JavaScript and more](https://2ality.com/index.html)
+
+> [Spellbook of Modern Web Dev](https://github.com/dexteryy/spellbook-of-modern-webdev)
+
+
+## Famous Blogs
+
+> [Addy Osmani](https://addyosmani.com/blog/)
+
+> [Dan Abramov](https://overreacted.io/)
