@@ -99,3 +99,7 @@
 > [Addy Osmani](https://addyosmani.com/blog/)
 
 > [Dan Abramov](https://overreacted.io/)
+
+## Helpful Guides
+
+> [Understanding the ECMAScript spec](https://v8.dev/blog/understanding-ecmascript-part-1)
