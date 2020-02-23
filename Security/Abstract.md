@@ -42,3 +42,6 @@
 - 数据与代码分离原则
 - 不可预测性
   + 通过随机化，让攻击无从下手
+
+
+> [NodeJS Security Deep Dive](https://www.andreigaspar.com/nodejs-security-deep-dive/)
