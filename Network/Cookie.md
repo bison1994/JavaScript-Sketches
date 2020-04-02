@@ -45,7 +45,7 @@ name 和 value 为必填，其余为选填
 
 当一个页面，发出了跨域请求，而该请求的响应包含了 Set-Cookie，那么此时设置的 cookie 就是 third-party cookie。比如请求 `https://hm.baidu.com/hm.js`，会响应 `Set-Cookie: HMVT=xxx; Path=/; Domain=hm.baidu.com`，这时就能在浏览器看到名为 HMVT 的 cookie
 
-![](./Assets/cookie-1.png)
+![](../Assets/cookie-1.png)
 
 - 上述 domain 为 baidu.com 的 cookie 就是 third-party cookie
 
