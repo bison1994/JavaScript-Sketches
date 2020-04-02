@@ -10,8 +10,6 @@
 
 同域内，浏览器发送的任何请求都会带上 cookie，cookie 设置于请求头中的 Cookie 字段
 
-<br>
-
 服务端可以通过响应头 Set-Cookie 设置 Cookie，客户端也能通过 `document.cookie` 读取非 httponly 的 cookie 以及设置 cookie
 
 - document.cookie = xxx 可以设置一个 cookie，键值相同则覆盖，不同则新增
