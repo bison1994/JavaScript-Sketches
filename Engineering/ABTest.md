@@ -9,7 +9,3 @@ A/B Test 三要素：
 - Metric: What to test?
 - Element/Variant: What influences the metric?
 - Traffic split
-
-
-
-

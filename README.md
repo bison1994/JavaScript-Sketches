@@ -54,6 +54,8 @@
 
 
 ### Engineering
+  + [ABTest](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/ABTest.md)
+  + [Architecture](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Architecture.md)
   + [Cache](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Cache.md)
   + [Compatibility](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Compatibility.md)
   + [Construction](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Construction.md)
@@ -62,6 +64,7 @@
   + [Hybrid](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Hybrid.md)
   + [Modulization](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Modulization.md)
   + [Monitor](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Monitor.md)
+  + [PackageManager](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/PackageManager.md)
   + [Performance](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Performance.md)
   + [Rest](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Rest.md)
   + [Scaffold](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Scaffold.md)
