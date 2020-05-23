@@ -1,9 +1,11 @@
 ### What
 
-- 跨站点请求伪造（Cross Site Request Forgery），就是利用网站信用机制的缺陷来发送未授权命令，窃取用户权限执行非用户操作
+- 跨站点请求伪造（Cross Site Request Forgery），就是设法让终端用户执行某种带授权的非预期操作（trick a victim into submitting a forged request）。简单的说，就是构造出好像是用户发出的请求，但实际不是（服务器只识别 token，但不知道真正的发起人是谁）
 - 伪造请求能够成功执行的两个条件
   + 获得用户权限
-  + 请求的所有参数都能被攻击者获知
+  + 请求的所有参数都能被攻击者获知（reproducible request）
+
+> https://owasp.org/www-community/attacks/csrf
 
 
 ### How

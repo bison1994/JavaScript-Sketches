@@ -101,3 +101,7 @@ document.body.addEventListener('click', function () {
 > [tasks-microtasks-queues-and-schedules](https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/)
 
 > [Event Loop 必知必会（六道题）](https://zhuanlan.zhihu.com/p/34182184?group_id=953036433800331264)
+
+> [Understanding the Node.js event loop phases and how it executes the JavaScript code](https://dev.to/lunaticmonk/understanding-the-node-js-event-loop-phases-and-how-it-executes-the-javascript-code-1j9)
+
+> [从 JS 引擎到 JS 运行时 - libuv Event Loop](https://zhuanlan.zhihu.com/p/104501929)
