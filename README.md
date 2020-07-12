@@ -20,7 +20,7 @@
   + [Event-Loop](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Event-Loop.md)
   + [Function](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Function.md)
   + [GC](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/GC.md)
-  + [Modulization](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Modulization.md)
+  + [Module](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Module.md)
   + [OOP](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/OOP.md)
   + [Prototype](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Prototype.md)
   + [Scope](https://github.com/bison1994/JavaScript-Sketches/blob/master/ECMAScript/Scope.md)
