@@ -63,6 +63,7 @@
   + [Modulization](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Modulization.md)
   + [Monitor](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Monitor.md)
   + [Performance](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Performance.md)
+  + [PackageManagement](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/PackageManagement.md)
   + [Rest](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Rest.md)
   + [Scaffold](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/Scaffold.md)
   + [SPA](https://github.com/bison1994/JavaScript-Sketches/blob/master/Engineering/SPA.md)
