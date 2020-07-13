@@ -28,7 +28,7 @@
 
 ### 资源
 
-- Http 会为每一种资源打上数据格式标签（MIME Type）
+- HTTP 会为每一种资源打上数据格式标签（MIME Type）
 - MIME 是指对传统电子邮件技术规范的一个扩展，它规定了 Content-type 字段，用于描述资源的数据格式。后来该字段被 HTTP 采用，用于标识资源类型
 - 主要类型一共10种：
 	application、audio、font、example、image、message、model、multipart、text、video
