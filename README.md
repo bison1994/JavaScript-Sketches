@@ -39,8 +39,6 @@
   + [Worker](https://github.com/bison1994/JavaScript-Sketches/blob/master/Client/Worker.md)
 
 
-### Server
-
 ### Network
   + [HTTP](https://github.com/bison1994/JavaScript-Sketches/blob/master/Network/HTTP/HTTP.md)
   + [DNS](https://github.com/bison1994/JavaScript-Sketches/blob/master/Network/HTTP/DNS.md)

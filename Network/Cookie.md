@@ -1,7 +1,9 @@
+# Cookie
+
 ### What
 
 - cookie 是以名值对形式储存于客户端的一段字符串
-- cookie 的作用，是为了让服务端能够掌握某些针对单个客户端的持久化信息
+- cookie 的作用，是为了让服务端能够掌握针对单个客户端的持久化信息
 - 单个 cookie 最大长度一般不超过 4kb，单个域名下 cookie 总数一般不超过 50 个，有些浏览器还会限制单个域名下 cookie 总容量。一般来说 cookie 总量不要超过 4kb。[参考](http://browsercookielimits.squawky.net/)
 
 <br>
