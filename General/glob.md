@@ -3,6 +3,8 @@
 - Unix 系统中用于匹配路径的一种简化的正则表达式
 - 不同的语言有各自的 glob 实现
 
+<br>
+
 ### wildcard character
 
 > [js implement: glob](https://www.npmjs.com/package/glob)

@@ -2,6 +2,9 @@
 
 [everything-I-know-about-the-script-tag](https://eager.io/blog/everything-I-know-about-the-script-tag/)
 
+- async: execute this whenever
+- defer: wait for the parser to finish to execute this and run in order
+
 
 ### DOM 操作
 

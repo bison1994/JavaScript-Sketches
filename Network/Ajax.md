@@ -1,3 +1,5 @@
+# Ajax
+
 ### 客户端发起 Http 请求的方式
 
 - navigation
@@ -38,10 +40,11 @@
 
 > [XHR2 参考](http://www.ruanyifeng.com/blog/2012/09/xmlhttprequest_level_2.html)
 
-- [fetch](./Fetch.md)
+> [fetch](./Fetch.md)
 
-- [reporting API](https://w3c.github.io/reporting/)
+> [reporting API](https://w3c.github.io/reporting/)
 
+<br>
 
 ### Asynchronous JavaScript and XML
 
@@ -50,6 +53,7 @@
 - JavaScript：ajax 由 JS 发起。但 JS 对请求头的操作是受限的
 - XML：响应的数据格式，目前被 JSON 取代
 
+<br>
 
 ### Http 请求的四个组成部分
 
@@ -89,8 +93,7 @@ xhr.onreadystatechange = function () {
 }
 ```
 
-> 一次ajax请求, 并非所有的部分都是异步的, 至少"readyState==1"的 onreadystatechange 回调以及 onloadstart 回调就是同步执行的
-
+<br>
 
 ### API
 
@@ -136,25 +139,27 @@ loadstart // 传输开始。
 loadEnd // 传输结束，但是不知道成功还是失败
 ```
 
+<br>
 
 ### 数据格式与编码
 
 由于 Http 只能传输特定格式的数据，因此数据的发送和接收都需要相应的编码和解码的工作，有的工作是由浏览器实现的，而有的工作需要人工完成。
 
-- 表单型数据编码
-  + 将名与值进行URL编码（十六进制转义码）并以=连接，名值对之间以&连接
-  + 该数据格式的 MIME 类型：`application/x-www-form-urlencoded`
-  + 使用 POST 方法提交数据时，需设置 Content-Type 为该值
-  + 可在 URL 中使用该种数据类型进行 GET 只读查询
+**表单型数据编码**
 
-- JSON 编码
+- 将名与值进行URL编码（十六进制转义码）并以=连接，名值对之间以&连接
+- 该数据格式的 MIME 类型：`application/x-www-form-urlencoded`
+- 使用 POST 方法提交数据时，需设置 Content-Type 为该值
+- 可在 URL 中使用该种数据类型进行 GET 只读查询
+
+**JSON 编码**
 
 ```js
 xhr.setRequestHeader("Content-Type", "application/json")
 xhr.send(JSON.stringify(data))
 ```
 
-- 文件
+**文件**
 
 ```js
 // XHR2 支持 Blob 的数据格式

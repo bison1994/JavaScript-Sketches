@@ -1,3 +1,5 @@
+# Cross Origin
+
 ### 同源策略
 
 - 由浏览器实现
@@ -6,6 +8,7 @@
   + 相同的端口
   + 相同的协议
 
+<br>
 
 ### CORS 跨域资源共享
 
@@ -23,8 +26,9 @@
 - Access-Control-Expose-Headers
   + 服务器设置的 header 白名单，告诉浏览器通过检验
 
+<br>
 
-**Preflighted requests（带预检的请求）**
+### Preflighted requests（带预检的请求）
 
 - 简单请求
   + 方法仅限于：get、post、head
@@ -46,6 +50,7 @@
 
 > [跨域的常见错误](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors)
 
+<br>
 
 ### JSONP
 

@@ -1,6 +1,4 @@
-> [前端模块化简史](http://www.cnblogs.com/kidney/p/6673189.html)
-
-### webpack 模块化实现原理
+## webpack 模块化实现原理
 
 ```js
 // a.js 入口文件
@@ -73,3 +71,5 @@ var webpack = function (modules) {
   require(0);
 }
 ```
+
+> [前端模块化简史](http://www.cnblogs.com/kidney/p/6673189.html)

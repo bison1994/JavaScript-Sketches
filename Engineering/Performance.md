@@ -58,6 +58,7 @@
   + SSR
   + prefetch、prerender、preload
   + 服务端推送
+  + 容器预初始化
 
 
 **距离规划**
@@ -77,13 +78,6 @@
 
 通常来说，加载资源的数量/体积越小，加载性能越高。针对 web 而言，主要是限制请求数量和资源体积
 
-- 减少请求次数（雅虎14条之1）
-  + 合并资源（spites）或合并资源的请求（CDN Combo）
-  + 合并多个 ajax 请求
-  + CSS inline
-  + 使用 CSS、SVG、Inline Image、Icon-font 代替图片
-  + 避免使用 @import 和 iframes
-  + 控制域名数量，减少 DNS 查询（雅虎14条之9）
 - 减少重复请求
   + 客户端缓存（雅虎14条之3、13）
   + 使用可缓存的 get 请求（雅虎14条之3、14）
@@ -117,7 +111,15 @@
 
 涉及三个环境：网络协议、客户端（浏览器/webview、移动端/桌面端、小程序...）、服务端
 
-- 协议层面：UDP、QUIC、SPDY、http 2
+- http 1.1
+  - 优化协议：UDP、QUIC、SPDY、http 2
+  - 减少请求次数（雅虎14条之1）
+    - 合并资源（spites）或合并资源的请求（CDN Combo）
+    - 合并多个 ajax 请求
+    - CSS inline
+    - 使用 CSS、SVG、Inline Image、Icon-font 代替图片
+    - 避免使用 @import 和 iframes
+    - 控制域名数量，减少 DNS 查询（雅虎14条之9）
 - 浏览器
   + 域名分片（Domain Sharding、SPDY）
     - PC 端可分片 2-4 个为宜

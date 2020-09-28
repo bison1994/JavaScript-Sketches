@@ -7,11 +7,13 @@ listener.onmessage = function () {
 }
 ```
 
+<br>
 
 ### 跨文档消息传递
 
 使用 `postMessge()` 发送信息，通过 window 对象的 message 事件处理接收的信息
 
+<br>
 
 ### WebSocket
 
@@ -26,19 +28,19 @@ socket.send(data) // 向服务器传送信息（支持UTF-8字符串、二进制
 socket.close() // 关闭连接
 ```
 
+<br>
 
 ### Server-Sent Event
 
-- 所谓SSE，就是浏览器向服务器发送一个HTTP请求，然后服务器不断单向地向浏览器推送“信息”（message）
--	SSE与WebSocket功能相似，但有以下区别：
-	+ WebSocket是全双工通道，可以双向通信，功能更强；SSE是单向通道，只能服务器向浏览器端发送。
-	+ WebSocket是一个新的协议，需要服务器端支持；SSE则是部署在HTTP协议之上的，现有的服务器软件都支持。
-	+ SSE是一个轻量级协议，相对简单；WebSocket是一种较重的协议，相对复杂。
-	+ SSE默认支持断线重连，WebSocket则需要额外部署。
-	+ SSE支持自定义发送的数据类型。
+- 所谓 SSE，就是浏览器向服务器发送一个 HTTP 请求，然后服务器不断单向地向浏览器推送“信息”（message）
+-	SSE 与 WebSocket 功能相似，但有以下区别：
+	+ WebSocket 是全双工通道，可以双向通信，功能更强；SSE 是单向通道，只能服务器向浏览器端发送
+	+ WebSocket 是一个新的协议，需要服务器端支持；SSE 则是部署在 HTTP 协议之上的，现有的服务器软件都支持
+	+ SSE 是一个轻量级协议，相对简单；WebSocket 是一种较重的协议，相对复杂
+	+ SSE 支持自定义发送的数据类型
 
 ```js
-var source = new EventSource(url) // url为服务器地址，必须与当前网页同域
+var source = new EventSource(url) // url 为服务器地址，必须与当前网页同域
 
 /*
  * 实例 source 有以下属性
@@ -50,32 +52,42 @@ var source = new EventSource(url) // url为服务器地址，必须与当前网�
  */
 ```
 
+<br>
 
 ### fetch
 
+- 仅在网络失败时返回 err；4** 或 5** 的情况不会报错
+
+
 ```js
 fetch(url, { config }).then((response) => {
-  response.json().then((data) => {
-  	// data
-	})
+	if (response.status >= 200 && response.status < 300) {
+    response.json().then((data) => {
+  	  // data
+    })
+  } else {
+    var error = new Error(response.statusText || response.status)
+    error.response = response
+    return Promise.reject(error)
+  }
 }).catch((err) => {
   // error
 })
-// 仅在网络失败时返回 err；4** 或 5** 的情况不会报错
 ```
+
 - config
-  + credentials	请求默认是不带 cookie，需将该选项设为 'include'
-	+ mode	'cors'
-	+ method	HTTP方法
-	+ headers	在对象中设置请求头
-	+ body	提交的数据
+  + credentials（请求默认是不带 cookie，需将该选项设为 'include'）
+	+ mode
+	+ method
+	+ headers
+	+ body
 - response
   + headers	`response.headers.get('Content-Type')`
 	+ status	状态码
 	+ statusText	状态文本
 	+ type	'basic'、'cors'或'opaque'
 	+ url
-	+ ok	`true/false`
+	+ ok `true/false`
 	+ redirected	
 	+ .json()
 	+ .text()	
