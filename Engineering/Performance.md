@@ -185,3 +185,4 @@
 
 > [Web Performance Geeks](https://calendar.perfplanet.com/)
 > [今日头条品质优化 - 图文详情页秒开实践](https://mp.weixin.qq.com/s/Xqr6rQBbx7XPoBESEFuXJw)
+> [the-complete-guide-to-google-s-core-web-vitals-performance-metrics](https://blog.asayer.io/the-complete-guide-to-google-s-core-web-vitals-performance-metrics)
