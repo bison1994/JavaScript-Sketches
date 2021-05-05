@@ -1,4 +1,5 @@
 ### SPA 的基本原理
+
 1. “伪造” url 变化，避免页面跳转刷新，同时保证不破坏浏览器的 history 机制
 2. 监听 url 变化，根据变化发送 ajax 请求，更新页面内容
 
@@ -15,7 +16,7 @@ window.onhashchange = function (event) {
 go('/list');
 ```
 
-HTML5 的 history API 中定义了 pushState 方法，提供了一种更高级的伪造 url 的手段
+HTML5 的 history API 中定义了 `pushState` 方法，提供了一种更高级的“伪造” url 的手段
 
 ```js
 /**

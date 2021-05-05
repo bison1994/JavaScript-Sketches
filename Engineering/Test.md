@@ -75,5 +75,6 @@ elem.send_keys(Keys.ENTER)
 > [参考教程](http://selenium-python.readthedocs.io/installation.html)
 
 ### Resource
+
 - [a-guide-to-automating](https://codeburst.io/a-guide-to-automating-scraping-the-web-with-javascript-chrome-puppeteer-node-js-b18efb9e9921)
 - [Automatic visual diffing with Puppeteer](https://meowni.ca/posts/2017-puppeteer-tests/)
