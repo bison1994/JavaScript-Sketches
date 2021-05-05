@@ -41,16 +41,9 @@ location ~* \.(jpg|jpeg|png|gif|ico|css|js)$ {
 xhr.setRequestHeader("If-Modified-Since", "0")
 xhr.setRequestHeader("Cache-Control", "no-cache")
 
-// meta 标签的问题是所有缓存代理服务器都不支持，因为代理服务器不会解析文档内容
+// meta 标签的问题是代理服务器不支持，因为代理服务器不会解析文档内容
 <meta http-equiv="Pragma" content="no-cache"> 
 ```
-
-
-### 设置缓存的决策流
-
-- 是否需要缓存
-- 是否被中间层缓存 => public/private
-- 最大缓存时间 => max-age
 
 > [浏览器缓存机制 by Laruence](http://www.laruence.com/2010/03/05/1332.html)
 

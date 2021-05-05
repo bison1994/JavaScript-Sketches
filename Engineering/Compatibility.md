@@ -48,7 +48,7 @@
 > [细说浏览器特性检测](http://otakustay.com/feature-detection-event/)
 
 
-### 查询
+### 兼容性查询
 
 - [caniuse](http://caniuse.com/)
 - [msdn](https://msdn.microsoft.com/en-us/library/cc351024(VS.85).aspx)

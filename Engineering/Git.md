@@ -227,10 +227,8 @@ git checkout 只对 tracked 的文件有用，如果要清除工作区中所有 
 rebase 的作用
 
 - 保持线性的提交记录（clean history）。历史记录是按提交时间顺序呈现的，合并多个分支后，历史记录可能杂糅来自不同分支的提交
-
-如何删除任意一个或多个 commit？
-
-- ``
+- 删除任意一个或多个 commit
+  - [Git-Tools-Rewriting-History](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History)
 
 
 ### 与远程交互
@@ -280,4 +278,4 @@ remote -- local
 
 - 如何删除远程的 commit：在本地删除，然后 `git push origin +master` or `git push origin master -f`
 - 删除远程分支：`git push origin --delete [branch]`
-- 删除远程文件：``
+- 删除远程文件：本地删除，然后 push
